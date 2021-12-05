@@ -20,8 +20,7 @@ CREATE TABLE users (
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
 	is_parent boolean,
-	family_id int,      -- this means that everyone who joins is part of the same "family" though, according to the database.
-	                               -- fix elsewhere by defining family > 0?
+	family_id int,
 	
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
@@ -68,6 +67,18 @@ INSERT INTO users (username,password_hash,role, is_parent, family_id)
 VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER',true, default);
 INSERT INTO users (username,password_hash,role)
 VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+
+-- Dummy data
+INSERT INTO books (isbn, title, author)
+VALUES ('9780575068568', 'Dune', 'Frank Herbert');
+INSERT INTO books (isbn, title, author)
+VALUES ('9780747532743', 'Harry Potter and the Sorcerers Stone', 'J. K. Rowling');
+INSERT INTO books (isbn, title, author)
+VALUES ('9780786863624', 'The Man Who Loved Only Numbers', 'Paul Hoffman');
+INSERT INTO books (isbn, title, author)
+VALUES ('9780060199067','Evolution: The Triumph of an Idea', 'Carl Zimmer');
+
+
 
 
 COMMIT TRANSACTION;
