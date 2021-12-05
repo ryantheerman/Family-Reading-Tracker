@@ -1,0 +1,96 @@
+#h1 {
+    grid-area: sign-in-title;
+    text-align: center;
+    background-color: #8DA59C;
+}
+
+#username {
+    grid-area: username;
+    background-color: #D1DBD8;
+    border: solid 3px #819C92;
+    text-align: center;
+}
+
+#username:hover {
+    opacity: 75%;
+}
+
+#password {
+    grid-area: password;
+    background-color: #D1DBD8;
+    border: solid 3px #819C92;
+    text-align: center;
+}
+
+#password:hover {
+    opacity: 75%;
+}
+
+#need-account {
+    grid-area: needAccount;
+    text-align: center;
+    color: #F1E8E4;
+    background-color: #8DA59C;
+}
+
+#sign-in-button {
+    grid-area: button;
+    background-color: #D1DBD8;
+    color: #485B56;
+    border: solid 3px #819C92;
+    width: 40%;
+    height: 40px;
+    margin: auto;
+}
+
+#sign-in-button:hover {
+    opacity: 75%;
+}
+
+.form-signin {
+    grid-area: sign-in;
+    background-color: #8DA59C;
+    color: #F1E8E4;
+    margin-top: 20px;
+    margin-left: 30px;
+    border: solid 4px #819C92;
+    border-radius: 40px;
+    display: grid;
+    width: 70%;
+    grid-template-rows: 1fr 35px 35px 25px 1fr;
+    row-gap: 20px;
+    justify-content: center;
+    grid-template-areas: "sign-in-title"
+                         "username"
+                         "password"
+                         "needAccount"
+                         "button";
+}
+
+#description {
+    grid-area: description;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
+    margin-right: 25px;
+    font-size: 23px;
+    /* border: solid 5px #9B5936;
+    border-radius: 25px;
+    background-color: #A15E49;
+    color: #F1E8E4; */
+    color: #8D513F;
+}
+
+#login {
+    display: grid;
+    margin-top: 40px;
+    grid-template-columns: 40% 30% 30%;
+    grid-template-areas: "sign-in description description";
+    align-items: right;
+    column-gap: none;
+}
+
+
+
+
