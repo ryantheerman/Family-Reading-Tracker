@@ -1,0 +1,64 @@
+#create {
+    grid-area: create-title;
+    text-align: center;
+    background-color: #8DA59C;
+}
+
+#confirmPassword {
+    grid-area: confirmPassword;
+    background-color: #D1DBD8;
+    border: solid 3px #819C92;
+    text-align: center;
+}
+
+#confirmPassword:hover {
+    opacity: 75%;
+}
+
+#have-account {
+    grid-area: haveAccount;
+    text-align: center;
+    color: #F1E8E4;
+    background-color: #8DA59C;
+}
+
+#button {
+    grid-area: button;
+    color: #485B56;
+    background-color: #D1DBD8;
+    border: solid 3px #819C92;
+    width: 50%;
+    height: 40px;
+    margin: auto;
+}
+
+#button:hover {
+    opacity: 75%;
+}
+
+.parent-checkbox {
+    grid-area: checkbox;
+    text-align: center;
+    background-color: #8DA59C;
+}
+
+.form-register {
+    background-color: #8DA59C;
+    color: #F1E8E4;
+    margin-top: 20px;
+    margin-left: 30px;
+    border: solid 4px #819C92;
+    border-radius: 40px;
+    display: grid;
+    width: 28%;
+    row-gap: 20px;
+    grid-template-rows: 1fr 35px 35px 35px 15px 25px 1fr;
+    justify-content: center;
+    grid-template-areas: "create-title"
+                         "username"
+                         "password"
+                         "confirmPassword"
+                         "checkbox"
+                         "haveAccount"
+                         "button";
+}
