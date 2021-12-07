@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -14,15 +15,17 @@ public class User {
    private String password;
    @JsonIgnore
    private boolean activated;
+   private boolean isParent;
    private Set<Authority> authorities = new HashSet<>();
 
    public User() { }
 
-   public User(Long id, String username, String password, String authorities) {
+   public User(Long id, String username, String password, String authorities, boolean isParent) {
       this.id = id;
       this.username = username;
       this.password = password;
       this.activated = true;
+      this.isParent = isParent;
    }
 
    public Long getId() {
@@ -73,6 +76,14 @@ public class User {
       }
    }
 
+   public boolean getIsParent() {
+      return isParent;
+   }
+
+   public void setIsParent(boolean parent) {
+      isParent = parent;
+   }
+
    @Override
    public boolean equals(Object o) {
       if (this == o) return true;
@@ -87,7 +98,7 @@ public class User {
 
    @Override
    public int hashCode() {
-      return Objects.hash(id, username, password, activated, authorities);
+      return Objects.hash(id, username, password, activated, authorities, isParent);
    }
 
    @Override

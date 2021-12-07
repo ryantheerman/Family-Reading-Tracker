@@ -13,6 +13,10 @@ public class RegisterUserDTO {
     @NotEmpty(message = "Please select a role for this user.")
     private String role;
 
+    private boolean isParent;
+
+    private String random;
+
     public String getUsername() {
         return username;
     }
@@ -44,4 +48,13 @@ public class RegisterUserDTO {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public boolean getIsParent() {
+        return isParent;
+    }
+
+    public void setIsParent(boolean parent) {
+        isParent = parent;
+    }
+
 }
