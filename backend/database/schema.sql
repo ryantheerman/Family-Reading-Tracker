@@ -1,6 +1,8 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS prizes;
+DROP TABLE IF EXISTS fam_user;
+DROP TABLE IF EXISTS family;
 DROP TABLE IF EXISTS activity;
 DROP TABLE IF EXISTS users_books;
 DROP TABLE IF EXISTS books;
@@ -49,6 +51,19 @@ CREATE TABLE activity (
         CONSTRAINT fk_activity_users FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
+CREATE TABLE family (
+        family_id serial PRIMARY KEY,
+        family_name varchar(100)
+);
+
+CREATE TABLE fam_user (
+        family_id int,
+        user_id int,
+        
+        CONSTRAINT fk_fam_user_users FOREIGN KEY (user_id) REFERENCES users (user_id),
+        CONSTRAINT fk_fam_user_family FOREIGN KEY (family_id) REFERENCES family (family_id)
+);
+
 CREATE TABLE prizes (
         prize_id serial PRIMARY KEY,
         prize_name varchar(100) NOT NULL,
@@ -58,7 +73,9 @@ CREATE TABLE prizes (
         max_prizes int NOT NULL,
         start_date date NOT NULL,
         end_date date NOT NULL,
-        is_active boolean
+        is_active boolean,
+        
+        CONSTRAINT fk_prizes_family FOREIGN KEY (family_id) REFERENCES family (family_id)
         
         -- do we connect this to the rest of the database?
 );
