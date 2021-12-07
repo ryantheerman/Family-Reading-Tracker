@@ -18,6 +18,7 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
+    book: {},
     token: currentToken || '',
     user: currentUser || {}
   },
@@ -37,6 +38,12 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_BOOK(state, book){
+      state.book = book;
+    },
+    WIPE_BOOK(state){
+      state.book = {}
     }
   }
 })
