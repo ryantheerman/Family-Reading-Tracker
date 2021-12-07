@@ -5,6 +5,8 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import AddFamily from '../views/AddFamily.vue'
+import AddPrize from '../views/AddPrize.vue'
 
 Vue.use(Router)
 
@@ -53,6 +55,16 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/parent",
+      name: "create-family",
+      component: AddFamily
+    },
+    {
+      path: "/addPrize",
+      name: "add-prize",
+      component: AddPrize
+    }
   ]
 })
 
