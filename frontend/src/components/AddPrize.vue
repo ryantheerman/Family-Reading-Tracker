@@ -1,10 +1,11 @@
 <template>
   <div>
+      <form class="prize-form">
       <button id="show-form-button" 
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"> Add a Prize</button>
       <form v-on:submit.prevent="addNewPrize" v-if="showForm === true">
-          <label>Prize Name: 
+          <label class="prize-name">Prize Name:
           <input
             type="text"
             id="prize-name"
@@ -14,16 +15,16 @@
             required
             autofocus
         /> </label>
-        <label>Prize Description: 
+        <label class="prize-description">Prize Description: 
         <input
             type="text"
             id="prize-description"
             class="form-control"
-            placeholder="description of prize"
+            placeholder="Description of prize"
             v-model="newPrize.description"
             required
         /> </label>
-        <label>Minute Milestone: 
+        <label class="milestone">Minute Milestone: 
         <input
             type="number"
             id="milestone"
@@ -34,17 +35,17 @@
             v-model="newPrize.milestone"
             required
         /> </label>
-        <label>Number of Winners: 
+        <label class="maxPrizes">Number of Winners: 
         <input
             type="number"
             id="maxPrizes"
             class="form-control"
-            placeholder="Number of Prizes Available"
+            placeholder="Number of winners"
             min="1"
             v-model="newPrize.maxPrizes"
             required
         /> </label>
-        <label>Start Date: 
+        <label class="startDate">Start Date: 
         <input
             type="date"
             id="startDate"
@@ -53,7 +54,7 @@
             v-model="newPrize.startDate"
             required
         /> </label>
-        <label>End Date: 
+        <label class="endDate">End Date: 
         <input
             type="date"
             id="endDate"
@@ -61,17 +62,19 @@
             placeholder=""
             v-model="newPrize.endDate"
             required
-        /> </label>
-        <button v-on:click="saveNewPrize()">Submit Prize!</button> 
-        <!-- change to a submit input button?? -->
+        />
+        </label>
+        <button v-on:click="saveNewPrize()">Submit Prize!</button>
       </form>
       
   </div>
 </template>
 
 <script>
+import AddPrizeStyle from '../styles/AddPrizeStyle.css';
 export default {
     name: "add-prize",
+    component: {AddPrizeStyle},
     data() {
         return {
             showForm : false,
@@ -114,5 +117,4 @@ export default {
 </script>
 
 <style>
-
 </style>
