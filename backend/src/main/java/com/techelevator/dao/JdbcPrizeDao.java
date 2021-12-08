@@ -15,6 +15,10 @@ public class JdbcPrizeDao implements PrizeDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    //get all prizes based off family id
+    //create prize method
+
+
     @Override
     public List<Prize> listPrizes() {
         return null;
