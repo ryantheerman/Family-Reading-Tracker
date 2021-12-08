@@ -64,12 +64,14 @@
         />
         </label>
         <button v-on:click.prevent="saveNewPrize" id="submit-button">Submit Prize!</button>
+
       </form>
       
   </div>
 </template>
 
 <script>
+import backendService from "@/services/BackendService";
 import AddPrizeStyle from '../styles/AddPrizeStyle.css';
 export default {
     name: "add-prize",
@@ -91,11 +93,12 @@ export default {
     },
     methods:{
         saveNewPrize(){
-        backendService.postPrize(this.newPrize).then(response => {
-            if(response.status === 201) {
-                this.$router.push('/');
-            }
-        });
+
+            backendService.postPrize(this.newPrize).then(response => {
+                if(response.status === 201) {
+                    this.$router.push('/');
+                }
+            });
         },
     }
 }
