@@ -1,7 +1,7 @@
 <template>
   <div>
       <h1>{{book.title}}</h1>
-      <h2>{{book.author[0]}}</h2>
+      <h2>{{book.author}}</h2>
       <p>{{book.description}}</p>
       <img v-bind:src="book.thumbnail" />
 
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import backendService from '@/services/BackendService';
 export default {
     name: 'book-details',
     data() {
@@ -18,7 +19,7 @@ export default {
             book: {
                 isbn: 0,
                 title: '',
-                author: [],
+                author: '',
                 thumbnail: '',
                 pageCount: 0,
                 description: ''
@@ -29,15 +30,26 @@ export default {
         this.incomingBook = this.$store.state.book;
         this.book.isbn = this.incomingBook.volumeInfo.industryIdentifiers[0].identifier;
         this.book.title = this.incomingBook.volumeInfo.title;
-        this.book.author = this.incomingBook.volumeInfo.authors;
+
+        this.incomingBook.volumeInfo.authors.forEach(x => {
+            this.book.author += x + ' ';
+        });
+        
         this.book.description = this.incomingBook.volumeInfo.description;
         this.book.pageCount = this.incomingBook.volumeInfo.pageCount;
         this.book.thumbnail = this.incomingBook.volumeInfo.imageLinks.thumbnail;
     },
     methods: {
         addBook(){
-            this.$router.push({name: 'home'});
-            this.$store.commit('WIPE_BOOK')
+            backendService.postBook(this.book).then(response => {
+                if(response.status === 201) {
+                    this.$router.push({name: 'home'});
+                    this.$store.commit('WIPE_BOOK');
+                }
+            });
+
+
+            
         }
     }
 
