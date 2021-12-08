@@ -7,7 +7,10 @@ const http = axios.create({
     }
 })
 export default{
-    searchForISBN(searchTerm){
-        return http.get(`${searchTerm}&maxResults=30`)
+    getByTitle(searchTerm){
+        return http.get(`intitle:${searchTerm}&maxResults=40`)
+    },
+    getByAuthor(searchTerm){
+        return http.get(`inauthor:${searchTerm}&maxResults=40`)
     }
 }

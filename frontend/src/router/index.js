@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import BookDetails from '../components/BookDetails.vue'
 import AddFamily from '../views/AddFamily.vue'
 import AddPrize from '../views/AddPrize.vue'
 
@@ -54,6 +55,11 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/bookDetails",
+      name: "bookDetails",
+      component: BookDetails
     },
     {
       path: "/parent",
