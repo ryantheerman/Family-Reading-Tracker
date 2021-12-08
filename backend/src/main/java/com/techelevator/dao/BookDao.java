@@ -10,6 +10,8 @@ public interface BookDao {
 
     Book getBookByISBN(int isbn);
 
+    void createBook(Book book);
+
 
 
 
