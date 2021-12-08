@@ -17,15 +17,17 @@ public class User {
    private boolean activated;
    private boolean isParent;
    private Set<Authority> authorities = new HashSet<>();
+   private Long familyId;
 
    public User() { }
 
-   public User(Long id, String username, String password, String authorities, boolean isParent) {
+   public User(Long id, String username, String password, String authorities, boolean isParent, Long familyId) {
       this.id = id;
       this.username = username;
       this.password = password;
       this.activated = true;
       this.isParent = isParent;
+      this.familyId = familyId;
    }
 
    public Long getId() {
@@ -83,6 +85,15 @@ public class User {
    public void setIsParent(boolean parent) {
       isParent = parent;
    }
+
+   public Long getFamilyId() {
+      return familyId;
+   }
+
+   public void setFamilyId(Long familyId) {
+      this.familyId = familyId;
+   }
+
 
    @Override
    public boolean equals(Object o) {

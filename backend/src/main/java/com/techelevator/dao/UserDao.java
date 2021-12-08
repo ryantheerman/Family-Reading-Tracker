@@ -15,4 +15,9 @@ public interface UserDao {
     int findIdByUsername(String username);
 
     boolean create(String username, String password, String role, boolean isParent);
+
+    void updateFamilyId(int familyId, int currentUser);
+
+    void addMember(String username, Long familyId);
+
 }

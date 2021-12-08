@@ -12,6 +12,7 @@ public class RegisterUserDTO {
     private String confirmPassword;
     @NotEmpty(message = "Please select a role for this user.")
     private String role;
+    private Long familyId;
 
     private boolean isParent;
 
@@ -55,6 +56,14 @@ public class RegisterUserDTO {
 
     public void setIsParent(boolean parent) {
         isParent = parent;
+    }
+
+    public Long getFamilyId() {
+        return familyId;
+    }
+
+    public void setFamilyId(Long familyId) {
+        this.familyId = familyId;
     }
 
 }
