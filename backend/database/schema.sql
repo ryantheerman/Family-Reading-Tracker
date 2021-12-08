@@ -1,10 +1,8 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS prize_user;
 DROP TABLE IF EXISTS prizes;
-DROP TABLE IF EXISTS fam_user;
-DROP TABLE IF EXISTS family;
 DROP TABLE IF EXISTS activity;
-DROP TABLE IF EXISTS users_books;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS seq_user_id;
@@ -34,12 +32,9 @@ CREATE TABLE books (
         thumbnail varchar(1000),
         page_count int,
         description varchar(1000)
-        
-        -- Anything else we're getting from the api that we can use here?
 );
 
 CREATE TABLE activity (
-        -- Corey's idea about composite key here... but for now
         activity_id serial PRIMARY KEY,
         user_id int NOT NULL,
         isbn varchar NOT NULL,
@@ -47,25 +42,10 @@ CREATE TABLE activity (
         minutes_read int NOT NULL,
         is_finished boolean default false,
         
-        -- pages read?
-        -- to get individual books a user hasn't finished we might use group by or sort by date_read limit 1 (return most recent unfinished book)
-        
         CONSTRAINT fk_activity_books FOREIGN KEY (isbn) REFERENCES books (isbn),
         CONSTRAINT fk_activity_users FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
-CREATE TABLE family (
-        family_id serial PRIMARY KEY,
-        family_name varchar(100)
-);
-
-CREATE TABLE fam_user (
-        family_id int,
-        user_id int,
-        
-        CONSTRAINT fk_fam_user_users FOREIGN KEY (user_id) REFERENCES users (user_id),
-        CONSTRAINT fk_fam_user_family FOREIGN KEY (family_id) REFERENCES family (family_id)
-);
 
 CREATE TABLE prizes (
         prize_id serial PRIMARY KEY,
@@ -76,11 +56,15 @@ CREATE TABLE prizes (
         max_prizes int NOT NULL,
         start_date date NOT NULL,
         end_date date NOT NULL,
-        is_active boolean,
+        is_active boolean
+);
+
+CREATE TABLE prize_user (
+        prize_id int,
+        user_id int,
         
-        CONSTRAINT fk_prizes_family FOREIGN KEY (family_id) REFERENCES family (family_id)
-        
-        -- do we connect this to the rest of the database?
+        CONSTRAINT fk_prize_user_users FOREIGN KEY (user_id) REFERENCES users (user_id),
+        CONSTRAINT fk_prize_user_prizes FOREIGN KEY (prize_id) REFERENCES prizes (prize_id)
 );
 
 INSERT INTO users (username,password_hash,role, is_parent, family_id)
