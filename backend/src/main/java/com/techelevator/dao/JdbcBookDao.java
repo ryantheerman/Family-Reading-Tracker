@@ -27,4 +27,15 @@ public class JdbcBookDao implements BookDao {
     public Book getBookByISBN(int isbn) {
         return null;
     }
+
+    @Override
+    public void createBook(Book book) {
+        System.out.println(book.getTitle());
+
+        String sql = "INSERT INTO books (isbn, title, author, thumbnail, page_count, description) " +
+                "VALUES (?, ?, ?, ?, ?, ?);";
+        jdbcTemplate.update(sql, book.getIsbn(), book.getTitle(), book.getAuthor(),
+                book.getThumbnail(), book.getPageCount(), book.getDescription());
+
+    }
 }
