@@ -13,8 +13,7 @@
 }
 
 #app {
-    background-color: #F8F3F2; /* light isabelline */
-    /* background-image: url('https://images.unsplash.com/photo-1631528622711-b6043a7e5b91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'); */
+    background-color: #FFF8E8;
     background-size: cover;
     position: fixed; 
     top: 0; 
