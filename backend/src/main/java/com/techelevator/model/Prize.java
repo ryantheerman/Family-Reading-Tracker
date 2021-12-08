@@ -1,10 +1,14 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.time.LocalDate;
 
 public class Prize {
 
-    private long prizeId;
+    private Long prizeId;
     private String prizeName;
     private String prizeDescription;
     private int milestone;
@@ -29,11 +33,11 @@ public class Prize {
         this.isActive = isActive;
     }
 
-    public long getPrizeId() {
+    public Long getPrizeId() {
         return prizeId;
     }
 
-    public void setPrizeId(long prizeId) {
+    public void setPrizeId(Long prizeId) {
         this.prizeId = prizeId;
     }
 

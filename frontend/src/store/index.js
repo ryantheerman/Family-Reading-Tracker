@@ -19,6 +19,7 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     book: {},
+    prize: {},
     token: currentToken || '',
     user: currentUser || {}
   },
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     WIPE_BOOK(state){
       state.book = {}
+    },
+    SET_PRIZE(state, prize) {
+      state.prize = prize;
     }
   }
 })

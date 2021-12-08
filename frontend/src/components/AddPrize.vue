@@ -1,17 +1,16 @@
 <template>
   <div>
-      <form class="prize-form">
       <button id="show-form-button" 
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"> Add a Prize</button>
-      <form v-on:submit.prevent="addNewPrize" v-if="showForm === true">
+      <form class="prize-form" v-if="showForm === true">
           <label class="prize-name">Prize Name:
           <input
             type="text"
             id="prize-name"
             class="form-control"
             placeholder="Name your prize"
-            v-model="newPrize.name"
+            v-model="newPrize.prizeName"
             required
             autofocus
         /> </label>
@@ -21,7 +20,7 @@
             id="prize-description"
             class="form-control"
             placeholder="Description of prize"
-            v-model="newPrize.description"
+            v-model="newPrize.prizeDescription"
             required
         /> </label>
         <label class="milestone">Minute Milestone: 
@@ -64,13 +63,14 @@
             required
         />
         </label>
-        <button v-on:click="saveNewPrize()">Submit Prize!</button>
+        <button v-on:click.prevent="saveNewPrize">Submit Prize!</button>
       </form>
       
   </div>
 </template>
 
 <script>
+import backendService from "@/services/BackendService";
 import AddPrizeStyle from '../styles/AddPrizeStyle.css';
 export default {
     name: "add-prize",
@@ -79,8 +79,8 @@ export default {
         return {
             showForm : false,
             newPrize: {
-                name: '',
-                description: '',
+                prizeName: '',
+                prizeDescription: '',
                 milestone: '',
                 //familyID: 
                 maxPrizes: '',
@@ -92,26 +92,13 @@ export default {
     },
     methods:{
         saveNewPrize(){
-            // this.newPrize.milestone = Number.parseInt(this.newPrize.milestone);
-            // this.newPrize.maxPrizes = Number.parseInt(this.newPrize.maxPrizes);
 
-            this.prizes.push(this.newPrize);
-        
-            this.resetPrizeForm();
+            backendService.postPrize(this.newPrize).then(response => {
+                if(response.status === 201) {
+                    this.$router.push('/');
+                }
+            });
         },
-        resetPrizeForm(){
-            this.newPrize = {
-                name: '',
-                description: '',
-                milestone: '',
-                maxPrizes: '',
-                startDate: '',
-                endDate: '',
-            }
-        },
-        // toggleForm(){
-        //     this.showForm = !this.showForm
-        // }
     }
 }
 </script>
