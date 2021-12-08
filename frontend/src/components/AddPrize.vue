@@ -1,13 +1,16 @@
 <template>
   <div>
-      <form>
+      <button id="show-form-button" 
+      v-if="showForm === false"
+      v-on:click.prevent="showForm = true"> Add a Prize</button>
+      <form v-on:submit.prevent="addNewPrize" v-if="showForm === true">
           <label>Prize Name: 
           <input
             type="text"
             id="prize-name"
             class="form-control"
             placeholder="Name your prize"
-            v-model="prize.name"
+            v-model="newPrize.name"
             required
             autofocus
         /> </label>
@@ -17,7 +20,7 @@
             id="prize-description"
             class="form-control"
             placeholder="description of prize"
-            v-model="prize.description"
+            v-model="newPrize.description"
             required
         /> </label>
         <label>Minute Milestone: 
@@ -28,7 +31,7 @@
             step="10"
             min="0"
             placeholder="Minutes to Read"
-            v-model="prize.milestone"
+            v-model="newPrize.milestone"
             required
         /> </label>
         <label>Number of Winners: 
@@ -38,7 +41,7 @@
             class="form-control"
             placeholder="Number of Prizes Available"
             min="1"
-            v-model="prize.maxPrizes"
+            v-model="newPrize.maxPrizes"
             required
         /> </label>
         <label>Start Date: 
@@ -47,7 +50,7 @@
             id="startDate"
             class="form-control"
             placeholder=""
-            v-model="prize.startDate"
+            v-model="newPrize.startDate"
             required
         /> </label>
         <label>End Date: 
@@ -56,10 +59,11 @@
             id="endDate"
             class="form-control"
             placeholder=""
-            v-model="prize.endDate"
+            v-model="newPrize.endDate"
             required
         /> </label>
-        <button>Submit Prize!</button>
+        <button v-on:click="saveNewPrize()">Submit Prize!</button> 
+        <!-- change to a submit input button?? -->
       </form>
       
   </div>
@@ -70,7 +74,8 @@ export default {
     name: "add-prize",
     data() {
         return {
-            prize: {
+            showForm : false,
+            newPrize: {
                 name: '',
                 description: '',
                 milestone: '',
@@ -78,8 +83,32 @@ export default {
                 maxPrizes: '',
                 startDate: '',
                 endDate: '',
+            },
+            prizes:[]
+        };
+    },
+    methods:{
+        saveNewPrize(){
+            // this.newPrize.milestone = Number.parseInt(this.newPrize.milestone);
+            // this.newPrize.maxPrizes = Number.parseInt(this.newPrize.maxPrizes);
+
+            this.prizes.push(this.newPrize);
+        
+            this.resetPrizeForm();
+        },
+        resetPrizeForm(){
+            this.newPrize = {
+                name: '',
+                description: '',
+                milestone: '',
+                maxPrizes: '',
+                startDate: '',
+                endDate: '',
             }
-        }
+        },
+        // toggleForm(){
+        //     this.showForm = !this.showForm
+        // }
     }
 }
 </script>
