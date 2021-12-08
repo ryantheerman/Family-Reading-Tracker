@@ -1,6 +1,6 @@
 <template>
     <div class="parent-page">
-       <form id="create-family">
+       <form>
 
        </form>
     </div>

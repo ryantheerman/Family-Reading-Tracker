@@ -12,6 +12,8 @@ public interface PrizeDao {
 
     Prize getPrizeById(Long prizeId);
 
+    Prize createPrize(Prize prize);
+
 
 
 
