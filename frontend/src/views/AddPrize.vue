@@ -6,6 +6,7 @@
 
 <script>
 import AddPrize from '../components/AddPrize.vue' 
+
 export default {
     components: { AddPrize }
     

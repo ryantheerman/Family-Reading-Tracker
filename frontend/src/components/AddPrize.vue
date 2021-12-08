@@ -1,17 +1,16 @@
 <template>
   <div>
-      <form class="prize-form">
       <button id="show-form-button" 
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"> Add a Prize</button>
-      <form v-on:submit.prevent="addNewPrize" v-if="showForm === true">
-          <label class="prize-name">Prize Name:
+      <form class="prize-form" v-on:submit.prevent="addNewPrize" v-if="showForm === true">
+          <label class="prize-name">Prize Name: 
           <input
             type="text"
             id="prize-name"
             class="form-control"
             placeholder="Name your prize"
-            v-model="newPrize.name"
+            v-model="newPrize.prizeName"
             required
             autofocus
         /> </label>
@@ -21,7 +20,7 @@
             id="prize-description"
             class="form-control"
             placeholder="Description of prize"
-            v-model="newPrize.description"
+            v-model="newPrize.prizeDescription"
             required
         /> </label>
         <label class="milestone">Minute Milestone: 
@@ -62,16 +61,18 @@
             placeholder=""
             v-model="newPrize.endDate"
             required
-        />
-        </label>
-        <button v-on:click="saveNewPrize()">Submit Prize!</button>
+        /> </label>
+        <button id="submit-button" v-on:click="saveNewPrize()">Save</button> 
+        <button id="submit-button" v-on:click="resetPrizeForm()">Cancel</button> 
+
+        <!-- change to a submit input button?? -->
       </form>
       
   </div>
 </template>
 
 <script>
-import AddPrizeStyle from '../styles/AddPrizeStyle.css';
+import AddPrizeStyle from '../styles/AddPrizeStyle.css'
 export default {
     name: "add-prize",
     component: {AddPrizeStyle},
@@ -79,8 +80,8 @@ export default {
         return {
             showForm : false,
             newPrize: {
-                name: '',
-                description: '',
+                prizeName: '',
+                prizeDescription: '',
                 milestone: '',
                 //familyID: 
                 maxPrizes: '',
@@ -117,4 +118,5 @@ export default {
 </script>
 
 <style>
+
 </style>

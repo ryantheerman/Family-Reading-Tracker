@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <!-- <head class="head">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-    </head> -->
     <header class="header">
       <h1>Family Reading Tracker</h1>
     </header>
