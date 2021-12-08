@@ -4,6 +4,8 @@ import com.techelevator.model.Book;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class JdbcBookDao implements BookDao {
 
@@ -30,7 +32,6 @@ public class JdbcBookDao implements BookDao {
 
     @Override
     public void createBook(Book book) {
-        System.out.println(book.getTitle());
 
         String sql = "INSERT INTO books (isbn, title, author, thumbnail, page_count, description) " +
                 "VALUES (?, ?, ?, ?, ?, ?);";

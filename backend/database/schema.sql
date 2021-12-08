@@ -52,7 +52,7 @@ CREATE TABLE prizes (
         prize_name varchar(100) NOT NULL,
         description varchar(300) NOT NULL,
         milestone int NOT NULL,
-        family_id int NOT NULL, 
+        family_id int, 
         max_prizes int NOT NULL,
         start_date date NOT NULL,
         end_date date NOT NULL,
