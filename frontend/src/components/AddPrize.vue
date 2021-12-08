@@ -4,10 +4,14 @@
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"> Add a Prize</button>
 <<<<<<< HEAD
+      <form class="prize-form" v-on:submit.prevent="addNewPrize" v-if="showForm === true">
+=======
+<<<<<<< HEAD
       <form class="prize-form" v-if="showForm === true">
 =======
       <form v-on:submit.prevent="addNewPrize" v-if="showForm === true" class="prize-form">
 >>>>>>> ba0947559e20a8781a16ad5f02a50bae213919f5
+>>>>>>> fade881ee40e519d4172fd96fc773d06b7328569
           <label class="prize-name">Prize Name:
           <input
             type="text"
@@ -73,7 +77,6 @@
         <button v-on:click="saveNewPrize()" id="submit-button">Submit Prize!</button>
 >>>>>>> ba0947559e20a8781a16ad5f02a50bae213919f5
       </form>
-      
   </div>
 </template>
 
