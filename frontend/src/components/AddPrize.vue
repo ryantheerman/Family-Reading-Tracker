@@ -1,7 +1,11 @@
 <template>
   <div>
       <form class="prize-form">
-          <label class="prize-name">Prize Name: 
+      <button id="show-form-button" 
+      v-if="showForm === false"
+      v-on:click.prevent="showForm = true"> Add a Prize</button>
+      <form v-on:submit.prevent="addNewPrize" v-if="showForm === true">
+          <label class="prize-name">Prize Name:
           <input
             type="text"
             id="prize-name"
@@ -58,8 +62,9 @@
             placeholder=""
             v-model="newPrize.endDate"
             required
-        /> </label>
-        <button id="submit-button">Submit Prize!</button>
+        />
+        </label>
+        <button v-on:click="saveNewPrize()">Submit Prize!</button>
       </form>
       
   </div>
@@ -72,6 +77,7 @@ export default {
     component: {AddPrizeStyle},
     data() {
         return {
+            showForm : false,
             newPrize: {
                 name: '',
                 description: '',
@@ -80,12 +86,35 @@ export default {
                 maxPrizes: '',
                 startDate: '',
                 endDate: '',
+            },
+            prizes:[]
+        };
+    },
+    methods:{
+        saveNewPrize(){
+            // this.newPrize.milestone = Number.parseInt(this.newPrize.milestone);
+            // this.newPrize.maxPrizes = Number.parseInt(this.newPrize.maxPrizes);
+
+            this.prizes.push(this.newPrize);
+        
+            this.resetPrizeForm();
+        },
+        resetPrizeForm(){
+            this.newPrize = {
+                name: '',
+                description: '',
+                milestone: '',
+                maxPrizes: '',
+                startDate: '',
+                endDate: '',
             }
-        }
+        },
+        // toggleForm(){
+        //     this.showForm = !this.showForm
+        // }
     }
 }
 </script>
 
 <style>
-
 </style>
