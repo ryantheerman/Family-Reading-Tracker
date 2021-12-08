@@ -3,7 +3,7 @@
       <button id="show-form-button" 
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"> Add a Prize</button>
-      <form class="prize-form" v-if="showForm === true">
+      <form v-on:submit.prevent="addNewPrize" v-if="showForm === true" class="prize-form">
           <label class="prize-name">Prize Name:
           <input
             type="text"
@@ -65,7 +65,6 @@
         </label>
         <button id="submit-button" v-on:click.prevent="saveNewPrize">Submit Prize!</button>
       </form>
-      
   </div>
 </template>
 
