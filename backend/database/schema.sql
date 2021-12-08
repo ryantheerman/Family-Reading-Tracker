@@ -30,7 +30,10 @@ CREATE TABLE users (
 CREATE TABLE books (
         isbn varchar(17) PRIMARY KEY,
         title varchar(200) NOT NULL,
-        author varchar(100) NOT NULL
+        author varchar(1000) NOT NULL,
+        thumbnail varchar(1000),
+        page_count int,
+        description varchar(1000)
         
         -- Anything else we're getting from the api that we can use here?
 );
@@ -85,17 +88,11 @@ VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','R
 INSERT INTO users (username,password_hash,role)
 VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
--- Dummy data
-INSERT INTO books (isbn, title, author)
-VALUES ('9780575068568', 'Dune', 'Frank Herbert');
-INSERT INTO books (isbn, title, author)
-VALUES ('9780747532743', 'Harry Potter and the Sorcerers Stone', 'J. K. Rowling');
-INSERT INTO books (isbn, title, author)
-VALUES ('9780786863624', 'The Man Who Loved Only Numbers', 'Paul Hoffman');
-INSERT INTO books (isbn, title, author)
-VALUES ('9780060199067','Evolution: The Triumph of an Idea', 'Carl Zimmer');
+
 
 
 
 
 COMMIT TRANSACTION;
+
+SELECT * FROM books;

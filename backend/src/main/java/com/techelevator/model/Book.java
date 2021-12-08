@@ -2,7 +2,7 @@ package com.techelevator.model;
 
 public class Book {
 
-    private int isbn;
+    private Long isbn;
     private String title;
     private String author;
     private String thumbnail;
@@ -11,7 +11,7 @@ public class Book {
 
     public Book() {}
 
-    public Book(int isbn, String title, String author,
+    public Book(Long isbn, String title, String author,
                 String thumbnail, int pageCount, String description) {
         this.isbn = isbn;
         this.title = title;
@@ -21,11 +21,11 @@ public class Book {
         this.description = description;
     }
 
-    public int getIsbn() {
+    public Long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(Long isbn) {
         this.isbn = isbn;
     }
 
