@@ -1,11 +1,13 @@
 <template>
     <div class="actions">
         <button v-bind:to="familyId" @click.prevent="createFamilyId()">Create Family</button>
+        
     </div>
 </template>
 
 <script>
 import AuthService from '../services/AuthService';
+
 export default {
     name: "create-family",
     data() {
