@@ -8,6 +8,25 @@ export default {
 
   register(user) {
     return axios.post('/register', user)
+  },
+
+  createFamilyId(id) {
+    const http = axios.create({
+      headers: {
+        'Content-Type': 'application/JSON'
+      }
+    })
+    return http.put('/familyId', id)
+  },
+
+  addFamilyMember(username) {
+    console.log(username + " " + typeof(username));
+    const http = axios.create({
+      headers: {
+        'Content-Type': 'application/JSON'
+      }
+    })
+    return http.put('/addMember', username);
   }
 
 }

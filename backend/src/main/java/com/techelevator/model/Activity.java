@@ -6,7 +6,7 @@ public class Activity {
 
     private long activityId;
     private long userId;
-    private int isbn;
+    private String isbn;
     private LocalDate dateRead;
     private int minutesRead;
     private boolean isFinished;
@@ -15,7 +15,7 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(long activityId, long userId, int isbn,
+    public Activity(long activityId, long userId, String isbn,
                     LocalDate dateRead, int minutesRead, boolean isFinished) {
         this.activityId = activityId;
         this.userId = userId;
@@ -41,11 +41,11 @@ public class Activity {
         this.userId = userId;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -65,7 +65,7 @@ public class Activity {
         this.minutesRead = minutesRead;
     }
 
-    public boolean isFinished() {
+    public boolean getisFinished() {
         return isFinished;
     }
 
