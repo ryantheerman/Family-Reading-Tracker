@@ -2,6 +2,8 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Book;
 
+import java.security.Principal;
+
 public interface BookDao {
 
     Book getBookByAuthor(String author);
@@ -10,7 +12,7 @@ public interface BookDao {
 
     Book getBookByISBN(int isbn);
 
-    void createBook(Book book);
+    void createBook(Book book, int id);
 
 
 

@@ -28,6 +28,7 @@ public class AuthenticationController {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private UserDao userDao;
+    private User currentUser;
 
     public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao) {
         this.tokenProvider = tokenProvider;
@@ -46,7 +47,7 @@ public class AuthenticationController {
         String jwt = tokenProvider.createToken(authentication, false);
         
         User user = userDao.findByUsername(loginDto.getUsername());
-
+        currentUser = user;
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
         return new ResponseEntity<>(new LoginResponse(jwt, user), httpHeaders, HttpStatus.OK);

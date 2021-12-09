@@ -1,8 +1,11 @@
 package com.techelevator.dao;
 
+import com.techelevator.controller.AuthenticationController;
 import com.techelevator.model.Book;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
 
 @Service
 public class JdbcBookDao implements BookDao {
@@ -29,8 +32,8 @@ public class JdbcBookDao implements BookDao {
     }
 
     @Override
-    public void createBook(Book book) {
-        System.out.println(book.getTitle());
+    public void createBook(Book book, int id) {
+        System.out.println(id);
 
         String sql = "INSERT INTO books (isbn, title, author, thumbnail, page_count, description) " +
                 "VALUES (?, ?, ?, ?, ?, ?);";

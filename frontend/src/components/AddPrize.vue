@@ -66,6 +66,7 @@
         </label>
         <button v-on:click="saveNewPrize()">Submit Prize!</button>
       </form>
+      </form>
       
   </div>
 </template>
