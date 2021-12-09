@@ -87,6 +87,21 @@ public class JdbcUserDao implements UserDao {
         return userCreated;
     }
 
+    public void updateFamilyId(int familyId, int currentUser) {
+        String sql = "UPDATE users " +
+                "SET family_id = ? " +
+                "WHERE user_id = ?;";
+        jdbcTemplate.update(sql, familyId, currentUser);
+    }
+
+    public void addMember(String username, Long familyId) {
+        System.out.println(familyId);
+        String sql = "UPDATE users " +
+                "SET family_id = ? " +
+                "WHERE username = ?";
+        jdbcTemplate.update(sql, familyId, username);
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getLong("user_id"));
@@ -94,6 +109,7 @@ public class JdbcUserDao implements UserDao {
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(rs.getString("role"));
         user.setIsParent(rs.getBoolean("is_parent"));
+        user.setFamilyId(rs.getLong("family_id"));
         user.setActivated(true);
         return user;
     }

@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Activity;
 import com.techelevator.model.Prize;
 import java.util.List;
 
@@ -10,6 +11,8 @@ public interface PrizeDao {
     List<Prize> listPrizes();
 
     Prize getPrizeById(Long prizeId);
+
+    Prize createPrize(Prize prize);
 
 
 
