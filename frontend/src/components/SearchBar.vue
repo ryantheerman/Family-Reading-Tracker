@@ -48,8 +48,9 @@ export default {
 <style scoped>
     .searchBar {
         overflow-y: scroll;
-        height: 400px;
-        width: 100%;
+        height: 80vh;
+        width: auto;
         position: fixed;
+        text-align: center;
     }
 </style>
