@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
+import com.techelevator.dao.JdbcActivityDao;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -112,5 +113,6 @@ public class AuthenticationController {
 			this.user = user;
 		}
     }
+
 }
 

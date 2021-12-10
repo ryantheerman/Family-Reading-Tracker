@@ -39,7 +39,7 @@ CREATE TABLE activity (
         user_id int NOT NULL,
         isbn varchar NOT NULL,
         date_read date NOT NULL,
-        minutes_read int NOT NULL,
+        minutes_read int default 0,
         is_finished boolean default false,
         
         CONSTRAINT fk_activity_books FOREIGN KEY (isbn) REFERENCES books (isbn),
