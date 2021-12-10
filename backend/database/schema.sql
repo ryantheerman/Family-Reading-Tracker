@@ -31,7 +31,7 @@ CREATE TABLE books (
         author varchar(1000) NOT NULL,
         thumbnail varchar(1000),
         page_count int,
-        description varchar(1000)
+        description varchar(10000)
 );
 
 CREATE TABLE activity (
@@ -79,4 +79,11 @@ VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','
 
 COMMIT TRANSACTION;
 
+
+SELECT * FROM users;
+
 SELECT * FROM books;
+
+SELECT * FROM activity;
+
+SELECT * FROM prizes;

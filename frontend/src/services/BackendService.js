@@ -10,7 +10,7 @@ export default {
   },
 
   getBooks() {
-    return axios.get('/getBooks')
+    return axios.get('/getBookCollection')
   },
 
   // Prize
