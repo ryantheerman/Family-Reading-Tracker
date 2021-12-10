@@ -78,12 +78,3 @@ VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','
 
 
 COMMIT TRANSACTION;
-
-
-SELECT * FROM users;
-
-SELECT * FROM books;
-
-SELECT * FROM activity;
-
-SELECT * FROM prizes;

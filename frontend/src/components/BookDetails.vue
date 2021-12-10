@@ -5,7 +5,16 @@
       <p>{{book.description}}</p>
       <img v-bind:src="book.thumbnail" />
 
-      <button @click="addBook">Add to collection</button>
+      <button @click="addBook" v-if="isAdded">Add to collection</button>
+      <div v-if="!isAdded">
+      <button v-on:click.prevent="showForm === true ? showForm = false : showForm = true">Log Activity</button>
+      <form v-show="showForm == true" >
+          <label for="minutes" >How many minutes have you spent reading this book?</label>
+          <input type="number" name="minutes" placeholder="Minutes read" v-model="activity.minutesRead"/>
+          <label for="finished">Have you finished this book?</label>
+          <input type="checkbox" name="finished" v-model="activity.isFinished"/>
+      </form>
+      </div>
   </div>
 </template>
 
@@ -15,6 +24,7 @@ export default {
     name: 'book-details',
     data() {
         return {
+            showForm: false,
             incomingBook: {},
             book: {
                 isbn: 0,
@@ -23,21 +33,37 @@ export default {
                 thumbnail: '',
                 pageCount: 0,
                 description: ''
+            },
+            activity: {
+                isbn: '',
+                minutesRead: 0,
+                isFinished: false
             }
         }
     },
     created() {
         this.incomingBook = this.$store.state.book;
-        this.book.isbn = this.incomingBook.volumeInfo.industryIdentifiers[0].identifier;
-        this.book.title = this.incomingBook.volumeInfo.title;
-
-        this.incomingBook.volumeInfo.authors.forEach(x => {
-            this.book.author += x + ' ';
-        });
-        
-        this.book.description = this.incomingBook.volumeInfo.description;
-        this.book.pageCount = this.incomingBook.volumeInfo.pageCount;
-        this.book.thumbnail = this.incomingBook.volumeInfo.imageLinks.thumbnail;
+        this.book.isbn = this.incomingBook.isbn;
+        this.book.title = this.incomingBook.title;
+        this.book.author = this.incomingBook.author;
+        this.book.description = this.incomingBook.description;
+        this.book.pageCount = this.incomingBook.pageCount;
+        this.book.thumbnail = this.incomingBook.thumbnail;
+        this.activity.isbn = this.book.isbn;
+    },
+    computed: {
+        isAdded() {
+            let foundBook = this.$store.state.books.find(
+                (book) => {
+                   return book.isbn == this.book.isbn
+                    
+        })
+        if(foundBook){
+            return false;
+        }else{
+            return true;
+        }
+        } 
     },
     methods: {
         addBook(){
