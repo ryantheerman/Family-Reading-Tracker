@@ -84,6 +84,9 @@ SELECT * FROM users;
 
 SELECT * FROM books;
 
-SELECT * FROM activity;
+SELECT *
+FROM activity
+JOIN users USING(user_id)
+;
 
 SELECT * FROM prizes;
