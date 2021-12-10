@@ -9,13 +9,14 @@ import org.springframework.jdbc.core.support.JdbcBeanDefinitionReader;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @CrossOrigin
 public class BookController {
 
     private JdbcBookDao dao;
-    private  JdbcUserDao userDao;
+    private JdbcUserDao userDao;
 
     public BookController(JdbcBookDao dao, JdbcUserDao userDao) {
         this.dao = dao;
@@ -25,13 +26,19 @@ public class BookController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/postBook", method = RequestMethod.POST)
     public void addBook(@RequestBody Book book, Principal user) {
-        int currentUser = userDao.findIdByUsername(user.getName());
-        System.out.println(currentUser);
+        User currentUser = userDao.findByUsername(user.getName());
         try {
-            dao.createBook(book, currentUser);
+            dao.createBook(book, currentUser.getId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value= "/getBookCollection", method = RequestMethod.GET)
+    public List<Book> getBooksCollection(Principal user) {
+        User currentUser = userDao.findByUsername(user.getName());
+        return dao.getBooks(currentUser.getId());
     }
 
 }

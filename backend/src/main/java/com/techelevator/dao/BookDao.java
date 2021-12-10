@@ -9,13 +9,7 @@ import java.security.Principal;
 
 public interface BookDao {
 
-    Book getBookByAuthor(String author);
-
-    Book getBookByTitle(String title);
-
-    Book getBookByISBN(int isbn);
-
-    void createBook(Book book, int id);
+    void createBook(Book book, Long id);
 
     List<Book> getBooks(Long UserId);
 
