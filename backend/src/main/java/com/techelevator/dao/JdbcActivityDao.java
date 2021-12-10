@@ -20,7 +20,7 @@ public class JdbcActivityDao implements ActivityDao {
 
     //list all activity based off user id
     @Override
-    public List<Activity> findAllFinishedBooksbyUserId(Long userId) {
+    public List<Activity> findAllFinishedBooksByUserId(Long userId) {
         List<Activity> finishedBooks = new ArrayList<>();
 
         String sql = "SELECT activity_id, user_id, isbn, date_read, minutes_read, is_finished " +
@@ -50,6 +50,36 @@ public class JdbcActivityDao implements ActivityDao {
         return finishedBooks;
     }
 
+    @Override
+    public List<Activity> activityByFamily(Long familyId) {
+        List<Activity> bookActivity = new ArrayList<>();
+
+        String sql = "SELECT activity_id, user_id, isbn, date_read, minutes_read, is_finished " +
+                     "FROM activity " +
+                     "WHERE family_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
+        while(results.next()) {
+            bookActivity.add(mapRowToActivity(results));
+        }
+        return bookActivity;
+    }
+
+    //all activity based off userid -- return list of Activity objects
+    @Override
+    public List<Activity> returnActivityForUser(Long UserId) {
+        List<Activity> activityObject = new ArrayList<>();
+
+        String sql = "SELECT activity_id, user_id, isbn, date_read, minutes_read, is_finished " +
+                     "FROM activity " +
+                     "WHERE user_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, UserId);
+        while(results.next()){
+            activityObject.add(mapRowToActivity(results));
+        }
+        return activityObject;
+    }
 
     //create activity
     @Override
