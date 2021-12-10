@@ -6,8 +6,8 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import BookDetails from '../components/BookDetails.vue'
-import AddPrize from '../views/AddPrize.vue'
 import Family from '../views/Family.vue'
+import AddPrize from '../views/AddPrize.vue'
 
 Vue.use(Router)
 

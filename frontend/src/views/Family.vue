@@ -1,6 +1,6 @@
 <template>
   <div>
-      <add-family />
+      <add-family v-if="hasFamily"/>
       <add-fam-members />
   </div>
 </template>
@@ -9,7 +9,26 @@
 import AddFamily from '../components/AddFamily.vue'
 import AddFamMembers from '../components/AddFamMembers.vue'
 export default {
-    name: 'family',
-    components: {AddFamily, AddFamMembers}
+  name: 'family',
+  data(){
+      return {
+          
+      }
+  },
+  components: { AddFamily, AddFamMembers },
+    created: {
+        hasFamily(){
+            return this.$store.state.user.familyId == '';
+        },
+    },
+    methods: {
+        madeFam(){
+
+        }
+    }
 }
 </script>
+
+<style>
+
+</style>
