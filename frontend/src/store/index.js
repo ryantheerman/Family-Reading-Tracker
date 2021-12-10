@@ -19,7 +19,9 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     book: {},
-    prize: {},
+    books: [],
+    prizes: [],
+    activities: [],
     token: currentToken || '',
     user: currentUser || {}
   },
@@ -46,8 +48,9 @@ export default new Vuex.Store({
     WIPE_BOOK(state){
       state.book = {}
     },
-    SET_PRIZE(state, prize) {
-      state.prize = prize;
+    ADD_BOOKS_TO_ARRAY(state, bookArray) {
+      state.books = bookArray;
     }
+
   }
 })

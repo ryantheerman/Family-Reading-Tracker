@@ -81,7 +81,7 @@ export default {
                 prizeName: '',
                 prizeDescription: '',
                 milestone: '',
-                //familyID: 
+                // familyID: this.$store.state.user.familyID,
                 maxPrizes: '',
                 startDate: '',
                 endDate: '',
