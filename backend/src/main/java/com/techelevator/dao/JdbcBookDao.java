@@ -37,14 +37,9 @@ public class JdbcBookDao implements BookDao {
         return null;
     }
 
-    @Override
-<<<<<<< HEAD
-    public void createBook(Book book, int id) {
-        System.out.println(id);
-=======
-    public void createBook(Book book) {
->>>>>>> 6ebcdd0fee715143a1bb67bf16f12f588cafff40
 
+    @Override
+    public void createBook(Book book, int id) {
         String sql = "INSERT INTO books (isbn, title, author, thumbnail, page_count, description) " +
                 "VALUES (?, ?, ?, ?, ?, ?);";
         jdbcTemplate.update(sql, book.getIsbn(), book.getTitle(), book.getAuthor(),
