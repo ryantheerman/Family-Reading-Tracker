@@ -1,11 +1,13 @@
 package com.techelevator.dao;
 
+import com.techelevator.controller.AuthenticationController;
 import com.techelevator.model.Book;
 import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +44,8 @@ public class JdbcBookDao implements BookDao {
                     "VALUES (?, ?, ?) RETURNING activity_id;";
             Long newActivityId = jdbcTemplate.queryForObject(sql2, Long.class, id, book.getIsbn(), LocalDate.now());
         }
-
-
-
     }
+
 
     //get all books by user id
     @Override
