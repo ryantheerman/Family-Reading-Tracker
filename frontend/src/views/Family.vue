@@ -1,6 +1,6 @@
 <template>
   <div>
-      <add-family v-if="hasFamily"/>
+      <add-family />
       <add-fam-members />
   </div>
 </template>

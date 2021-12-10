@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header class="header">
-      <h1>Family Reading Tracker</h1>
+      <h1>Family Reading Trackr</h1>
     </header>
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }" class="home-nav">Home</router-link>
