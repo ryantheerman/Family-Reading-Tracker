@@ -22,7 +22,6 @@ export default {
 .home {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    grid-template-rows: 3fr 1fr;
     grid-template-areas: "reading-list search-bar";
     column-gap: 20px;
 }

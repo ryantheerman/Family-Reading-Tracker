@@ -44,19 +44,8 @@ public class JdbcBookDao implements BookDao {
                     "VALUES (?, ?, ?) RETURNING activity_id;";
             Long newActivityId = jdbcTemplate.queryForObject(sql2, Long.class, id, book.getIsbn(), LocalDate.now());
         }
-
-
-<<<<<<< HEAD
-    @Override
-    public void createBook(Book book, int id) {
-        String sql = "INSERT INTO books (isbn, title, author, thumbnail, page_count, description) " +
-                "VALUES (?, ?, ?, ?, ?, ?);";
-        jdbcTemplate.update(sql, book.getIsbn(), book.getTitle(), book.getAuthor(),
-                book.getThumbnail(), book.getPageCount(), book.getDescription());
-=======
->>>>>>> aec8da27d61b490941595428597ae98dc1546b6c
-
     }
+
 
     //get all books by user id
     @Override
