@@ -28,7 +28,6 @@ export default {
   },
 
   getActivities() {
-    return axios.get('/getActivities');
+    return axios.get('/getActivityByFam');
   }
-
 }

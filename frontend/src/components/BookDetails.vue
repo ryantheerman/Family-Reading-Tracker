@@ -13,6 +13,7 @@
           <input type="number" name="minutes" placeholder="Minutes read" v-model="activity.minutesRead"/>
           <label for="finished">Have you finished this book?</label>
           <input type="checkbox" name="finished" v-model="activity.isFinished"/>
+          <button type="submit" @click.prevent="addActivity">Submit</button>
       </form>
       </div>
   </div>
@@ -76,6 +77,13 @@ export default {
 
 
             
+        },
+        addActivity(){
+            backendService.postActivity(this.activity).then(response => {
+                if(response.status === 201){
+                    this.$router.push({name: 'home'});
+                }
+            })
         }
     }
 
