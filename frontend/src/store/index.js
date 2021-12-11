@@ -50,6 +50,9 @@ export default new Vuex.Store({
     },
     ADD_BOOKS_TO_ARRAY(state, bookArray) {
       state.books = bookArray;
+    },
+    ADD_ACTIVITIES_TO_ARRAY(state, activitiesArr){
+      state.activities = activitiesArr;
     }
 
   }

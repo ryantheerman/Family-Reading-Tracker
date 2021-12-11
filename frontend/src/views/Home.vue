@@ -2,15 +2,16 @@
   <div class="home">
     <search-bar id="search-bar" />
     <reading-list id="reading-list" />
-    
+    <activity-list />
   </div>
 </template>
 
 <script>
 import SearchBar from "../components/SearchBar.vue";
 import ReadingList from "../components/ReadingList.vue";
+import ActivityList from '../components/ActivityList.vue';
 export default {
-  components: { SearchBar, ReadingList },
+  components: { SearchBar, ReadingList, ActivityList },
   name: "home",
 
 };

@@ -54,9 +54,9 @@ public class JdbcActivityDao implements ActivityDao {
     public List<Activity> activityByFamily(Long familyId) {
         List<Activity> bookActivity = new ArrayList<>();
 
-        String sql = "SELECT activity_id, user_id, isbn, date_read, minutes_read, is_finished " +
-                     "FROM activity " +
-                     "WHERE family_id = ?;";
+        String sql = "SELECT activity_id, activity.user_id, isbn, date_read, minutes_read, is_finished " +
+                "                     FROM activity JOIN users ON activity.user_id = users.user_id " +
+                "                     WHERE family_id = ? AND minutes_read > 0;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
         while(results.next()) {

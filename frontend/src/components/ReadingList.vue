@@ -1,11 +1,15 @@
 <template>
   <div class="book-container">
-    <book-card
-      v-bind:book="book"
+    <div 
       v-for="book in $store.state.books"
-      v-bind:key="book.isbn"
-    />
-  </div>
+      v-bind:key="book.isbn">
+    <router-link :to="{name : 'bookDetails'}" >
+      <div @click="mutateBook(book)">
+      <book-card v-bind:book="book"/>  
+      </div></router-link>
+   
+    </div>
+    </div>
 </template>
 
 <script>
@@ -23,6 +27,11 @@ export default {
 
     // get requests for books, activites, prizes, family members(?)
   },
+  methods: {
+    mutateBook(book){
+            this.$store.commit('SET_BOOK', book)
+        }
+  }
 };
 </script>
 

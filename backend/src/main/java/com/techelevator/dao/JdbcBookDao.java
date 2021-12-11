@@ -55,7 +55,7 @@ public class JdbcBookDao implements BookDao {
         String sql = "SELECT books.isbn, title, author, thumbnail, page_count, description " +
                      "FROM books " +
                      "JOIN activity ON activity.isbn = books.isbn " +
-                     "WHERE user_id = ? AND minutes_read = 0;";
+                     "WHERE user_id = ? AND minutes_read = 0 AND is_finished = false;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, UserId);
         while(results.next()) {

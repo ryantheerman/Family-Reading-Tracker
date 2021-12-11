@@ -1,5 +1,5 @@
 <template>
-    <div class="card" v-bind:key="{ isbn: book.isbn }">
+    <div class="card" v-bind:key="book.isbn">
         <h2 class="book-title">{{ book.title }}</h2>
         <img v-bind:src="book.thumbnail" />
         <h3 class="book-author">{{ book.author }}</h3>
