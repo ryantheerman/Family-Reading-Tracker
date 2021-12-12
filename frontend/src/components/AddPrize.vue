@@ -73,7 +73,7 @@ import backendService from "@/services/BackendService";
 import AddPrizeStyle from '../styles/AddPrizeStyle.css';
 export default {
     name: "add-prize",
-    component: {AddPrizeStyle},
+    component: {AddPrizeStyle, backendService},
     data() {
         return {
             showForm : false,
@@ -81,13 +81,19 @@ export default {
                 prizeName: '',
                 prizeDescription: '',
                 milestone: '',
-                //familyID: 
+                familyId: this.$store.state.user.familyId,
                 maxPrizes: '',
                 startDate: '',
                 endDate: '',
-            },
-            prizes:[]
+            }
         };
+    },
+    created(){
+        // get all prizes
+        backendService.getPrizes().then((response) => {
+            this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
+            console.log(this.$store.state.prizes);
+        });
     },
     methods:{
         saveNewPrize(){

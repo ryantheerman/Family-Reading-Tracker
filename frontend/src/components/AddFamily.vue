@@ -10,7 +10,7 @@ export default {
     name: "create-family",
     data() {
         return {
-            familyId: 0
+            familyId: this.$store.state.user.familyId
         }
     },
     methods: {
