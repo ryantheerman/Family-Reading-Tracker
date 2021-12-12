@@ -1,10 +1,6 @@
 <template>
   <div>
-<<<<<<< HEAD
-      <add-family />
-=======
       <add-family v-if="!hasFamily"/>
->>>>>>> 8d516b3ae2edc23de6c31f785be40d74c02ecf12
       <add-fam-members />
   </div>
 </template>

@@ -46,7 +46,7 @@ public class JdbcPrizeDao implements PrizeDao {
         List<Prize> prizesByUserId = new ArrayList<>();
 
         String sql = "SELECT prizes.prize_id, prize_name, description, milestone, prizes.family_id, " +
-                     "max_prizes, start_date, end_date, is_active n" +
+                     "max_prizes, start_date, end_date, is_active " +
                      "FROM prizes " +
                      "JOIN prize_user ON prizes.prize_id = prize_user.prize_id " +
                      "JOIN users ON users.user_id = prize_user.user_id " +

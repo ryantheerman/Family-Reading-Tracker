@@ -69,15 +69,6 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
-    .searchBar {
-        overflow-y: scroll;
-        height: 70vh;
-        width: auto;
-        position: fixed;
-        text-align: center;
-    }
-=======
 .searchBar {
   overflow-y: scroll;
   height: 80vh;
@@ -85,5 +76,4 @@ export default {
   position: fixed;
   text-align: center;
 }
->>>>>>> 8d516b3ae2edc23de6c31f785be40d74c02ecf12
 </style>
