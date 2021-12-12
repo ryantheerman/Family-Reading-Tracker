@@ -41,6 +41,7 @@ CREATE TABLE activity (
         date_read date NOT NULL,
         minutes_read int default 0,
         is_finished boolean default false,
+        media_type varchar(30),
         
         CONSTRAINT fk_activity_books FOREIGN KEY (isbn) REFERENCES books (isbn),
         CONSTRAINT fk_activity_users FOREIGN KEY (user_id) REFERENCES users (user_id)

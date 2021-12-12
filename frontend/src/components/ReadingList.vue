@@ -43,6 +43,6 @@ export default {
   width: 100%;
   overflow-y: scroll;
   position: relative;
-  height: 90vh;
+  height: 82vh;
 }
 </style>

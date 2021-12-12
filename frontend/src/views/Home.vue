@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
     <search-bar id="search-bar" />
     <reading-list id="reading-list" />
     <activity-list />
