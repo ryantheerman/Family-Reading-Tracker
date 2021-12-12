@@ -46,7 +46,7 @@ public class JdbcPrizeDao implements PrizeDao {
         List<Prize> prizesByUserId = new ArrayList<>();
 
         String sql = "SELECT prizes.prize_id, prize_name, description, milestone, prizes.family_id, " +
-                     "max_prizes, start_date, end_date, is_active n" +
+                     "max_prizes, start_date, end_date, is_active " +
                      "FROM prizes " +
                      "JOIN prize_user ON prizes.prize_id = prize_user.prize_id " +
                      "JOIN users ON users.user_id = prize_user.user_id " +
@@ -78,11 +78,11 @@ public class JdbcPrizeDao implements PrizeDao {
     public Prize createPrize(Prize prize) {
         System.out.println("prize description: " + prize.getPrizeDescription());
 
-        String sql = "INSERT INTO prizes (prize_name, description, milestone, max_prizes, start_date, end_date) " +
-                     "VALUES (?, ?, ?, ?, ?, ?) RETURNING prize_id";
+        String sql = "INSERT INTO prizes (prize_name, description, milestone, family_id, max_prizes, start_date, end_date) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING prize_id";
 
         Long newId = jdbcTemplate.queryForObject(sql, Long.class, prize.getPrizeName(), prize.getPrizeDescription(),
-            prize.getMilestone(), prize.getMaxPrizes(), prize.getStartDate(), prize.getEndDate());
+            prize.getMilestone(), prize.getFamilyId(), prize.getMaxPrizes(), prize.getStartDate(), prize.getEndDate());
 
         prize.setPrizeId(newId);
         return prize;
