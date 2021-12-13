@@ -17,13 +17,14 @@ public class Activity {
     }
 
     public Activity(long activityId, long userId, String isbn,
-                    LocalDate dateRead, int minutesRead, boolean isFinished) {
+                    LocalDate dateRead, int minutesRead, boolean isFinished, String mediaType) {
         this.activityId = activityId;
         this.userId = userId;
         this.isbn = isbn;
         this.dateRead = dateRead;
         this.minutesRead = minutesRead;
         this.isFinished = isFinished;
+        this.mediaType = mediaType;
     }
 
     public long getActivityId() {

@@ -21,16 +21,9 @@ export default new Vuex.Store({
     book: {},
     books: [],
     prizes: [],
-    // activePrize: {
-    //   prizeName: '',
-    //   prizeDescription: '',
-    //   milestone: '',
-    //   familyId: this.$store.state.user.familyId,
-    //   maxPrizes: '',
-    //   startDate: '',
-    //   endDate: '',
-    // },
     activities: [],
+    familyMembers: [],
+    storedUser: {},
     token: currentToken || '',
     user: currentUser || {}
   },
@@ -60,15 +53,23 @@ export default new Vuex.Store({
     ADD_BOOKS_TO_ARRAY(state, bookArray) {
       state.books = bookArray;
     },
+    WIPE_BOOKS_ARRAY(state) {
+      state.books = [];
+    },
     ADD_ACTIVITIES_TO_ARRAY(state, activitiesArr){
       state.activities = activitiesArr;
     },
-    ADD_PRIZES_TO_ARRAY(state, prizesArr) {
-      state.prizes = prizesArr;
+    WIPE_ACTIVITIES(state) {
+      state.activities = [];
     },
-    // SET_ACTIVE_PRIZE(state, data) {
-    //   state.activePrize = data;
-    // }
-
+    ADD_USERS_TO_FAMILY_ARRAY(state, familyArr) {
+      state.familyMembers = familyArr;
+    },
+    STORE_SELECTED_USER(state, user) {
+      state.storedUser = user;
+    },
+    WIPE_STORED_USER(state) {
+      state.storedUser = {};
+    }
   }
 })

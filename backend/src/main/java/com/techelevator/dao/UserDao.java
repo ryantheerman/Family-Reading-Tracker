@@ -20,4 +20,6 @@ public interface UserDao {
 
     void addMember(String username, Long familyId);
 
+    List<User> getUsersByFamilyId(Long familyId);
+
 }
