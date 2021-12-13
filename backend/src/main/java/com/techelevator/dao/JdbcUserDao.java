@@ -102,6 +102,22 @@ public class JdbcUserDao implements UserDao {
         jdbcTemplate.update(sql, familyId, username);
     }
 
+    public List<User> getUsersByFamilyId(Long familyId) {
+        List<User> familyMembers = new ArrayList<>();
+        String sql = "SELECT user_id, username " +
+                "FROM users " +
+                "WHERE family_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
+
+        while(results.next()) {
+            User user = new User();
+            user.setId(results.getLong("user_id"));
+            user.setUsername(results.getString("username"));
+            familyMembers.add(user);
+        }
+        return familyMembers;
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getLong("user_id"));

@@ -1,21 +1,21 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
     
     <search-bar id="search-bar" />
     
     <reading-list id="reading-list" />
-    <activity-list id="activity-list"/>
+    <!-- <activity-list id="activity-list"/> -->
   </div>
 </template>
 
 <script>
 import SearchBar from "../components/SearchBar.vue";
 import ReadingList from "../components/ReadingList.vue";
-import ActivityList from '../components/ActivityList.vue';
+// import ActivityList from '../components/ActivityList.vue';
 export default {
-  components: { SearchBar, ReadingList, ActivityList },
+  components: { SearchBar, ReadingList  }, //ActivityList
   name: "home",
+  
 
 };
 
@@ -24,8 +24,8 @@ export default {
 <style>
 .home {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-areas: "activity-list reading-list search-bar";
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "reading-list search-bar";
     column-gap: 20px;
 }
 
@@ -35,8 +35,5 @@ export default {
 
 #reading-list {
     grid-area: reading-list;
-}
-#activity-list {
-  grid-area: activity-list;
 }
 </style>

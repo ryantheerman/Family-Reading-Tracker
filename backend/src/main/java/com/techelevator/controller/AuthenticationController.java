@@ -23,6 +23,7 @@ import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -80,6 +81,13 @@ public class AuthenticationController {
         User currentUser = userDao.findByUsername(user.getName());
         System.out.println(currentUser.getFamilyId());
         userDao.addMember(username, currentUser.getFamilyId());
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/getFamilyMembers", method = RequestMethod.GET)
+    public List<User> getFamilyMembers(Principal user) {
+        User currentUser = userDao.findByUsername(user.getName());
+        return userDao.getUsersByFamilyId(currentUser.getFamilyId());
     }
 
 

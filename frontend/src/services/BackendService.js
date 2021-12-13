@@ -13,6 +13,10 @@ export default {
     return axios.get('/getBookCollection')
   },
 
+  getFamilyMembersBooks(id) {
+    return axios.get(`/famMemberBooks/${id}`);
+  },
+
   // Prize
   postPrize(prize) {
     return axios.post('/postPrize', prize);

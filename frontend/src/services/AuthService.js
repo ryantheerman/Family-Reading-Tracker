@@ -27,6 +27,10 @@ export default {
       }
     })
     return http.put('/addMember', username);
+  },
+
+  getFamilyMembers() {
+    return axios.get('/getFamilyMembers');
   }
 
 }
