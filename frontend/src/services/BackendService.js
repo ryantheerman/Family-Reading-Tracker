@@ -22,13 +22,14 @@ export default {
     return axios.get('/getPrizes');
   },
 
-  // getPrize(prizeName) {
-  //   return axios.get('/getPrize', prizeName)
-  // },
-
-  // editPrize() {
-  //   return axios.put('/editPrize/:prizeName');
-  // },
+  editPrize(prize) {
+    const http = axios.create({
+      headers: {
+        'Content-Type': 'application/JSON'
+      }
+    })
+    return http.put("/editPrize", prize);
+  },
 
   // Activity
   postActivity(activity) {
