@@ -8,8 +8,12 @@ import store from '../store/index'
 import BookDetails from '../components/BookDetails.vue'
 import Family from '../views/Family.vue'
 import AddPrize from '../views/AddPrize.vue'
+<<<<<<< HEAD
 import Activity from '../views/Activity'
 import ActivityList from '../components/ActivityList'
+=======
+import EditPrize from '../components/EditPrize.vue'
+>>>>>>> 3f80cb5f4320fc761b7203d2eb975c879217e824
 
 Vue.use(Router)
 
@@ -82,6 +86,11 @@ const router = new Router({
       path: '/activities',
       name: 'activity-list',
       component: ActivityList
+    },
+    {
+      path: "/editPrize",
+      name: "edit-prize",
+      component: EditPrize
     }
   ]
 })

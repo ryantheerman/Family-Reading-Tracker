@@ -16,6 +16,8 @@ public interface PrizeDao {
 
     List<Prize> prizesByFamilyId(Long familyId);
 
+    void updatePrize(Prize Prize);
+
 
 
 

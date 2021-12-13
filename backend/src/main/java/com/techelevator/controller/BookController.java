@@ -41,10 +41,14 @@ public class BookController {
         return dao.getBooks(currentUser.getId());
     }
 
+<<<<<<< HEAD
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/famMemberBooks/{id}", method = RequestMethod.GET)
     public List<Book> getFamMemberBooks(@PathVariable Long id) {
         return dao.getBooks(id);
     }
+=======
+
+>>>>>>> 3f80cb5f4320fc761b7203d2eb975c879217e824
 
 }

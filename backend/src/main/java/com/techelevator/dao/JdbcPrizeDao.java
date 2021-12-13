@@ -20,6 +20,18 @@ public class JdbcPrizeDao implements PrizeDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Override
+    public void updatePrize(Prize Prize) {
+
+        String sql = "UPDATE prizes SET prize_name = ?, description = ?, milestone = ?, family_id = ?, max_prizes = ?, " +
+                     "start_date = ?, end_date = ? " +
+                     "WHERE prize_id = ?";
+        jdbcTemplate.update(sql, Prize.getPrizeName(), Prize.getPrizeDescription(),
+        Prize.getMilestone(), Prize.getFamilyId(), Prize.getMaxPrizes(), Prize.getStartDate(), Prize.getEndDate(), Prize.getPrizeId());
+
+
+    }
+
 
     //get list of prizes by family id
     @Override
