@@ -1,6 +1,5 @@
 <template>
   <family-members v-if="$store.state.user.isParent != false && $store.state['user'].familyId != 0" />
-  <!-- ($store.state.user.isParent != false && $store.state['user'].familyId != 0) -->
   <activity-list v-else />
 </template>
 

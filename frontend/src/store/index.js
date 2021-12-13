@@ -22,10 +22,7 @@ export default new Vuex.Store({
     books: [],
     prize: {},
     prizes: [],
-<<<<<<< HEAD
-=======
     activePrize: {},
->>>>>>> 3f80cb5f4320fc761b7203d2eb975c879217e824
     activities: [],
     familyMembers: [],
     storedUser: {},
@@ -81,7 +78,10 @@ export default new Vuex.Store({
     },
     WIPE_ACTIVE_PRIZE(state){
       state.activePrize = {};
-    }
+    },
+    ADD_PRIZES_TO_ARRAY(state, prizesArr) {
+      state.prizes = prizesArr;
+    },
 
   }
 })
