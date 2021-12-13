@@ -43,4 +43,9 @@ public class ActivityController {
         User currentUser = userDao.findByUsername(user.getName());
         return dao.activityByFamily(currentUser.getFamilyId());
     }
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/getActivityById/{id}", method = RequestMethod.GET)
+    public List<Activity> getActivityById(@PathVariable Long id){
+        return dao.returnActivityForUser(id);
+    }
 }

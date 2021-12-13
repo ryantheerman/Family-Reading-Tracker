@@ -1,11 +1,11 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <activity-list id="activity-list"/>
+    
     <search-bar id="search-bar" />
     
     <reading-list id="reading-list" />
-    
+    <activity-list id="activity-list"/>
   </div>
 </template>
 
