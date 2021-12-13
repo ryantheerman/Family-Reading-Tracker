@@ -35,6 +35,14 @@ public class PrizeController {
         }
     }
 
+    //update prize controller
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/updatePrize", method = RequestMethod.PUT)
+    public Prize updatePrize(@RequestBody Prize prize, @PathVariable Long prizeId) {
+        return dao.updatePrize(prize, prizeId);
+    }
+
+
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/getPrizes", method = RequestMethod.GET)
     public List<Prize> getPrizes(Principal user) {
