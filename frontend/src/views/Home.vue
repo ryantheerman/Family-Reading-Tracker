@@ -1,8 +1,11 @@
 <template>
   <div class="home">
+    <h1>Home</h1>
+    
     <search-bar id="search-bar" />
+    
     <reading-list id="reading-list" />
-    <activity-list />
+    <activity-list id="activity-list"/>
   </div>
 </template>
 
@@ -21,8 +24,8 @@ export default {
 <style>
 .home {
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-areas: "reading-list search-bar";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: "activity-list reading-list search-bar";
     column-gap: 20px;
 }
 
@@ -32,5 +35,8 @@ export default {
 
 #reading-list {
     grid-area: reading-list;
+}
+#activity-list {
+  grid-area: activity-list;
 }
 </style>

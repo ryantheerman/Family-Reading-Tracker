@@ -10,6 +10,7 @@ public class Activity {
     private LocalDate dateRead;
     private int minutesRead;
     private boolean isFinished;
+    private String mediaType;
 
 
     public Activity() {
@@ -71,5 +72,13 @@ public class Activity {
 
     public void setFinished(boolean finished) {
         isFinished = finished;
+    }
+
+    public String getMediaType() {
+        return mediaType;
+    }
+
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
     }
 }
