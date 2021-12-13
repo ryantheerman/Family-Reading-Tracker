@@ -1,16 +1,13 @@
 <template>
-  <div>
-      <button id="show-form-button" 
-      v-if="showForm === false"
-      v-on:click.prevent="showForm = true"> Add a Prize</button>
-      <form v-on:submit.prevent="addNewPrize" v-if="showForm === true" class="prize-form">
+    <div id="form-container">
+        <form class="prize-form">
           <label class="prize-name">Prize Name:
           <input
             type="text"
             id="prize-name"
             class="form-control"
             placeholder="Name your prize"
-            v-model="newPrize.prizeName"
+            v-model="activePrize.prizeName"
             required
             autofocus
         /> </label>
@@ -20,7 +17,7 @@
             id="prize-description"
             class="form-control"
             placeholder="Description of prize"
-            v-model="newPrize.prizeDescription"
+            v-model="activePrize.prizeDescription"
             required
         /> </label>
         <label class="milestone">Minute Milestone: 
@@ -31,7 +28,7 @@
             step="10"
             min="0"
             placeholder="Minutes to Read"
-            v-model="newPrize.milestone"
+            v-model="activePrize.milestone"
             required
         /> </label>
         <label class="maxPrizes">Number of Winners: 
@@ -41,7 +38,7 @@
             class="form-control"
             placeholder="Number of winners"
             min="1"
-            v-model="newPrize.maxPrizes"
+            v-model="activePrize.maxPrizes"
             required
         /> </label>
         <label class="startDate">Start Date: 
@@ -50,7 +47,7 @@
             id="startDate"
             class="form-control"
             placeholder=""
-            v-model="newPrize.startDate"
+            v-model="activePrize.startDate"
             required
         /> </label>
         <label class="endDate">End Date: 
@@ -59,54 +56,45 @@
             id="endDate"
             class="form-control"
             placeholder=""
-            v-model="newPrize.endDate"
+            v-model="activePrize.endDate"
             required
         />
         </label>
-        <button id="submit-button" v-on:click.prevent="saveNewPrize">Submit Prize!</button>
+        <button id="submit-button" v-on:click.prevent="editPrize">Submit Prize!</button>
       </form>
-  </div>
+    </div>
 </template>
 
 <script>
-import backendService from "@/services/BackendService";
-import AddPrizeStyle from '../styles/AddPrizeStyle.css';
+import BackendService from '../services/BackendService.js';
 export default {
-    name: "add-prize",
-    component: {AddPrizeStyle, backendService},
+    name: 'edit-prize',
     data() {
         return {
-            showForm : false,
-            newPrize: {
-                prizeName: '',
-                prizeDescription: '',
-                milestone: '',
-                familyId: this.$store.state.user.familyId,
-                maxPrizes: '',
-                startDate: '',
-                endDate: '',
-            }
-        };
-    },
-    created(){
-        // get all prizes
-        backendService.getPrizes().then((response) => {
-            console.log(response.data);
-            this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
-        });
-    },
-    methods:{
-        saveNewPrize(){
-
-            backendService.postPrize(this.newPrize).then(response => {
-                if(response.status === 201) {
-                    this.$router.push('/');
-                }
-            });
-        },
+    activePrize: {
+        prizeName: '',
+        prizeDescription: '',
+        milestone: '',
+        familyId: this.$store.state.user.familyId,
+        maxWinners: '',
+        startDate: '',
+        endDate: ''
     }
+        }
+    },
+    methods: {
+      editPrize(){
+        BackendService.editPrize(this.activePrize).then((response) => {
+            if(response.status == 200) {
+                this.$router.push("/")
+                this.$store.commit("WIPE_ACTIVE_PRIZE");
+            }
+        });
+      }
+  },
+  created() {
+     this.activePrize = this.$store.state.activePrize;
+  }
+    
 }
 </script>
-
-<style>
-</style>
