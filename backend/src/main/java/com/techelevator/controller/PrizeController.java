@@ -27,4 +27,13 @@ public class PrizeController {
             System.out.println(e.getMessage());
         }
     }
+
+    //update prize controller
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/updatePrize", method = RequestMethod.PUT)
+    public Prize updatePrize(@RequestBody Prize prize, @PathVariable Long prizeId) {
+        return dao.updatePrize(prize, prizeId);
+    }
+
+
 }

@@ -20,6 +20,8 @@
         class="form-control"
         placeholder="Password"
         v-model="user.password"
+        minlength="6"
+        maxlength="20"
         required
       />
       <input
