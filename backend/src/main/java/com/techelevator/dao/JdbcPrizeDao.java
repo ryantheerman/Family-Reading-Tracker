@@ -91,11 +91,11 @@ public class JdbcPrizeDao implements PrizeDao {
     public Prize createPrize(Prize prize) {
         System.out.println("prize description: " + prize.getPrizeDescription());
 
-        String sql = "INSERT INTO prizes (prize_name, description, milestone, max_prizes, start_date, end_date) " +
-                     "VALUES (?, ?, ?, ?, ?, ?) RETURNING prize_id";
+        String sql = "INSERT INTO prizes (prize_name, description, milestone, family_id, max_prizes, start_date, end_date) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING prize_id";
 
         Long newId = jdbcTemplate.queryForObject(sql, Long.class, prize.getPrizeName(), prize.getPrizeDescription(),
-            prize.getMilestone(), prize.getMaxPrizes(), prize.getStartDate(), prize.getEndDate());
+            prize.getMilestone(), prize.getFamilyId(), prize.getMaxPrizes(), prize.getStartDate(), prize.getEndDate());
 
         prize.setPrizeId(newId);
         return prize;

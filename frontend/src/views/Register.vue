@@ -65,6 +65,7 @@ export default {
         password: '',
         confirmPassword: '',
         isParent: false,
+        familyId: '',
         role: 'user',
       },
       registrationErrors: false,

@@ -22,12 +22,23 @@ export default {
     return axios.get('/getPrizes');
   },
 
+  // getPrize(prizeName) {
+  //   return axios.get('/getPrize', prizeName)
+  // },
+
+  // editPrize() {
+  //   return axios.put('/editPrize/:prizeName');
+  // },
+
   // Activity
   postActivity(activity) {
     return axios.post('/postActivity', activity);
   },
 
-  getActivities() {
+  getActivitiesByFam() {
     return axios.get('/getActivityByFam');
+  },
+  getActivitiesById(id){
+    return axios.get(`/getActivityById/${id}`)
   }
 }
