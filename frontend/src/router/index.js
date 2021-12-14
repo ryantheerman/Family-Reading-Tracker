@@ -6,8 +6,11 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import BookDetails from '../components/BookDetails.vue'
-import AddFamily from '../views/AddFamily.vue'
+import Family from '../views/Family.vue'
 import AddPrize from '../views/AddPrize.vue'
+import Activity from '../views/Activity'
+import ActivityList from '../components/ActivityList'
+import EditPrize from '../components/EditPrize.vue'
 
 Vue.use(Router)
 
@@ -62,14 +65,29 @@ const router = new Router({
       component: BookDetails
     },
     {
-      path: "/parent",
-      name: "create-family",
-      component: AddFamily
+      path: "/family",
+      name: "family",
+      component: Family
     },
     {
       path: "/addPrize",
       name: "add-prize",
       component: AddPrize
+    },
+    {
+      path: "/activity",
+      name: "activity",
+      component: Activity
+    },
+    {
+      path: '/activities',
+      name: 'activity-list',
+      component: ActivityList
+    },
+    {
+      path: "/editPrize",
+      name: "edit-prize",
+      component: EditPrize
     }
   ]
 })

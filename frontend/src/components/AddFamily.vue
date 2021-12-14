@@ -1,43 +1,26 @@
 <template>
-  <div>
-      <button v-on:click="createFamilyId, showForm = true">Create a Family!</button>
-    <form v-on:submit.prevent="addNewFamily" >
-        <div class="form-element" id="create-family" v-if="showForm === true">
-            <label>Name your family: </label>
-            <input id="username" type="text" v-model="family.name"/>
-        </div>
-
-        <div class="actions">
-            <button v-on:click.prevent="showForm = false" type="cancel" v-if="showForm === true">Cancel</button>
-            <button v-if="showForm === true">Submit</button>
-        </div>
-    </form>
-  </div>
-  
-  
-  
-
+    <div class="actions">
+        <button v-bind:to="familyId" @click.prevent="createFamilyId()" v-if="this.familyId == 0">Create Family</button>
+    </div>
 </template>
 
 <script>
+import AuthService from '../services/AuthService';
 export default {
     name: "create-family",
     data() {
         return {
-            showForm: false,
-            family: {
-                name: '',
-                id: 0
-            }
+            familyId: this.$store.state.user.familyId
         }
     },
     methods: {
-        addNewFamily() {
-
-        },
-
         createFamilyId() {
-
+            this.familyId = Math.floor(Math.random() * (10000000 - 100) + 100);
+            AuthService.createFamilyId(this.familyId).then(response => {
+                if(response.status === 200) {
+                    this.$router.push('/');
+                }
+            });
         }
     }
 }

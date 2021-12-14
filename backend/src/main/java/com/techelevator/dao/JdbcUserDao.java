@@ -87,6 +87,37 @@ public class JdbcUserDao implements UserDao {
         return userCreated;
     }
 
+    public void updateFamilyId(int familyId, int currentUser) {
+        String sql = "UPDATE users " +
+                "SET family_id = ? " +
+                "WHERE user_id = ?;";
+        jdbcTemplate.update(sql, familyId, currentUser);
+    }
+
+    public void addMember(String username, Long familyId) {
+        System.out.println(familyId);
+        String sql = "UPDATE users " +
+                "SET family_id = ? " +
+                "WHERE username = ?";
+        jdbcTemplate.update(sql, familyId, username);
+    }
+
+    public List<User> getUsersByFamilyId(Long familyId) {
+        List<User> familyMembers = new ArrayList<>();
+        String sql = "SELECT user_id, username " +
+                "FROM users " +
+                "WHERE family_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
+
+        while(results.next()) {
+            User user = new User();
+            user.setId(results.getLong("user_id"));
+            user.setUsername(results.getString("username"));
+            familyMembers.add(user);
+        }
+        return familyMembers;
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getLong("user_id"));
@@ -94,6 +125,7 @@ public class JdbcUserDao implements UserDao {
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(rs.getString("role"));
         user.setIsParent(rs.getBoolean("is_parent"));
+        user.setFamilyId(rs.getLong("family_id"));
         user.setActivated(true);
         return user;
     }

@@ -8,7 +8,14 @@ public interface ActivityDao {
 
     //more methods can be added here. more of a placeholder for now.
 
-    List<Activity> findAllFinishedBooks();
+    List<Activity> findAllFinishedBooksByUserId(Long userId);
 
+    Activity createActivity(Activity activity);
+
+    List<Activity> findAllFinishedBooksByFamily(Long familyId);
+
+    List<Activity> returnActivityForUser(Long UserId);
+
+    List<Activity> activityByFamily(Long familyId);
 
 }

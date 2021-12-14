@@ -20,6 +20,8 @@
         class="form-control"
         placeholder="Password"
         v-model="user.password"
+        minlength="1"
+        maxlength="20"
         required
       />
       <input
@@ -63,6 +65,7 @@ export default {
         password: '',
         confirmPassword: '',
         isParent: false,
+        familyId: '',
         role: 'user',
       },
       registrationErrors: false,

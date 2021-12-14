@@ -31,7 +31,7 @@ CREATE TABLE books (
         author varchar(1000) NOT NULL,
         thumbnail varchar(1000),
         page_count int,
-        description varchar(1000)
+        description varchar(10000)
 );
 
 CREATE TABLE activity (
@@ -39,8 +39,9 @@ CREATE TABLE activity (
         user_id int NOT NULL,
         isbn varchar NOT NULL,
         date_read date NOT NULL,
-        minutes_read int NOT NULL,
+        minutes_read int default 0,
         is_finished boolean default false,
+        media_type varchar(30),
         
         CONSTRAINT fk_activity_books FOREIGN KEY (isbn) REFERENCES books (isbn),
         CONSTRAINT fk_activity_users FOREIGN KEY (user_id) REFERENCES users (user_id)
@@ -52,7 +53,7 @@ CREATE TABLE prizes (
         prize_name varchar(100) NOT NULL,
         description varchar(300) NOT NULL,
         milestone int NOT NULL,
-        family_id int NOT NULL, 
+        family_id int, 
         max_prizes int NOT NULL,
         start_date date NOT NULL,
         end_date date NOT NULL,
@@ -78,5 +79,3 @@ VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','
 
 
 COMMIT TRANSACTION;
-
-SELECT * FROM books;

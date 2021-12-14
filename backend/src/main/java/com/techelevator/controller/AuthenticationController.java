@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
+import com.techelevator.dao.JdbcActivityDao;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,9 @@ import com.techelevator.model.UserAlreadyExistsException;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.security.Principal;
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -28,6 +32,7 @@ public class AuthenticationController {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private UserDao userDao;
+    private User currentUser;
 
     public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao) {
         this.tokenProvider = tokenProvider;
@@ -46,7 +51,7 @@ public class AuthenticationController {
         String jwt = tokenProvider.createToken(authentication, false);
         
         User user = userDao.findByUsername(loginDto.getUsername());
-
+        currentUser = user;
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
         return new ResponseEntity<>(new LoginResponse(jwt, user), httpHeaders, HttpStatus.OK);
@@ -62,6 +67,29 @@ public class AuthenticationController {
             userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole(), newUser.getIsParent());
         }
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/familyId", method = RequestMethod.PUT)
+    public void updateFamilyId(@RequestBody int familyId, Principal user) {
+        int currentUser = userDao.findIdByUsername(user.getName());
+        userDao.updateFamilyId(familyId, currentUser);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/addMember", method = RequestMethod.PUT)
+    public void addMember(@RequestBody String username, Principal user) {
+        User currentUser = userDao.findByUsername(user.getName());
+        System.out.println(currentUser.getFamilyId());
+        userDao.addMember(username, currentUser.getFamilyId());
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/getFamilyMembers", method = RequestMethod.GET)
+    public List<User> getFamilyMembers(Principal user) {
+        User currentUser = userDao.findByUsername(user.getName());
+        return userDao.getUsersByFamilyId(currentUser.getFamilyId());
+    }
+
 
     /**
      * Object to return as body in JWT Authentication.
@@ -94,5 +122,6 @@ public class AuthenticationController {
 			this.user = user;
 		}
     }
+
 }
 

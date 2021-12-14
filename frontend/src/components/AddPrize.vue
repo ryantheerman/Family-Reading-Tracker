@@ -3,8 +3,8 @@
       <button id="show-form-button" 
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"> Add a Prize</button>
-      <form class="prize-form" v-on:submit.prevent="addNewPrize" v-if="showForm === true">
-          <label class="prize-name">Prize Name: 
+      <form v-on:submit.prevent="addNewPrize" v-if="showForm === true" class="prize-form" @submit.prevent="saveNewPrize">
+          <label class="prize-name">Prize Name:
           <input
             type="text"
             id="prize-name"
@@ -51,6 +51,8 @@
             class="form-control"
             placeholder=""
             v-model="newPrize.startDate"
+            :max="newPrize.endDate"
+            :min="minStartDate.toLocaleDateString()"
             required
         /> </label>
         <label class="endDate">End Date: 
@@ -60,22 +62,21 @@
             class="form-control"
             placeholder=""
             v-model="newPrize.endDate"
+            :min="newPrize.startDate"
             required
-        /> </label>
-        <button id="submit-button" v-on:click="saveNewPrize()">Save</button> 
-        <button id="submit-button" v-on:click="resetPrizeForm()">Cancel</button> 
-
-        <!-- change to a submit input button?? -->
+        />
+        </label>
+        <button id="submit-button" type="submit">Submit Prize!</button>
       </form>
-      
   </div>
 </template>
 
 <script>
-import AddPrizeStyle from '../styles/AddPrizeStyle.css'
+import backendService from "@/services/BackendService";
+import AddPrizeStyle from '../styles/AddPrizeStyle.css';
 export default {
     name: "add-prize",
-    component: {AddPrizeStyle},
+    component: {AddPrizeStyle, backendService},
     data() {
         return {
             showForm : false,
@@ -83,36 +84,31 @@ export default {
                 prizeName: '',
                 prizeDescription: '',
                 milestone: '',
-                //familyID: 
+                familyId: this.$store.state.user.familyId,
                 maxPrizes: '',
                 startDate: '',
                 endDate: '',
+                isActive: ''
             },
-            prizes:[]
+            minStartDate: new Date()
         };
+    },
+    created(){
+        // get all prizes
+        backendService.getPrizes().then((response) => {
+            console.log(response.data);
+            this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
+        });
     },
     methods:{
         saveNewPrize(){
-            // this.newPrize.milestone = Number.parseInt(this.newPrize.milestone);
-            // this.newPrize.maxPrizes = Number.parseInt(this.newPrize.maxPrizes);
 
-            this.prizes.push(this.newPrize);
-        
-            this.resetPrizeForm();
+            backendService.postPrize(this.newPrize).then(response => {
+                if(response.status === 201) {
+                    this.$router.push('/');
+                }
+            });
         },
-        resetPrizeForm(){
-            this.newPrize = {
-                name: '',
-                description: '',
-                milestone: '',
-                maxPrizes: '',
-                startDate: '',
-                endDate: '',
-            }
-        },
-        // toggleForm(){
-        //     this.showForm = !this.showForm
-        // }
     }
 }
 </script>
