@@ -10,7 +10,6 @@ export default {
   components: { FamilyMembers, ActivityList },
   created() {
     this.$store.commit("STORE_SELECTED_USER", this.$store.state['user']);
-    console.log(this.$store.state['user'].familyId)
   },
 };
 </script>

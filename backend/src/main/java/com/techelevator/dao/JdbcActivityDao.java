@@ -72,7 +72,7 @@ public class JdbcActivityDao implements ActivityDao {
 
         String sql = "SELECT activity_id, user_id, isbn, date_read, minutes_read, is_finished " +
                      "FROM activity " +
-                     "WHERE user_id = ? AND minutes_read > 0;";
+                     "WHERE user_id = ? AND (minutes_read > 0 OR is_finished = true);";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, UserId);
         while(results.next()){
