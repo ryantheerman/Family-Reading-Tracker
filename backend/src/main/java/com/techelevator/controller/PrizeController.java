@@ -27,7 +27,6 @@ public class PrizeController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/postPrize", method = RequestMethod.POST)
     public void addPrize(@RequestBody Prize prize) {
-        System.out.println("prize name: " + prize.getPrizeName());
         try {
             dao.createPrize(prize);
         } catch (Exception e) {
@@ -42,11 +41,17 @@ public class PrizeController {
       dao.updatePrize(prize);
     }
 
+    //delete prize?
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(value = "/deletePrize", method = RequestMethod.DELETE)
+    public void deletePrize(@RequestBody Prize prize) {
+        dao.deletePrize(prize);
+    }
+
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/getPrizes", method = RequestMethod.GET)
     public List<Prize> getPrizes(Principal user) {
-        // System.out.println("prize name: " + prize.getPrizeName());
         try {
             User currentUser = userDao.findByUsername(user.getName());
             System.out.println(currentUser.getFamilyId());

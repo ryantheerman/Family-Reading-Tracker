@@ -23,16 +23,11 @@ export default {
   },
 
   getPrizes() {
-    return axios.get('/getPrizes');
+    return axios.get('/getPrizes', {headers: {'Content-Type': 'application/JSON'}});
   },
 
   editPrize(prize) {
-    const http = axios.create({
-      headers: {
-        'Content-Type': 'application/JSON'
-      }
-    })
-    return http.put("/editPrize", prize);
+    return axios.put("/editPrize", prize, {headers: {'Content-Type': 'application/JSON'}});
   },
 
   // Activity
@@ -45,5 +40,8 @@ export default {
   },
   getActivitiesById(id){
     return axios.get(`/getActivityById/${id}`)
+  },
+  deleteSelectedPrize(prize){
+    return axios.delete('/deletePrize', {headers: {'Content-Type': 'application/JSON'}, data: prize});
   }
 }

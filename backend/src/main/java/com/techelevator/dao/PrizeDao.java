@@ -18,6 +18,8 @@ public interface PrizeDao {
 
     void updatePrize(Prize Prize);
 
+    void deletePrize(Prize prize);
+
 
 
 

@@ -1,6 +1,6 @@
 <template>
     <div class="actions">
-        <button v-bind:to="familyId" @click.prevent="createFamilyId()">Create Family</button>
+        <button v-bind:to="familyId" @click.prevent="createFamilyId()" v-if="this.familyId == 0">Create Family</button>
     </div>
 </template>
 

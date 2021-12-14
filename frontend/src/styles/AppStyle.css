@@ -12,6 +12,11 @@
     color: #18314E;
 }
 
+#logo {
+    height: 200px;
+    
+}
+
 #app {
     background-color: #FFF8E8;
     background-size: cover;
