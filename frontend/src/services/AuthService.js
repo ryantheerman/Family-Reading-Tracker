@@ -11,22 +11,11 @@ export default {
   },
 
   createFamilyId(id) {
-    const http = axios.create({
-      headers: {
-        'Content-Type': 'application/JSON'
-      }
-    })
-    return http.put('/familyId', id)
+    return axios.put('/familyId', id, {headers: {'Content-Type': 'application/JSON'}})
   },
 
   addFamilyMember(username) {
-    console.log(username + " " + typeof(username));
-    const http = axios.create({
-      headers: {
-        'Content-Type': 'application/JSON'
-      }
-    })
-    return http.put('/addMember', username);
+    return axios.put('/addMember', username, {headers: {'Content-Type': 'application/JSON'}});
   },
 
   getFamilyMembers() {

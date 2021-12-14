@@ -48,6 +48,7 @@
             class="form-control"
             placeholder=""
             v-model="activePrize.startDate"
+            :max="activePrize.endDate"
             required
         /> </label>
         <label class="endDate">End Date: 
@@ -57,6 +58,7 @@
             class="form-control"
             placeholder=""
             v-model="activePrize.endDate"
+            :min="activePrize.startDate"
             required
         />
         </label>
@@ -78,7 +80,8 @@ export default {
         familyId: this.$store.state.user.familyId,
         maxWinners: '',
         startDate: '',
-        endDate: ''
+        endDate: '',
+        isActive: ''
     }
         }
     },

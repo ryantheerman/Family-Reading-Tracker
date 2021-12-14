@@ -7,19 +7,29 @@
         <h3 class="startDate">{{prize.startDate}} </h3>
         <h3 class="endDate">{{prize.endDate}} </h3>
          <router-link :to="{name: 'edit-prize'}">
-      <h3 @click="setActivePrize(prize)">select to edit</h3> 
+      <h4 @click="setActivePrize(prize)">select to edit</h4> 
       </router-link>
+      <button class="delete-prize" @click="deletePrize(prize)" v-if="prize.isActive == false">Delete Prize</button>
     </div>
 </template>
 <script>
+import BackendService from '../services/BackendService.js'
 export default {
     name: 'prize-card',
     props: ['prize'],
      methods: {
       setActivePrize(prize){
           this.$store.commit("SET_ACTIVE_PRIZE", prize);
+      },
+      deletePrize(prize){
+          BackendService.deleteSelectedPrize(prize).then((response) => {
+            if(response.status == 204){
+            this.$store.commit("DELETE_PRIZE");
+            this.$router.push('/');
+            }
+         })
+        }
       }
-     }
 }
 </script>
 <style>

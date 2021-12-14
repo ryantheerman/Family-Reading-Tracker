@@ -82,6 +82,9 @@ export default new Vuex.Store({
     ADD_PRIZES_TO_ARRAY(state, prizesArr) {
       state.prizes = prizesArr;
     },
+    DELETE_PRIZE(state) {
+      state.prize = {};
+    }
 
   }
 })
