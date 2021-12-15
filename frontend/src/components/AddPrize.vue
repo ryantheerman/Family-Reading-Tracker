@@ -70,7 +70,6 @@
       </form>
   </div>
 </template>
-
 <script>
 import backendService from "@/services/BackendService";
 import AddPrizeStyle from '../styles/AddPrizeStyle.css';
@@ -89,29 +88,30 @@ export default {
                 startDate: '',
                 endDate: '',
                 isActive: ''
+
             },
+
             minStartDate: new Date()
         };
     },
     created(){
         // get all prizes
-        backendService.getPrizes().then((response) => {
-            console.log(response.data);
-            this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
-        });
+        // backendService.getPrizes().then((response) => {
+        //     console.log(response.data);
+        //     this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
+        // });
     },
     methods:{
         saveNewPrize(){
-
             backendService.postPrize(this.newPrize).then(response => {
                 if(response.status === 201) {
                     this.$router.push('/');
+                    this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
                 }
             });
         },
     }
 }
 </script>
-
 <style>
 </style>

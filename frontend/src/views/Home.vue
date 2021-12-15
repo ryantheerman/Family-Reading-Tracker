@@ -7,20 +7,23 @@
     <!-- <activity-list id="activity-list"/> -->
   </div>
 </template>
-
 <script>
 import SearchBar from "../components/SearchBar.vue";
 import ReadingList from "../components/ReadingList.vue";
+import BackendService from "../services/BackendService.js";
 // import ActivityList from '../components/ActivityList.vue';
 export default {
   components: { SearchBar, ReadingList  }, //ActivityList
   name: "home",
-  
-
+  created(){
+      BackendService.getPrizes().then((response) => {
+        console.log(response.data);
+        this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
+    });
+    
+  }
 };
-
 </script>
-
 <style>
 .home {
     display: grid;
@@ -28,11 +31,9 @@ export default {
     grid-template-areas: "reading-list search-bar";
     column-gap: 20px;
 }
-
 #search-bar {
     grid-area: search-bar;
 }
-
 #reading-list {
     grid-area: reading-list;
 }
