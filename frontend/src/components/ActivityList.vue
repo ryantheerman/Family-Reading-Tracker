@@ -1,26 +1,30 @@
 <template>
   <div id="activity-container">
-    <h1>Progress Toward Prizes</h1>
-    <table >
-      <tr>
-        <th>Prize Name</th>
-        <th>Milestone</th>
-        <th>Your Minutes</th>
-        <th>Percent Complete</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-      </tr>
-      <tr  v-for="prize in prizesArray" v-bind:key="prize.prizeId"  >
-        <td> {{prize.prizeName}} </td>
-        <td> {{prize.milestone}} </td>
-        <td> {{prize.minutesRead}} </td>
-        <td v-if="prize.minutesRead < prize.milestone" > {{ Math.round((prize.minutesRead/prize.milestone)*100) }} % </td>
-        <td v-else> Goal Reached! </td>
-        <td> {{prize.startDate | formatDate}} </td>
-        <td> {{prize.endDate | formatDate}} </td>
-      </tr>
-    </table>
-    <h1>{{ $store.state.storedUser.username }}'s Reading Activity</h1> 
+    <div v-if="prizesArray.length > 0">
+      <h1>Progress Toward Prizes</h1>
+      <table>
+        <tr>
+          <th>Prize Name</th>
+          <th>Milestone</th>
+          <th>Your Minutes</th>
+          <th>Percent Complete</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+        </tr>
+        <tr v-for="prize in prizesArray" v-bind:key="prize.prizeId">
+          <td>{{ prize.prizeName }}</td>
+          <td>{{ prize.milestone }}</td>
+          <td>{{ prize.minutesRead }}</td>
+          <td v-if="prize.minutesRead < prize.milestone">
+            {{ Math.round((prize.minutesRead / prize.milestone) * 100) }} %
+          </td>
+          <td v-else>Goal Reached!</td>
+          <td>{{ prize.startDate | formatDate }}</td>
+          <td>{{ prize.endDate | formatDate }}</td>
+        </tr>
+      </table>
+    </div>
+    <h1>{{ $store.state.storedUser.username }}'s Reading Activity</h1>
     <table>
       <tr>
         <th>Book</th>
@@ -28,24 +32,24 @@
         <th>Date</th>
         <th>Status</th>
       </tr>
-    <tr v-for="activity in activities" :key="activity.activityId">
-      <td>{{ activity.bookName }}</td>
-      <td>{{ activity.minutesRead }}</td>
-      <td>{{ activity.dateRead | formatDate }}</td>
-      <td v-if="activity.isFinished">Complete</td>
-      <td v-else>In Progress</td>
-    </tr>
+      <tr v-for="activity in activities" :key="activity.activityId">
+        <td>{{ activity.bookName }}</td>
+        <td>{{ activity.minutesRead }}</td>
+        <td>{{ activity.dateRead | formatDate }}</td>
+        <td v-if="activity.isFinished">Complete</td>
+        <td v-else>In Progress</td>
+      </tr>
     </table>
     <h1>Total Minutes Read:</h1>
     <h2>{{ totalMintuesSpentReading }}</h2>
     <h1>Completed Books:</h1>
-    <h2>You have read {{completedBooks.length}} books</h2>
-    <div  v-for="book in completedBooks" :key="book.isbn">
+    <h2>You have read {{ completedBooks.length }} books</h2>
+    <div v-for="book in completedBooks" :key="book.isbn">
       <h2>{{ book.bookName }}</h2>
     </div>
     <h1>Currently Reading:</h1>
-    <h2>You are currently reading {{inProgressBooks.length}} books</h2>
-    <div  v-for="book in inProgressBooks" :key="book.isbn">
+    <h2>You are currently reading {{ inProgressBooks.length }} books</h2>
+    <div v-for="book in inProgressBooks" :key="book.isbn">
       <h2>{{ book.title }}</h2>
     </div>
   </div>
@@ -56,7 +60,7 @@ export default {
   data() {
     return {
       activities: [],
-      prizesArray:[],
+      prizesArray: [],
       completedBooks: [],
       completedBooksTitles: [],
       inProgressBooks: [],
@@ -65,8 +69,8 @@ export default {
   },
   created() {
     BackendService.getPrizes().then((response) => {
-        console.log(response.data);
-        this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
+      console.log(response.data);
+      this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
     });
     this.completedBooks = [];
     let id = this.$store.state.storedUser.id;
@@ -88,37 +92,39 @@ export default {
               }
             }
           }
-          this.activities.forEach(activity => {
+          this.activities.forEach((activity) => {
             this.totalMintuesSpentReading += activity.minutesRead;
           });
-          this.activities.forEach(activity => {
-                  if(activity.isFinished == true) {
-                    this.completedBooks.push(activity);
-                    this.completedBooksTitles.push(activity.bookName);
-                  } 
-                });
-                console.log(this.completedBooksTitles);
-          this.$store.state.books.forEach(book => {
-            if(!this.completedBooksTitles.includes(book.title)) {
+          this.activities.forEach((activity) => {
+            if (activity.isFinished == true) {
+              this.completedBooks.push(activity);
+              this.completedBooksTitles.push(activity.bookName);
+            }
+          });
+          console.log(this.completedBooksTitles);
+          this.$store.state.books.forEach((book) => {
+            if (!this.completedBooksTitles.includes(book.title)) {
               this.inProgressBooks.push(book);
             }
           });
-         
-          this.$store.state.prizes.forEach(prize => {
+
+          this.$store.state.prizes.forEach((prize) => {
             let minTowardPrize = 0;
-            this.activities.forEach(activity => {
-              if((activity.dateRead >= prize.startDate) && (activity.dateRead <= prize.endDate)){
+            this.activities.forEach((activity) => {
+              if (
+                activity.dateRead >= prize.startDate &&
+                activity.dateRead <= prize.endDate
+              ) {
                 minTowardPrize += activity.minutesRead;
               }
-            })
-              let newPrize = prize ;
+            });
+            let newPrize = prize;
             newPrize.minutesRead = minTowardPrize;
-         
-                this.prizesArray.push(newPrize);
-            
-                 });
-          
-          console.log(this.prizesArray);  
+
+            this.prizesArray.push(newPrize);
+          });
+
+          console.log(this.prizesArray);
         });
       }
     });
@@ -133,11 +139,11 @@ export default {
   position: relative;
   height: 82vh;
 }
-table{
+table {
   margin: auto;
 }
 td,
-th{
+th {
   padding: 10px;
 }
 </style>

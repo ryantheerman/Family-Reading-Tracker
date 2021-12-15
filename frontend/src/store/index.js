@@ -18,6 +18,7 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
+    detailPrize: {},
     book: {},
     books: [],
     prize: {},
@@ -84,6 +85,12 @@ export default new Vuex.Store({
     },
     DELETE_PRIZE(state) {
       state.prize = {};
+    },
+    UPDATE_DETAIL_PRIZE(state, prize) {
+      state.detailPrize = prize;
+    },
+    WIPE_DETAIL_PRIZE(state) {
+      state.detailPrize = {};
     }
 
   }
