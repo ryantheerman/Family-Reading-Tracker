@@ -95,7 +95,7 @@ public class JdbcUserDao implements UserDao {
     }
 
     public void addMember(String username, Long familyId) {
-        System.out.println(familyId);
+
         String sql = "UPDATE users " +
                 "SET family_id = ? " +
                 "WHERE username = ?";

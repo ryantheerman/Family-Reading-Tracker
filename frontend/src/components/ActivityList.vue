@@ -27,6 +27,7 @@
         <th>Minutes Read</th>
         <th>Date</th>
         <th>Status</th>
+        <th>Media Type</th>
       </tr>
     <tr v-for="activity in activities" :key="activity.activityId">
       <td>{{ activity.bookName }}</td>
@@ -34,6 +35,7 @@
       <td>{{ activity.dateRead | formatDate }}</td>
       <td v-if="activity.isFinished">Complete</td>
       <td v-else>In Progress</td>
+      <td>{{ activity.mediaType }}</td>
     </tr>
     </table>
     <h1>Total Minutes Read:</h1>
@@ -66,7 +68,6 @@ export default {
   },
   created() {
     BackendService.getPrizes().then((response) => {
-        console.log(response.data);
         this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
     });
     this.completedBooks = [];
@@ -98,7 +99,6 @@ export default {
                     this.completedBooksTitles.push(activity.bookName);
                   } 
                 });
-                console.log(this.completedBooksTitles);
           this.$store.state.books.forEach(book => {
             if(!this.completedBooksTitles.includes(book.title)) {
               this.inProgressBooks.push(book);
@@ -117,9 +117,7 @@ export default {
          
                 this.prizesArray.push(newPrize);
             
-                 });
-          
-          console.log(this.prizesArray);  
+                 }); 
         });
       }
     });
