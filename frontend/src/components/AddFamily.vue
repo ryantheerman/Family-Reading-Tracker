@@ -1,20 +1,8 @@
 <template>
-  <div>
-    <form>
-      <label class="addMembers"
-        >Enter family member usernames
-        <input
-          type='text'
-          id="members"
-          v-model="familyMember.username"
-          required
-        />
-      </label>
-      <button @click.prevent="addMember">Add Family Member</button>
-    </form>
-  </div>
+    <div class="actions">
+        <button  v-bind:to="familyId" @click.prevent="createFamilyId()">Create Family</button>
+    </div>
 </template>
-
 <script>
 import AuthService from '../services/AuthService';
 export default {
@@ -31,13 +19,15 @@ export default {
         addMember() {
             AuthService.addFamilyMember(this.familyMember.username).then(response => {
                 if(response.status === 200) {
-                    console.log('made it to backend');
+                    // AuthService.login(this.$store.state['user'])
+                    this.$store.state.user.familyId = this.familyId
+                    this.$router.push('/');
+                    
                 }
             });
         }
     }
 };
 </script>
-
 <style>
 </style>

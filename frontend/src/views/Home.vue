@@ -7,7 +7,6 @@
     <!-- <activity-list id="activity-list"/> -->
   </div>
 </template>
-
 <script>
 import SearchBar from "../components/SearchBar.vue";
 import ReadingList from "../components/ReadingList.vue";
@@ -23,11 +22,8 @@ export default {
     });
     
   }
-
 };
-
 </script>
-
 <style>
 .home {
     display: grid;
@@ -35,11 +31,9 @@ export default {
     grid-template-areas: "reading-list search-bar";
     column-gap: 20px;
 }
-
 #search-bar {
     grid-area: search-bar;
 }
-
 #reading-list {
     grid-area: reading-list;
 }

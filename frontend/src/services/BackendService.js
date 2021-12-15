@@ -35,10 +35,6 @@ export default {
   postActivity(activity) {
     return axios.post('/postActivity', activity);
   },
-
-  getActivitiesByFam() {
-    return axios.get('/getActivityByFam');
-  },
   getActivitiesById(id){
     return axios.get(`/getActivityById/${id}`)
   }

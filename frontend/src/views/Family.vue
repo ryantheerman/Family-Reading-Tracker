@@ -4,7 +4,6 @@
       <add-fam-members v-else />
   </div>
 </template>
-
 <script>
 import AddFamily from '../components/AddFamily.vue'
 import AddFamMembers from '../components/AddFamMembers.vue'
@@ -23,12 +22,9 @@ export default {
     // },
     methods: {
         madeFam(){
-
         }
     }
 }
 </script>
-
 <style>
-
 </style>

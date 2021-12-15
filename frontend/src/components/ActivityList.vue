@@ -20,7 +20,6 @@
         <td> {{prize.endDate | formatDate}} </td>
       </tr>
     </table>
-
     <h1>{{ $store.state.storedUser.username }}'s Reading Activity</h1> 
     <table>
       <tr>
@@ -37,17 +36,13 @@
       <td v-else>In Progress</td>
     </tr>
     </table>
-
     <h1>Total Minutes Read:</h1>
     <h2>{{ totalMintuesSpentReading }}</h2>
-
-
     <h1>Completed Books:</h1>
     <h2>You have read {{completedBooks.length}} books</h2>
     <div  v-for="book in completedBooks" :key="book.isbn">
       <h2>{{ book.bookName }}</h2>
     </div>
-
     <h1>Currently Reading:</h1>
     <h2>You are currently reading {{inProgressBooks.length}} books</h2>
     <div  v-for="book in inProgressBooks" :key="book.isbn">
@@ -55,7 +50,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import BackendService from "../services/BackendService";
 
@@ -70,7 +64,6 @@ export default {
       totalMintuesSpentReading: 0,
     };
   },
-
   created() {
 
     this.completedBooks = [];
@@ -79,7 +72,6 @@ export default {
       if (response.status === 200) {
         this.$store.commit("WIPE_BOOKS_ARRAY");
         this.$store.commit("ADD_BOOKS_TO_ARRAY", response.data);
-
         BackendService.getActivitiesById(id).then((response) => {
           this.$store.commit("ADD_ACTIVITIES_TO_ARRAY", response.data);
           for (let i = 0; i < this.$store.state.activities.length; i++) {
@@ -94,12 +86,9 @@ export default {
               }
             }
           }
-
-
           this.activities.forEach(activity => {
             this.totalMintuesSpentReading += activity.minutesRead;
           });
-
           this.activities.forEach(activity => {
                   if(activity.isFinished == true) {
                     this.completedBooks.push(activity);
@@ -107,13 +96,11 @@ export default {
                   } 
                 });
                 console.log(this.completedBooksTitles);
-
           this.$store.state.books.forEach(book => {
             if(!this.completedBooksTitles.includes(book.title)) {
               this.inProgressBooks.push(book);
             }
           });
-
          
           this.$store.state.prizes.forEach(prize => {
             let minTowardPrize = 0;
@@ -129,20 +116,16 @@ export default {
             
                  });
           
-
           console.log(this.prizesArray);
           // compare milestone to read minute but only within dates     
         });
       }
     });
-
     this.$store.commit("WIPE_ACTIVITIES");
   },
 };
 </script>
-
 <style>
-
 #activity-container {
   width: 100%;
   overflow-y: scroll;
@@ -156,5 +139,4 @@ td,
 th{
   padding: 10px;
 }
-
 </style>

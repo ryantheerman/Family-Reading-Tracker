@@ -12,38 +12,39 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <router-link :to="{ name: 'register' }" id="need-account">Need an account?</router-link>
-      <button type="submit" id="sign-in-button">Sign in</button>
+      <div class="login-form">
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Username"
+          v-model="user.username"
+          required
+          autofocus
+        />
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Password"
+          v-model="user.password"
+          required
+        />
+        <router-link :to="{ name: 'register' }" id="need-account">Need an account?</router-link>
+        <button type="submit" id="sign-in-button" class="form-control">Sign in</button>
+      </div>
     </form>
-    <p id="description">Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit.
-    Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass.</p>
+    <!-- <p id="description"></p> -->
   </div>
 </template>
 
 <script>
 import authService from "../services/AuthService";
-import LoginStyle from "../styles/LoginStyle.css";
+// import LoginStyle from "../styles/LoginStyle.css";
 
 export default {
   name: "login",
-  components: LoginStyle,
+  // components: LoginStyle,
   data() {
     return {
       user: {
@@ -77,4 +78,122 @@ export default {
 </script>
 
 <style>
+body{
+	margin:0;
+	color:#595d77;
+	background:#c8c8c8;
+	/* font:600 16px/18px 'Open Sans',sans-serif; */
+}
+*,:after,:before {
+  box-sizing:border-box
+  }
+
+.text-center{
+	width:100%;
+	margin:auto;
+	max-width:525px;
+	min-height:670px;
+	position:relative;
+	background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.form-signin{
+	width:100%;
+	height:100%;
+	position:absolute;
+	padding:90px 70px 50px 70px;
+	background:rgb(141, 165, 156, .9);
+}
+
+.login-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
+}
+ #username:hover,
+ #password:hover{
+	background:rgba(255,255,255,.2);
+ }
+
+
+.login-form .form-control {
+  margin-bottom:15px;
+	width:100%;
+	color:#fff;
+	display:block;
+  border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(255,255,255,.1);
+}
+
+#sign-in-button{
+	background:#c8d6d1;
+  margin-top: 70px;
+}
+
+/* .login-form .group label .icon{
+	width:15px;
+	height:15px;
+	border-radius:2px;
+	position:relative;
+	display:inline-block;
+	background:rgba(255,255,255,.1);
+} */
+
+
+#need-account{
+  margin:10px;
+	content:'';
+	width: 200px;
+	height:2px;
+	/* background:#fff; */
+  color:#595d77;
+	position:absolute;
+	/* transition:all .2s ease-in-out 0s; */
+}
+
+#need-account:hover{
+  color:#fff
+}
+/*
+.login-form .group label .icon:before{
+	left:3px;
+	width:5px;
+	bottom:6px;
+	transform:scale(0) rotate(0);
+}
+.login-form .group label .icon:after{
+	top:6px;
+	right:0;
+	transform:scale(0) rotate(0);
+}
+.login-form .group .check:checked + label{
+	color:#fff;
+}
+.login-form .group .check:checked + label .icon{
+	background:#1161ee;
+}
+.login-form .group .check:checked + label .icon:before{
+	transform:scale(1) rotate(45deg);
+}
+.login-form .group .check:checked + label .icon:after{
+	transform:scale(1) rotate(-45deg);
+}
+.form-signin .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
+	transform:rotate(0);
+}
+.form-signin .sign-up:checked + .tab + .login-form .sign-up-htm{
+	transform:rotate(0);
+}
+
+.hr{
+	height:2px;
+	margin:60px 0 50px 0;
+	background:rgba(255,255,255,.2);
+}
+.foot-lnk{
+	text-align:center;
+} */
 </style>
