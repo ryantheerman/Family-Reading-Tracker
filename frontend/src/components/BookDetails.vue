@@ -79,7 +79,7 @@ export default {
             
         },
         addActivity(){
-            backendService.postActivity(this.activity).then(response => {
+            backendService.postActivity(this.activity, this.$store.state.storedUser.id).then(response => {
                 if(response.status === 201){
                     this.$router.push({name: 'home'});
                 }

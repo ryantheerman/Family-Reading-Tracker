@@ -31,8 +31,8 @@ export default {
   },
 
   // Activity
-  postActivity(activity) {
-    return axios.post('/postActivity', activity);
+  postActivity(activity, id) {
+    return axios.post(`/postActivity/${id}`, activity);
   },
   getActivitiesById(id){
     return axios.get(`/getActivityById/${id}`)

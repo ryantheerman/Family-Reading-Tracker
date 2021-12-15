@@ -14,20 +14,27 @@
 
 <script>
 import BookCard from "@/components/BookCard.vue";
-import backendService from "@/services/BackendService";
+import BackendService from "@/services/BackendService";
 export default {
   components: { BookCard },
   name: "reading-list",
 
   created() {
-    // get all books by user id, ie current collection, mutate into data store
-    backendService.getBooks().then((response) => {
-      console.log('reading list created')
-      this.$store.commit('WIPE_BOOKS_ARRAY');
-      this.$store.commit("ADD_BOOKS_TO_ARRAY", response.data);
-    });
+    let id = this.$store.state.storedUser.id;
+    BackendService.getFamilyMembersBooks(id).then((response) => {
+      if (response.status === 200) {
+        this.$store.commit("WIPE_BOOKS_ARRAY");
+        this.$store.commit("ADD_BOOKS_TO_ARRAY", response.data);
+      }
+      })
 
-    // get requests for books, activites, prizes, family members(?)
+
+    // get all books by user id, ie current collection, mutate into data store
+    // backendService.getBooks().then((response) => {
+    //   console.log('reading list created')
+    //   this.$store.commit('WIPE_BOOKS_ARRAY');
+    //   this.$store.commit("ADD_BOOKS_TO_ARRAY", response.data);
+    // });
   },
   methods: {
     mutateBook(book){
