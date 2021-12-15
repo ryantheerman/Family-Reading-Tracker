@@ -95,6 +95,7 @@ export default {
         };
     },
     created(){
+        // get all prizes
         backendService.getPrizes().then((response) => {
             this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
         });
