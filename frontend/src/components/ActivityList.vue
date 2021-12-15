@@ -65,7 +65,10 @@ export default {
     };
   },
   created() {
-
+    BackendService.getPrizes().then((response) => {
+        console.log(response.data);
+        this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
+    });
     this.completedBooks = [];
     let id = this.$store.state.storedUser.id;
     BackendService.getFamilyMembersBooks(id).then((response) => {
@@ -82,7 +85,7 @@ export default {
               ) {
                 let newAct = this.$store.state.activities[i];
                 newAct.bookName = this.$store.state.books[b].title;
-                this.activities.push(newAct);
+                this.activities.unshift(newAct);
               }
             }
           }
@@ -116,8 +119,7 @@ export default {
             
                  });
           
-          console.log(this.prizesArray);
-          // compare milestone to read minute but only within dates     
+          console.log(this.prizesArray);  
         });
       }
     });

@@ -25,10 +25,10 @@ public class ActivityController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/postActivity", method = RequestMethod.POST)
-    public void addActivity(@RequestBody Activity activity, Principal user) {
+    @RequestMapping(value = "/postActivity/{id}", method = RequestMethod.POST)
+    public void addActivity(@RequestBody Activity activity, @PathVariable Long id) {
         activity.setDateRead(LocalDate.now());
-        activity.setUserId(userDao.findIdByUsername(user.getName()));
+        activity.setUserId(id);
 
         try {
             dao.createActivity(activity);
