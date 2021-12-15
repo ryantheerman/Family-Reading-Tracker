@@ -14,9 +14,9 @@
           <label for="finished">Have you finished this book?</label>
           <input type="checkbox" name="finished" v-model="activity.isFinished"/>
           <select placeholder="media type" v-model="activity.mediaType">
-            <option value="paper">Paper</option>
-            <option value="digital">Digital</option>
-            <option value="audiobook">Audiobook</option>
+            <option value="Paper">Paper</option>
+            <option value="Digital">Digital</option>
+            <option value="Audiobook">Audiobook</option>
             <option value="Read-Aloud (Reader)">Read-Aloud (Reader)</option>
             <option value="Read-Aloud (Listener)">Read-Aloud (Listener)</option>
             <option value="Other">Other</option>

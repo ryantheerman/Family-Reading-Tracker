@@ -13,7 +13,7 @@
       <router-link v-bind:to="{ name: 'family' }" v-if="$store.state.token != '' && $store.state.user.isParent != false" class="create-family"> &nbsp;|&nbsp; Family</router-link>
       <router-link v-bind:to="{ name: 'activity' }" v-if="$store.state.token != ''"> &nbsp;|&nbsp; Activity </router-link>
     </div>
-    <router-view />
+    <router-view id="router-view"/>
   </div>
 </template>
 <script>
@@ -22,4 +22,28 @@ export default {
   components: AppStyle
 }
 </script>
+
+<style>
+#app {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'logo nav'
+                       'router-view router-view'
+
+}
+#logo {
+  display:flex;
+  grid-area: logo;
+  justify-content: flex-start;
+}
+#nav {
+  display: flex;
+  grid-area: nav;
+  justify-content: flex-end;
+  margin: 20px 20px 20px 20px;
+}
+#router-view {
+  grid-area: router-view
+}
+</style>
 
