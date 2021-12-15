@@ -1,9 +1,8 @@
 <template>
     <div class="actions">
-        <button v-bind:to="familyId" @click.prevent="createFamilyId()" v-if="this.familyId == 0">Create Family</button>
+        <button  v-bind:to="familyId" @click.prevent="createFamilyId()">Create Family</button>
     </div>
 </template>
-
 <script>
 import AuthService from '../services/AuthService';
 export default {
@@ -18,14 +17,15 @@ export default {
             this.familyId = Math.floor(Math.random() * (10000000 - 100) + 100);
             AuthService.createFamilyId(this.familyId).then(response => {
                 if(response.status === 200) {
+                    // AuthService.login(this.$store.state['user'])
+                    this.$store.state.user.familyId = this.familyId
                     this.$router.push('/');
+                    
                 }
             });
         }
     }
 }
 </script>
-
 <style>
-
 </style>
