@@ -5,40 +5,42 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        minlength="1"
-        maxlength="20"
-        required
-      />
-      <input
-        type="password"
-        id="confirmPassword"
-        class="form-control"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
-        required
-      />
-      <label for="parent" class="parent-checkbox">
-      <input type="checkbox" id="parent" class="form-control" v-model="user.isParent" />
-      Are you a parent?</label>
-      <router-link :to="{ name: 'login' }" id="have-account">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" id="button">
-        Create Account
-      </button>
+      <div class="register-form">
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Username"
+          v-model="user.username"
+          required
+          autofocus
+        />
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Password"
+          v-model="user.password"
+          minlength="1"
+          maxlength="20"
+          required
+        />
+        <input
+          type="password"
+          id="confirmPassword"
+          class="form-control"
+          placeholder="Confirm Password"
+          v-model="user.confirmPassword"
+          required
+        />
+        <label for="parent" class="parent-checkbox">
+        <input type="checkbox" id="parent" class="form-control" v-model="user.isParent" />
+        Are you a parent?</label>
+        <router-link :to="{ name: 'login' }" id="have-account">Have an account?</router-link>
+        <button class="btn btn-lg btn-primary btn-block form-control" type="submit" id="button">
+          Create Account
+        </button>
+      </div>
     </form>
     <div id="register-description">
 <p>Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be?
