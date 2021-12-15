@@ -96,10 +96,10 @@ export default {
     },
     created(){
         // get all prizes
-        // backendService.getPrizes().then((response) => {
-        //     console.log(response.data);
-        //     this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
-        // });
+        backendService.getPrizes().then((response) => {
+            console.log(response.data);
+            this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
+        });
     },
     methods:{
         saveNewPrize(){

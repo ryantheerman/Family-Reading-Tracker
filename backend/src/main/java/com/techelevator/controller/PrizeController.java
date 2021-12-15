@@ -54,7 +54,6 @@ public class PrizeController {
     public List<Prize> getPrizes(Principal user) {
         try {
             User currentUser = userDao.findByUsername(user.getName());
-            System.out.println(currentUser.getFamilyId());
             return dao.prizesByFamilyId(currentUser.getFamilyId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
