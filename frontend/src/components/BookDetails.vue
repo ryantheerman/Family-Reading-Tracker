@@ -8,12 +8,12 @@
       <button @click="addBook" v-if="isAdded">Add to collection</button>
       <div v-if="!isAdded">
       <button v-on:click.prevent="showForm === true ? showForm = false : showForm = true">Log Activity</button>
-      <form v-show="showForm == true" >
+      <form v-show="showForm == true" @submit.prevent="addActivity">
           <label for="minutes" >How many minutes have you spent reading this book?</label>
-          <input type="number" name="minutes" placeholder="Minutes read" v-model="activity.minutesRead"/>
+          <input type="number" name="minutes" placeholder="Minutes read" v-model="activity.minutesRead" min="1" required/>
           <label for="finished">Have you finished this book?</label>
           <input type="checkbox" name="finished" v-model="activity.isFinished"/>
-          <select placeholder="media type" v-model="activity.mediaType">
+          <select placeholder="media type" v-model="activity.mediaType" required>
             <option value="Paper">Paper</option>
             <option value="Digital">Digital</option>
             <option value="Audiobook">Audiobook</option>
@@ -21,7 +21,7 @@
             <option value="Read-Aloud (Listener)">Read-Aloud (Listener)</option>
             <option value="Other">Other</option>
           </select>
-          <button type="submit" @click.prevent="addActivity">Submit</button>
+          <button type="submit" >Submit</button>
       </form>
       </div>
   </div>

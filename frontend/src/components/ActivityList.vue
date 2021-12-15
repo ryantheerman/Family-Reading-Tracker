@@ -1,26 +1,33 @@
 <template>
   <div id="activity-container">
-    <h1>Progress Toward Prizes</h1>
-    <table >
-      <tr>
-        <th>Prize Name</th>
-        <th>Milestone</th>
-        <th>Your Minutes</th>
-        <th>Percent Complete</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-      </tr>
-      <tr  v-for="prize in prizesArray" v-bind:key="prize.prizeId"  >
-        <td> {{prize.prizeName}} </td>
-        <td> {{prize.milestone}} </td>
-        <td> {{prize.minutesRead}} </td>
-        <td v-if="prize.minutesRead < prize.milestone" > {{ Math.round((prize.minutesRead/prize.milestone)*100) }} % </td>
-        <td v-else> Goal Reached! </td>
-        <td> {{prize.startDate | formatDate}} </td>
-        <td> {{prize.endDate | formatDate}} </td>
-      </tr>
-    </table>
-    <h1>{{ $store.state.storedUser.username }}'s Reading Activity</h1> 
+    <div v-if="prizesArray.length > 0">
+      <h1>Progress Toward Prizes</h1>
+      <table>
+        <tr>
+          <th>Prize Name</th>
+          <th>Milestone</th>
+          <th>Your Minutes</th>
+          <th>Percent Complete</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Is Active</th>
+        </tr>
+        <tr v-for="prize in prizesArray" v-bind:key="prize.prizeId">
+          <td>{{ prize.prizeName }}</td>
+          <td>{{ prize.milestone }}</td>
+          <td>{{ prize.minutesRead }}</td>
+          <td v-if="prize.minutesRead < prize.milestone">
+            {{ Math.round((prize.minutesRead / prize.milestone) * 100) }} %
+          </td>
+          <td v-else>Goal Reached!</td>
+          <td>{{ prize.startDate | formatDate }}</td>
+          <td>{{ prize.endDate | formatDate }}</td>
+          <td v-if="prize.isActive">Active</td>
+          <td v-else>Inactive</td>
+        </tr>
+      </table>
+    </div>
+    <h1>{{ $store.state.storedUser.username }}'s Reading Activity</h1>
     <table>
       <tr>
         <th>Book</th>
@@ -41,13 +48,13 @@
     <h1>Total Minutes Read:</h1>
     <h2>{{ totalMintuesSpentReading }}</h2>
     <h1>Completed Books:</h1>
-    <h2>You have read {{completedBooks.length}} books</h2>
-    <div  v-for="book in completedBooks" :key="book.isbn">
+    <h2>You have read {{ completedBooks.length }} books</h2>
+    <div v-for="book in completedBooks" :key="book.isbn">
       <h2>{{ book.bookName }}</h2>
     </div>
     <h1>Currently Reading:</h1>
-    <h2>You are currently reading {{inProgressBooks.length}} books</h2>
-    <div  v-for="book in inProgressBooks" :key="book.isbn">
+    <h2>You are currently reading {{ inProgressBooks.length }} books</h2>
+    <div v-for="book in inProgressBooks" :key="book.isbn">
       <h2>{{ book.title }}</h2>
     </div>
   </div>
@@ -58,7 +65,7 @@ export default {
   data() {
     return {
       activities: [],
-      prizesArray:[],
+      prizesArray: [],
       completedBooks: [],
       completedBooksTitles: [],
       inProgressBooks: [],
@@ -89,7 +96,7 @@ export default {
               }
             }
           }
-          this.activities.forEach(activity => {
+          this.activities.forEach((activity) => {
             this.totalMintuesSpentReading += activity.minutesRead;
           });
           this.activities.forEach(activity => {
@@ -103,15 +110,18 @@ export default {
               this.inProgressBooks.push(book);
             }
           });
-         
-          this.$store.state.prizes.forEach(prize => {
+
+          this.$store.state.prizes.forEach((prize) => {
             let minTowardPrize = 0;
-            this.activities.forEach(activity => {
-              if((activity.dateRead >= prize.startDate) && (activity.dateRead <= prize.endDate)){
+            this.activities.forEach((activity) => {
+              if (
+                activity.dateRead >= prize.startDate &&
+                activity.dateRead <= prize.endDate
+              ) {
                 minTowardPrize += activity.minutesRead;
               }
-            })
-              let newPrize = prize ;
+            });
+            let newPrize = prize;
             newPrize.minutesRead = minTowardPrize;
          
                 this.prizesArray.push(newPrize);
@@ -131,11 +141,11 @@ export default {
   position: relative;
   height: 82vh;
 }
-table{
+table {
   margin: auto;
 }
 td,
-th{
+th {
   padding: 10px;
 }
 </style>

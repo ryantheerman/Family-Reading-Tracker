@@ -10,20 +10,34 @@
 #nav {
     text-align: center;
     color: #18314E;
+    display: flex;
+    grid-area: nav;
+    justify-content: flex-end;
+    margin: 20px 20px 20px 20px;
 }
 
 #logo {
     height: 200px;
-    
+    width: 200px;
+    display: flex;
+    grid-area: logo;
+    justify-content: flex-start;
+}
+
+#router-view {
+    grid-area: router-view
 }
 
 #app {
     background-color: #FFF8E8;
     background-size: cover;
-    position: fixed; 
-    top: 0; 
-    left: 0; 
+    position: fixed;
+    top: 0;
+    left: 0;
     min-width: 100%;
     min-height: 100%;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'logo nav' 'router-view router-view'
 }
