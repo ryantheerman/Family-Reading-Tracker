@@ -3,7 +3,7 @@
       <button id="show-form-button" 
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"> Add a Prize</button>
-      <form v-on:submit.prevent="addNewPrize" v-if="showForm === true" class="prize-form" @submit.prevent="saveNewPrize">
+      <form v-on:submit.prevent="addNewPrize" v-if="showForm === true" class="prize-form">
           <label class="prize-name">Prize Name:
           <input
             type="text"
@@ -51,8 +51,6 @@
             class="form-control"
             placeholder=""
             v-model="newPrize.startDate"
-            :max="newPrize.endDate"
-            :min="minStartDate.toLocaleDateString()"
             required
         /> </label>
         <label class="endDate">End Date: 
@@ -62,11 +60,10 @@
             class="form-control"
             placeholder=""
             v-model="newPrize.endDate"
-            :min="newPrize.startDate"
             required
         />
         </label>
-        <button id="submit-button" type="submit">Submit Prize!</button>
+        <button id="submit-button" v-on:click.prevent="saveNewPrize">Submit Prize!</button>
       </form>
   </div>
 </template>
@@ -88,17 +85,15 @@ export default {
                 maxPrizes: '',
                 startDate: '',
                 endDate: '',
-                isActive: ''
-            },
-            minStartDate: new Date()
+            }
         };
     },
     created(){
         // get all prizes
-        backendService.getPrizes().then((response) => {
-            console.log(response.data);
-            this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
-        });
+        // backendService.getPrizes().then((response) => {
+        //     console.log(response.data);
+        //     this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
+        // });
     },
     methods:{
         saveNewPrize(){
@@ -106,6 +101,8 @@ export default {
             backendService.postPrize(this.newPrize).then(response => {
                 if(response.status === 201) {
                     this.$router.push('/');
+                    this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
+
                 }
             });
         },

@@ -1,6 +1,27 @@
 <template>
   <div id="activity-container">
-    <h1>{{ $store.state.storedUser.username }}'s Reading Activity</h1>
+    <h1>Progress Toward Prizes</h1>
+    <table >
+      <tr>
+        <th>Prize Name</th>
+        <th>Milestone</th>
+        <th>Your Minutes</th>
+        <th>Percent Complete</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+      <tr  v-for="prize in prizesArray" v-bind:key="prize.prizeId"  >
+        <td> {{prize.prizeName}} </td>
+        <td> {{prize.milestone}} </td>
+        <td> {{prize.minutesRead}} </td>
+        <td v-if="prize.minutesRead < prize.milestone" > {{ Math.round((prize.minutesRead/prize.milestone)*100) }} % </td>
+        <td v-else> Goal Reached! </td>
+        <td> {{prize.startDate | formatDate}} </td>
+        <td> {{prize.endDate | formatDate}} </td>
+      </tr>
+    </table>
+
+    <h1>{{ $store.state.storedUser.username }}'s Reading Activity</h1> 
     <table>
       <tr>
         <th>Book</th>
@@ -11,7 +32,7 @@
     <tr v-for="activity in activities" :key="activity.activityId">
       <td>{{ activity.bookName }}</td>
       <td>{{ activity.minutesRead }}</td>
-      <td>{{ activity.dateRead }}</td>
+      <td>{{ activity.dateRead | formatDate }}</td>
       <td v-if="activity.isFinished">Complete</td>
       <td v-else>In Progress</td>
     </tr>
@@ -37,10 +58,12 @@
 
 <script>
 import BackendService from "../services/BackendService";
+
 export default {
   data() {
     return {
       activities: [],
+      prizesArray:[],
       completedBooks: [],
       completedBooksTitles: [],
       inProgressBooks: [],
@@ -49,6 +72,7 @@ export default {
   },
 
   created() {
+
     this.completedBooks = [];
     let id = this.$store.state.storedUser.id;
     BackendService.getFamilyMembersBooks(id).then((response) => {
@@ -71,6 +95,7 @@ export default {
             }
           }
 
+
           this.activities.forEach(activity => {
             this.totalMintuesSpentReading += activity.minutesRead;
           });
@@ -89,38 +114,24 @@ export default {
             }
           });
 
-          // this.inProgressBooks = this.$store.state.books.filter(book => {
-          //   findUnfinishedBooks(book.title);
-          // })
-
-
-                // this.activities.forEach(activity => {
-                //   if(activity.isFinished != true && !this.inProgressBooks.includes(activity) && !this.completedBooks.includes(activity)) {
-                //     this.inProgressBooks.push(activity);
-                //   } 
-                // });
-
-                // this.completedBooks.forEach(completedBook => {
-                //   let currentTitle = completedBook.bookName;
-                //   this.$store.state.books.forEach(readingListBook => {
-                //     if(readingListBook.title != currentTitle) {
-                //       this.inProgressBooks.push(readingListBook);
-                //     }
-                //   });
-                // });
-
-          // for(let i = 0; i < this.$store.state.books.length; i++) {
-          //     if(!this.$store.state.books[i].includes(this.completedBooks.bookName)) {
-          //       this.inProgressBooks.push(this.$store.state.books[i]);
-          //     }
+         
+          this.$store.state.prizes.forEach(prize => {
+            let minTowardPrize = 0;
+            this.activities.forEach(activity => {
+              if((activity.dateRead >= prize.startDate) && (activity.dateRead <= prize.endDate)){
+                minTowardPrize += activity.minutesRead;
+              }
+            })
+              let newPrize = prize ;
+            newPrize.minutesRead = minTowardPrize;
+         
+                this.prizesArray.push(newPrize);
             
-          // }
+                 });
+          
 
-
-
-
-
-              
+          console.log(this.prizesArray);
+          // compare milestone to read minute but only within dates     
         });
       }
     });
@@ -137,6 +148,13 @@ export default {
   overflow-y: scroll;
   position: relative;
   height: 82vh;
+}
+table{
+  margin: auto;
+}
+td,
+th{
+  padding: 10px;
 }
 
 </style>

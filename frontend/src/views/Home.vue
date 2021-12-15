@@ -11,11 +11,18 @@
 <script>
 import SearchBar from "../components/SearchBar.vue";
 import ReadingList from "../components/ReadingList.vue";
+import BackendService from "../services/BackendService.js";
 // import ActivityList from '../components/ActivityList.vue';
 export default {
   components: { SearchBar, ReadingList  }, //ActivityList
   name: "home",
-  
+  created(){
+      BackendService.getPrizes().then((response) => {
+        console.log(response.data);
+        this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
+    });
+    
+  }
 
 };
 

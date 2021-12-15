@@ -1,31 +1,43 @@
 <template>
-    <div class="actions">
-        <button v-bind:to="familyId" @click.prevent="createFamilyId()" v-if="this.familyId == 0">Create Family</button>
-    </div>
+  <div>
+    <form>
+      <label class="addMembers"
+        >Enter family member usernames
+        <input
+          type='text'
+          id="members"
+          v-model="familyMember.username"
+          required
+        />
+      </label>
+      <button @click.prevent="addMember">Add Family Member</button>
+    </form>
+  </div>
 </template>
 
 <script>
 import AuthService from '../services/AuthService';
 export default {
-    name: "create-family",
+    name: 'add-fam-members',
     data() {
         return {
-            familyId: this.$store.state.user.familyId
+            familyMember: {
+                username: ''
+            }
+            
         }
     },
     methods: {
-        createFamilyId() {
-            this.familyId = Math.floor(Math.random() * (10000000 - 100) + 100);
-            AuthService.createFamilyId(this.familyId).then(response => {
+        addMember() {
+            AuthService.addFamilyMember(this.familyMember.username).then(response => {
                 if(response.status === 200) {
-                    this.$router.push('/');
+                    console.log('made it to backend');
                 }
             });
         }
     }
-}
+};
 </script>
 
 <style>
-
 </style>

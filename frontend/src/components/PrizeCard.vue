@@ -1,44 +1,79 @@
 <template>
-    <div class="card" v-bind:key="prize.prizeName">
-        <h3 class="prize-name">{{ prize.prizeName }}</h3>
-        <p class="prize-description">{{ prize.prizeDescription }}</p>
-        <h3 class="milestone">{{prize.milestone}}</h3>
-        <h3 class="maxPrizes">{{prize.maxPrizes}}</h3>
-        <h3 class="startDate">{{prize.startDate}} </h3>
-        <h3 class="endDate">{{prize.endDate}} </h3>
-         <router-link :to="{name: 'edit-prize'}">
-      <h4 @click="setActivePrize(prize)">select to edit</h4> 
-      </router-link>
-      <button class="delete-prize" @click="deletePrize(prize)" v-if="prize.isActive == false">Delete Prize</button>
+  <div>
+    <label for="Search bar"
+      >Enter the name of the book you'd like to search:
+    </label>
+    <input
+      @keydown.enter="getBooks"
+      type="text"
+      name="Search bar"
+      placeholder="Book Title"
+      v-model="searchTerm"
+    />
+    <button @click="getBooksByTitle">Search by Title</button>
+    <button @click="getBooksByAuthor">Search by Author</button>
+    <div class="searchBar">
+      <div v-for="book in booksArray" v-bind:key="book.isbn">
+        <router-link :to="{ name: 'bookDetails' }">
+          <div @click="mutateBook(book)">
+            <p v-if="book.volumeInfo.imageLinks">{{ book.volumeInfo.title }}</p>
+            <img
+              v-if="book.volumeInfo.imageLinks"
+              v-bind:src="book.volumeInfo.imageLinks.thumbnail"
+            />
+          </div>
+        </router-link>
+      </div>
     </div>
+  </div>
 </template>
 <script>
-import BackendService from '../services/BackendService.js'
+import ApiService from "@/services/ApiService.js";
 export default {
-    name: 'prize-card',
-    props: ['prize'],
-     methods: {
-      setActivePrize(prize){
-          this.$store.commit("SET_ACTIVE_PRIZE", prize);
-      },
-      deletePrize(prize){
-          BackendService.deleteSelectedPrize(prize).then((response) => {
-            if(response.status == 204){
-            this.$store.commit("DELETE_PRIZE");
-            this.$router.push('/');
-            }
-         })
-        }
-      }
-}
+  data() {
+    return {
+      searchTerm: "",
+      booksArray: [],
+    };
+  },
+  methods: {
+    getBooksByTitle() {
+      ApiService.getByTitle(this.searchTerm).then((response) => {
+        this.booksArray = response.data.items;
+      });
+    },
+    getBooksByAuthor() {
+      ApiService.getByAuthor(this.searchTerm).then((response) => {
+        this.booksArray = response.data.items;
+      });
+    },
+    mutateBook(book) {
+      let sentBook = {
+          author: ''
+      };
+      
+      sentBook.isbn = book.volumeInfo.industryIdentifiers[0].identifier;
+      sentBook.title = book.volumeInfo.title;
+
+      book.volumeInfo.authors.forEach((x) => {
+        sentBook.author += x + " ";
+      });
+
+      sentBook.description = book.volumeInfo.description;
+      sentBook.pageCount = book.volumeInfo.pageCount;
+      sentBook.thumbnail = book.volumeInfo.imageLinks.thumbnail;
+      this.$store.commit("SET_BOOK", sentBook);
+    },
+  },
+};
 </script>
-<style>
-.card {
-    border: 2px solid black;
-    border-radius: 10px;
-    width: 250px;
-    height: 350px;
-    margin: 20px;
-    text-align: center;
+
+<style scoped>
+.searchBar {
+  overflow-y: scroll;
+  height: 80vh;
+  width: auto;
+  position: fixed;
+  text-align: center;
 }
 </style>
