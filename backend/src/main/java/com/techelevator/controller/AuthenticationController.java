@@ -79,7 +79,6 @@ public class AuthenticationController {
     @RequestMapping(value = "/addMember", method = RequestMethod.PUT)
     public void addMember(@RequestBody String username, Principal user) {
         User currentUser = userDao.findByUsername(user.getName());
-        System.out.println(currentUser.getFamilyId());
         userDao.addMember(username, currentUser.getFamilyId());
     }
 

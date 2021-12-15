@@ -23,7 +23,7 @@ public class JdbcActivityDao implements ActivityDao {
     public List<Activity> findAllFinishedBooksByUserId(Long userId) {
         List<Activity> finishedBooks = new ArrayList<>();
 
-        String sql = "SELECT activity_id, user_id, isbn, date_read, minutes_read, is_finished " +
+        String sql = "SELECT activity_id, user_id, isbn, date_read, minutes_read, is_finished, media_type " +
                      "FROM activity " +
                      "WHERE user_id = ? AND is_finished = true;";
 
@@ -39,7 +39,7 @@ public class JdbcActivityDao implements ActivityDao {
     public List<Activity> findAllFinishedBooksByFamily(Long familyId) {
         List<Activity> finishedBooks = new ArrayList<>();
 
-        String sql = "SELECT activity_id, user_id, isbn, date_read, minutes_read, is_finished " +
+        String sql = "SELECT activity_id, user_id, isbn, date_read, minutes_read, is_finished, media_type " +
                      "FROM activity " +
                      "WHERE family_id = ? AND is_finished = true;";
 
@@ -54,7 +54,7 @@ public class JdbcActivityDao implements ActivityDao {
     public List<Activity> activityByFamily(Long familyId) {
         List<Activity> bookActivity = new ArrayList<>();
 
-        String sql = "SELECT activity_id, activity.user_id, isbn, date_read, minutes_read, is_finished " +
+        String sql = "SELECT activity_id, activity.user_id, isbn, date_read, minutes_read, is_finished, media_type " +
                 "                     FROM activity JOIN users ON activity.user_id = users.user_id " +
                 "                     WHERE family_id = ? AND minutes_read > 0;";
 
@@ -70,7 +70,7 @@ public class JdbcActivityDao implements ActivityDao {
     public List<Activity> returnActivityForUser(Long UserId) {
         List<Activity> activityObject = new ArrayList<>();
 
-        String sql = "SELECT activity_id, user_id, isbn, date_read, minutes_read, is_finished " +
+        String sql = "SELECT activity_id, user_id, isbn, date_read, minutes_read, is_finished, media_type " +
                      "FROM activity " +
                      "WHERE user_id = ? AND (minutes_read > 0 OR is_finished = true);";
 
@@ -85,11 +85,11 @@ public class JdbcActivityDao implements ActivityDao {
     @Override
     public Activity createActivity(Activity activity) {
 
-        String sql = "INSERT INTO activity(user_id, isbn, date_read, minutes_read, is_finished) " +
-                     "VALUES(?, ?, ?, ?, ?) " +
+        String sql = "INSERT INTO activity(user_id, isbn, date_read, minutes_read, is_finished, media_type) " +
+                     "VALUES(?, ?, ?, ?, ?, ?) " +
                      "RETURNING activity_id;";
         Long newActivityId = jdbcTemplate.queryForObject(sql, Long.class, activity.getUserId(), activity.getIsbn(),
-                activity.getDateRead(), activity.getMinutesRead(), activity.getisFinished());
+                activity.getDateRead(), activity.getMinutesRead(), activity.getisFinished(), activity.getMediaType());
 
         activity.setActivityId(newActivityId);
         return activity;
@@ -103,6 +103,7 @@ public class JdbcActivityDao implements ActivityDao {
         activity.setDateRead(rs.getDate("date_read").toLocalDate());
         activity.setMinutesRead(rs.getInt("minutes_read"));
         activity.setFinished(rs.getBoolean("is_finished"));
+        activity.setMediaType(rs.getString("media_type"));
         return activity;
     }
 }

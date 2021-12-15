@@ -132,7 +132,6 @@ public class JdbcPrizeDao implements PrizeDao {
         prize.setStartDate(rs.getDate("start_date").toLocalDate());
         prize.setEndDate(rs.getDate("end_date").toLocalDate());
         prize.setIsActive(rs.getBoolean("is_active"));
-        System.out.println(prize.getIsActive());
         return prize;
     }
 }

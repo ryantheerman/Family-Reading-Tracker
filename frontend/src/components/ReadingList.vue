@@ -27,14 +27,6 @@ export default {
         this.$store.commit("ADD_BOOKS_TO_ARRAY", response.data);
       }
       })
-
-
-    // get all books by user id, ie current collection, mutate into data store
-    // backendService.getBooks().then((response) => {
-    //   console.log('reading list created')
-    //   this.$store.commit('WIPE_BOOKS_ARRAY');
-    //   this.$store.commit("ADD_BOOKS_TO_ARRAY", response.data);
-    // });
   },
   methods: {
     mutateBook(book){
