@@ -10,6 +10,7 @@
           <th>Percent Complete</th>
           <th>Start Date</th>
           <th>End Date</th>
+          <th>Is Active</th>
         </tr>
         <tr v-for="prize in prizesArray" v-bind:key="prize.prizeId">
           <td>{{ prize.prizeName }}</td>
@@ -21,6 +22,8 @@
           <td v-else>Goal Reached!</td>
           <td>{{ prize.startDate | formatDate }}</td>
           <td>{{ prize.endDate | formatDate }}</td>
+          <td v-if="prize.isActive">Active</td>
+          <td v-else>Inactive</td>
         </tr>
       </table>
     </div>
@@ -33,15 +36,6 @@
         <th>Status</th>
         <th>Media Type</th>
       </tr>
-<<<<<<< HEAD
-      <tr v-for="activity in activities" :key="activity.activityId">
-        <td>{{ activity.bookName }}</td>
-        <td>{{ activity.minutesRead }}</td>
-        <td>{{ activity.dateRead | formatDate }}</td>
-        <td v-if="activity.isFinished">Complete</td>
-        <td v-else>In Progress</td>
-      </tr>
-=======
     <tr v-for="activity in activities" :key="activity.activityId">
       <td>{{ activity.bookName }}</td>
       <td>{{ activity.minutesRead }}</td>
@@ -50,7 +44,6 @@
       <td v-else>In Progress</td>
       <td>{{ activity.mediaType }}</td>
     </tr>
->>>>>>> acfccaaf4b265771b2cc117d0e695f702303b26b
     </table>
     <h1>Total Minutes Read:</h1>
     <h2>{{ totalMintuesSpentReading }}</h2>
@@ -81,12 +74,7 @@ export default {
   },
   created() {
     BackendService.getPrizes().then((response) => {
-<<<<<<< HEAD
-      console.log(response.data);
-      this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
-=======
         this.$store.commit("ADD_PRIZES_TO_ARRAY", response.data);
->>>>>>> acfccaaf4b265771b2cc117d0e695f702303b26b
     });
     this.completedBooks = [];
     let id = this.$store.state.storedUser.id;
@@ -111,17 +99,6 @@ export default {
           this.activities.forEach((activity) => {
             this.totalMintuesSpentReading += activity.minutesRead;
           });
-<<<<<<< HEAD
-          this.activities.forEach((activity) => {
-            if (activity.isFinished == true) {
-              this.completedBooks.push(activity);
-              this.completedBooksTitles.push(activity.bookName);
-            }
-          });
-          console.log(this.completedBooksTitles);
-          this.$store.state.books.forEach((book) => {
-            if (!this.completedBooksTitles.includes(book.title)) {
-=======
           this.activities.forEach(activity => {
                   if(activity.isFinished == true) {
                     this.completedBooks.push(activity);
@@ -130,7 +107,6 @@ export default {
                 });
           this.$store.state.books.forEach(book => {
             if(!this.completedBooksTitles.includes(book.title)) {
->>>>>>> acfccaaf4b265771b2cc117d0e695f702303b26b
               this.inProgressBooks.push(book);
             }
           });
@@ -147,18 +123,10 @@ export default {
             });
             let newPrize = prize;
             newPrize.minutesRead = minTowardPrize;
-<<<<<<< HEAD
-
-            this.prizesArray.push(newPrize);
-          });
-
-          console.log(this.prizesArray);
-=======
          
                 this.prizesArray.push(newPrize);
             
                  }); 
->>>>>>> acfccaaf4b265771b2cc117d0e695f702303b26b
         });
       }
     });

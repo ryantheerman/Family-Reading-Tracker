@@ -22,28 +22,3 @@ export default {
   components: AppStyle
 }
 </script>
-
-<style>
-#app {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'logo nav'
-                       'router-view router-view'
-
-}
-#logo {
-  display:flex;
-  grid-area: logo;
-  justify-content: flex-start;
-}
-#nav {
-  display: flex;
-  grid-area: nav;
-  justify-content: flex-end;
-  margin: 20px 20px 20px 20px;
-}
-#router-view {
-  grid-area: router-view
-}
-</style>
-
