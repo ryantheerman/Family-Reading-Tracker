@@ -10,8 +10,11 @@
         </router-link>
         <router-link v-bind:to="{ name: 'add-prize' }"  v-if="$store.state.token != '' && $store.state.user.isParent != false && $store.state.user.familyId != 0" class="prize">Prizes</router-link>
         <router-link v-bind:to="{ name: 'family' }" v-if="$store.state.token != '' && $store.state.user.isParent != false" class="family">Family</router-link>
-        <router-link v-bind:to="{ name: 'activity' }" v-if="$store.state.token != ''" class="activity">Activity </router-link>
+        <router-link v-bind:to="{ name: 'test-activity' }" v-if="$store.state.token != ''" class="activity">Activity </router-link>
         <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="logout">Logout</router-link>
+        
+        
+      
       </div>
     <router-view id="router-view"/>
   </div>

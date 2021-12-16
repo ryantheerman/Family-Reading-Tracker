@@ -33,7 +33,6 @@
     font-size: 30px;
     color: white;
     text-decoration: none;
-
 }
 
 .family {
@@ -43,7 +42,6 @@
     padding-bottom: 20px;
     color: white;
     text-decoration: none;
-
 }
 
 .activity {
@@ -53,10 +51,9 @@
     padding-bottom: 20px;
     color: white;
     text-decoration: none;
-
 }
 
-#nav{
+#nav {
     grid-area: nav-bar;
     background-color: #8DA59C;
     display: grid;
@@ -67,11 +64,7 @@
     width: 150px;
     top: 0;
     left: 0;
-    grid-template-areas: "logo"
-                         "logout"
-                         "activity"
-                         "family"
-                         "prize";
+    grid-template-areas: "logo" "logout" "activity" "family" "prize";
 }
 
 #app {
@@ -86,6 +79,5 @@
     display: grid;
     grid-template-columns: 200px auto;
     grid-template-rows: 100px auto;
-    grid-template-areas: "nav-bar header"
-                         "nav-bar router-view";
+    grid-template-areas: "nav-bar header" "nav-bar router-view";
 }

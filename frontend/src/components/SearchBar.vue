@@ -75,7 +75,10 @@ export default {
   width: auto;
   text-align: center;
 }
+
 .searchBar::-webkit-scrollbar {
+
   display: none;
+
 }
 </style>
