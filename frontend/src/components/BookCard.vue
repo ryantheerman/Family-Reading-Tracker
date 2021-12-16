@@ -30,16 +30,27 @@ export default {
     background-color: rgba(162, 94, 73, 0.5);
 
 }
-
+img{
+    height:30vh;
+    margin-bottom:15px;
+} 
 .book-title {
     font-size: 1.5rem;
     color: rgba(162, 94, 73, 1);
     /* margin-top: 93px; */
     padding-top:7px;
+    width:auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .book-author {
     font-size: 1rem;
     color: rgba(162, 94, 73, 1);
+    width:auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 </style>

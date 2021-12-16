@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="prizeProgress" class="prizeProgress">
     <div id="prize-details">
       <h1>Prize Details</h1>
       <h3 class="prize-name">{{ prize.prizeName }}</h3>
@@ -8,24 +8,25 @@
       <h3 class="maxPrizes">{{ prize.maxPrizes }}</h3>
       <h3 class="startDate">{{ prize.startDate }}</h3>
       <h3 class="endDate">{{ prize.endDate }}</h3>
+    
     </div>
+      <div v-if="prize.isActive">
+        <h1>Family Member Progress Toward Prize</h1>
 
-    <div v-if="prize.isActive">
-    <h1>Family Member Progress Toward Prize</h1>
 
-
-    <div
-      id="family-details"
-      v-for="member in famMembers"
-      v-bind:key="member.id"
-    >
-      <h3>
-        {{ member.username }} has completed
-        {{ member.progress }} % of required
-        reading to win {{ prize.prizeName }}
-      </h3>
-    </div>
-    </div>
+        <div
+          id="family-details"
+          v-for="member in famMembers"
+          v-bind:key="member.id"
+        >
+          <h3>
+            {{ member.username }} has completed
+            {{ member.progress }}% of required
+            reading to win {{ prize.prizeName }}
+          </h3>
+        </div>
+      </div>
+    
   </div>
 </template>
 
@@ -73,7 +74,7 @@ export default {
               }
             });
 
-            member.progress = (minTowardPrize / this.prize.milestone) * 100;
+            member.progress = Math.round(minTowardPrize / this.prize.milestone) * 100;
             this.famMembers.push(member);
           }
         });
@@ -84,4 +85,21 @@ export default {
 </script>
 
 <style>
+.prizeProgress{
+  background-color: rgb(140, 95, 102, 0.4);
+  color:black
+}
+#prize-details{
+    border-radius: 10px;
+    width: 750px;
+    height: auto;
+    padding: 10px;
+    margin: 20px;
+    text-align:left;
+    background-color:rgb(140, 95, 102, 1);
+    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+    transition-duration: 0.4s;
+    font-size: 19px;
+}
+
 </style>

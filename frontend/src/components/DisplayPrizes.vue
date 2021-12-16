@@ -30,8 +30,6 @@ export default {
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
-  overflow-y: scroll;
   position: relative;
-  height: 90vh;
 }
 </style>

@@ -16,6 +16,8 @@ export default {
 
 <style>
 .prizes{
-  background-color:rgb(140, 95, 102, 0.2)
+    background-color: rgb(140, 95, 102, 0.4);
+    border-top: 2px solid rgba(140, 95, 102, .5);
+
 }
 </style>

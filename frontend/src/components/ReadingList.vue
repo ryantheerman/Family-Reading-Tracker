@@ -36,16 +36,7 @@ export default {
 };
 </script>
 
-<style>
-
-img{
-    height:25vh;
-    margin-bottom:15px;
-} 
-
-#reading-list {
-    grid-area: reading-list;
-}
+<style scoped>
 
 .book-container {
   display: flex;
@@ -53,7 +44,8 @@ img{
   flex-wrap: wrap;
   width: 100%;
   position: relative;
-  border-top: 2px solid rgba(162, 94, 73, 0.5)
+  flex-direction: row;
+  border-top: 2px solid rgba(162, 94, 73, 0.5);
 
 }
 </style>

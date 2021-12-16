@@ -33,10 +33,12 @@
           v-model="user.confirmPassword"
           required
         />
-      
-          <input type="checkbox" id="parent" class="check" v-model="user.isParent" />
-          <label for="parent" class="parent-checkbox">Are you a parent?</label>
-
+        <div>    
+            <label class="parent-check" for="parent">
+              <input type="checkbox" id="parent" class="check" v-model="user.isParent" />
+            
+             Are you a parent?</label>
+        </div>
         
         <button class="btn btn-lg btn-primary btn-block form-control" type="submit" id="button">
           Create Account
@@ -110,3 +112,6 @@ export default {
   },
 };
 </script>
+<style>
+
+</style>

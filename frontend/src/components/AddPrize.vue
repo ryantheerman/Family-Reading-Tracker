@@ -63,7 +63,7 @@
             required
         />
         </label>
-        <button id="submit-button" v-on:click.prevent="saveNewPrize">Submit Prize!</button>
+        <button id="submit-button" v-on:click.prevent="saveNewPrize">Save Prize</button>
       </form>
   </div>
 </template>
@@ -127,104 +127,59 @@ export default {
     background-color: rgb(140, 95, 102, 0.9);
     color:white
 }
-.prize-name {
-    grid-area: prize-name;
-}
-#prize-name {
-    background-color: rgb(140, 95, 102, 0.4);
-    height: 20px;
-    border: solid 3px #819C92;
-}
-
-#prize-name:hover {
-    background-color: rgb(140, 95, 102, 0.2);
-}
-
-.prize-description {
-    grid-area: prize-description;
-}
-
-#prize-description {
-    background-color: #BAC9C4;
-    height: 20px;
-    border: solid 3px #819C92;
-}
-
-#prize-description:hover {
-    opacity: 75%;
-}
-
-.milestone {
-    grid-area: milestone;
-}
-
-#milestone {
-    background-color: #BAC9C4;
-    height: 20px;
-    border: solid 3px #819C92;
-}
-
-#milestone:hover {
-    opacity: 75%;
-}
-
-.maxPrizes {
-    grid-area: maxPrizes;
-}
-
-#maxPrizes {
-    background-color: #BAC9C4;
-    height: 20px;
-    border: solid 3px #819C92;
-}
-
-#maxPrizes:hover {
-    opacity: 75%;
-}
-
-.startDate {
-    grid-area: startDate;
-}
-
-#startDate {
-    background-color: #BAC9C4;
-    height: 20px;
-    border: solid 3px #819C92;
-    color: #637E75;
-}
-
-#startDate:hover {
-    opacity: 75%;
-}
-
-.endDate {
-    grid-area: endDate;
-}
-
+#prize-name,
+#prize-description,
+#milestone,
+#maxPrizes,
+#startDate,
 #endDate {
-    background-color: #BAC9C4;
-    height: 20px;
-    border: solid 3px #819C92;
-    color: #637E75;
+    background-color: rgb(140, 95, 102, 0.5);
+    color:white;
+    width: 300px;
+    border-radius:10px ;
+    margin-bottom:10px;
+    transition-duration: .3s;
+    margin-left: 15px;
+    font-size: 1.15rem;
+}
+.prize-name,
+.prize-description,
+.milestone,
+.maxPrizes,
+.startDate,
+.endDate{
+    font-size: 20px;   
+    margin-left: 15px;
 }
 
+#prize-name:hover,
+#prize-description:hover,
+#milestone:hover,
+#maxPrizes:hover,
+#startDate:hover,
 #endDate:hover {
-    opacity: 75%;
+    background-color: rgb(140, 95, 102, 0.3);
 }
 
 #submit-button {
-    grid-area: submit-button;
-    width: auto;
-    background-color: #BAC9C4;
-    border: solid 3px #819C92;
-    color: #637E75;
+    margin:15px 0 15px 15px;
+    text-align: center;
+    height: 40px;
+    width:140px;
+    border-radius: 10px;
+    background-color: rgb(140, 95, 102, 0.7);
+    border:none;
+    transition-duration: 0.3s;
+    font-size: 18px;
+    align-self:center;
+    color: black
 }
 
 #submit-button:hover {
-    opacity: 75%;
+    background-color: rgb(140, 95, 102, 0.3);
 }
 
-.prize-form {
+/* .prize-form {
     display: grid;
     grid-area: prize-form;
     border: solid 4px #819C92;
@@ -246,5 +201,5 @@ export default {
                          "startDate"
                          "endDate"
                          "submit-button";
-}
+} */
 </style>

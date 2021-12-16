@@ -1,92 +1,7 @@
-/* #create {
-    grid-area: create-title;
-    text-align: center;
-    background-color: #8DA59C;
-}
-
-#confirmPassword {
-    grid-area: confirmPassword;
-    background-color: #D1DBD8;
-    border: solid 3px #819C92;
-    text-align: center;
-}
-
-#confirmPassword:hover {
-    opacity: 75%;
-}
-
-#have-account {
-    grid-area: haveAccount;
-    text-align: center;
-    color: #F1E8E4;
-    background-color: #8DA59C;
-}
-
-#button {
-    grid-area: button;
-    color: #485B56;
-    background-color: #D1DBD8;
-    border: solid 3px #819C92;
-    width: 50%;
-    height: 40px;
-    margin: auto;
-}
-
-#button:hover {
-    opacity: 75%;
-}
-
-.parent-checkbox {
-    grid-area: checkbox;
-    text-align: center;
-    background-color: #8DA59C;
-}
-
-#register-description {
-    grid-area: register-description;
-    text-align: left;
-    color: #8D513F;
-    padding-top: 20px;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-right: 25px;
-    font-size: 23px;
-}
-
-.form-register {
-    grid-area: registration-form;
-    background-color: #8DA59C;
-    color: #FFF8E8;
-    margin-top: 20px;
-    margin-left: 30px;
-    border: solid 4px #819C92;
-    border-radius: 40px;
-    display: grid;
-    width: 70%;
-    row-gap: 20px;
-    grid-template-rows: 1fr 35px 35px 35px 15px 25px 1fr;
-    justify-content: center;
-    grid-template-areas: "create-title"
-                         "username"
-                         "password"
-                         "confirmPassword"
-                         "checkbox"
-                         "haveAccount"
-                         "button";
-}
-
-#register {
-    display: grid;
-    margin-top: 40px;
-    grid-template-columns: 40% 30% 30%;
-    grid-template-areas: "registration-form register-description register-description";
-    column-gap: none;
-} */
 
 body{
 	margin:0;
     color:#dfe0e9;
-    ;
 	background:#c8c8c8;
     overflow-y:scroll;
     /* font:600 16px/18px 'Open Sans',sans-serif; */
@@ -121,7 +36,8 @@ body{
 }
  #username:hover,
  #password:hover,
- #confirmPassword:hover{
+ #confirmPassword:hover,
+ #button:hover{
 	background:rgba(255,255,255,.2);
  }
 
@@ -131,46 +47,30 @@ body{
 	width:100%;
 	color:#fff;
 	display:block;
-  border:none;
+  	border:none;
 	padding:15px 20px;
 	border-radius:25px;
 	background:rgba(255,255,255,.1);
 }
 
 #button{
-    transition-duration: 0.4s;
-    margin-top: 70px;
+    transition-duration: 0.3s;
+    margin-top: 30px;
 }
 
-/* .login-form .group label .icon{
-	width:15px;
-	height:15px;
-	border-radius:2px;
-	position:relative;
-	display:inline-block;
-	background:rgba(255,255,255,.1);
-} */
-
-
+.separation{
+    height: 2px;
+    margin: 30px 0;
+    background: #fff;
+}
 #have-account{
-    /* margin:20px; */
-	/* content:''; */
-	/* width: 200px; */
-	/* height:9px; */
-	/* background:#fff; */
     color:#dfe0e9;
-    /* position:absolute; */
     text-align: center;
-	/* transition:all .2s ease-in-out 0s; */
 }
 
 #have-account:hover,
 .parent-checkbox:hover{
   color:#fff
 }
-.separation{
-    height: 2px;
-    margin: 60px 0 50px 0;
-    background: #fff;
-}
+
 
