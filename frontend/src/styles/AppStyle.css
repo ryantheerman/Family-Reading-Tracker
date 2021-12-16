@@ -1,11 +1,12 @@
 * {
-    font-family: "Comic Sans MS";
+    font-family: 'Montserrat', sans-serif;
 }
 
 .header {
-    text-align: left;
     grid-area: header;
     margin-left: 20px;
+    width: 500px;
+    height: 120px;
 }
 
 #router-view {
@@ -15,7 +16,7 @@
 #logo {
     grid-area: logo;
     height: 150px;
-    width: 200px;
+    width: 150px;
 }
 
 .logout {
@@ -63,6 +64,7 @@
     row-gap: 20px;
     height: 100%;
     position: fixed;
+    width: 150px;
     top: 0;
     left: 0;
     grid-template-areas: "logo"
