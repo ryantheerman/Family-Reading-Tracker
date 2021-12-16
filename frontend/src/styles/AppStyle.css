@@ -1,43 +1,89 @@
 * {
-    font-family: "Sans-Serif";
+    font-family: "Comic Sans MS";
 }
 
 .header {
-    text-align: center;
-    color: #18314E;
-}
-
-#nav {
-    text-align: center;
-    color: #18314E;
-    display: flex;
-    grid-area: nav;
-    justify-content: flex-end;
-    margin: 20px 20px 20px 20px;
-}
-
-#logo {
-    height: 200px;
-    width: 200px;
-    display: flex;
-    grid-area: logo;
-    justify-content: flex-start;
+    text-align: left;
+    grid-area: header;
+    margin-left: 20px;
 }
 
 #router-view {
-    grid-area: router-view
+    grid-area: router-view;
 }
 
-#app {
-    background-color: #FFF8E8;
-    background-size: cover;
+#logo {
+    grid-area: logo;
+    height: 150px;
+    width: 200px;
+}
+
+.logout {
+    grid-area: logout;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+.prize {
+    grid-area: prize;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.family {
+    grid-area: family;
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 20px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.activity {
+    grid-area: activity;
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 20px;
+    color: white;
+    text-decoration: none;
+
+}
+
+#nav{
+    grid-area: nav-bar;
+    background-color: #8DA59C;
+    display: grid;
+    grid-template-rows: 150px 40px 40px 40px 40px;
+    row-gap: 20px;
+    height: 100%;
     position: fixed;
     top: 0;
     left: 0;
+    grid-template-areas: "logo"
+                         "logout"
+                         "activity"
+                         "family"
+                         "prize";
+}
+
+#app {
+    background-color: white;
     min-width: 100%;
     min-height: 100%;
+    top: 0;
+    left: 0;
+    /* position: fixed; */
     background-repeat: no-repeat;
+    background-size: cover;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'logo nav' 'router-view router-view'
+    grid-template-columns: 200px auto;
+    grid-template-rows: 100px auto;
+    grid-template-areas: "nav-bar header"
+                         "nav-bar router-view";
 }
