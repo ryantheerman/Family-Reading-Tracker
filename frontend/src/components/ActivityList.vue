@@ -1,6 +1,6 @@
 <template>
-  <div id="activity-container">
-    <div v-if="prizesArray.length > 0">
+  <div class="activity-container" id="activity-container">
+    <div class="progress-section" v-if="prizesArray.length > 0">
       <h1>Progress Toward Prizes</h1>
       <table>
         <tr>
@@ -27,7 +27,7 @@
         </tr>
       </table>
     </div>
-    <h1>{{ $store.state.storedUser.username }}'s Reading Activity</h1>
+    <h1 class="user-title">{{ $store.state.storedUser.username }}'s Reading Activity</h1>
     <table>
       <tr>
         <th>Book</th>
@@ -45,17 +45,25 @@
       <td>{{ activity.mediaType }}</td>
     </tr>
     </table>
-    <h1>Total Minutes Read:</h1>
-    <h2>{{ totalMintuesSpentReading }}</h2>
-    <h1>Completed Books:</h1>
-    <h2>You have read {{ completedBooks.length }} books</h2>
-    <div v-for="book in completedBooks" :key="book.isbn">
-      <h2>{{ book.bookName }}</h2>
-    </div>
-    <h1>Currently Reading:</h1>
-    <h2>You are currently reading {{ inProgressBooks.length }} books</h2>
-    <div v-for="book in inProgressBooks" :key="book.isbn">
-      <h2>{{ book.title }}</h2>
+    <div class="progress-card">
+      <div class="total">
+          <h1>Total Minutes Read:</h1>
+          <h2>{{ totalMintuesSpentReading }}</h2>
+      </div>
+      <div class="completed"> 
+          <h1>Completed Books:</h1>
+          <h2>You have read {{ completedBooks.length }} books</h2>
+          <div v-for="book in completedBooks" :key="book.isbn">
+            <h2>{{ book.bookName }}</h2>
+          </div>
+      </div>
+      <div class="current">
+          <h1>Currently Reading:</h1>
+          <h2>You are currently reading {{ inProgressBooks.length }} books</h2>
+          <div v-for="book in inProgressBooks" :key="book.isbn">
+            <h2>{{ book.title }}</h2>
+          </div>     
+      </div>
     </div>
   </div>
 </template>
@@ -136,17 +144,51 @@ export default {
 };
 </script>
 <style>
-/* #activity-container {
+.activity-container {
+  border-top:1px solid rgb(24, 49, 78, .5) ;
   width: 100%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   position: relative;
-  height: 82vh;
+  height: auto;
+  background-color: rgb(24, 49, 78, .2);
+  color: rgb(24, 49, 78);
 }
+
 table {
   margin: auto;
 }
 td,
 th {
   padding: 10px;
-} */
+}
+.user-title,
+.progress-section{
+  text-align: center;
+}
+tr:nth-child(even) {
+  background-color: rgb(24, 49, 78, .2);
+  }
+tr:nth-child(odd) {background: rgb(255, 255, 255 , .4)}
+
+
+.total,
+.completed,
+.current{
+  border: 1px solid black;
+  border-radius: 10px;
+  margin:10px;
+}
+.progress-card{
+  grid-template-areas: "total completed current" ;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.total{
+  grid-area: total;
+}
+.complete{
+  grid-area:complete;
+}
+.current{
+  grid-area: current;
+}
 </style>
