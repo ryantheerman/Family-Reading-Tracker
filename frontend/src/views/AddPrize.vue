@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="prizes">
       <add-prize />
       <display-prizes />
   </div>
@@ -15,5 +15,7 @@ export default {
 </script>
 
 <style>
-
+.prizes{
+  background-color:rgb(140, 95, 102, 0.2)
+}
 </style>

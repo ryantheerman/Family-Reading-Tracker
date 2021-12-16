@@ -27,7 +27,6 @@ export default {
 
 }
 .card:hover{
-    background-color: rgba(162, 94, 73, 1);
     background-color: rgba(162, 94, 73, 0.5);
 
 }

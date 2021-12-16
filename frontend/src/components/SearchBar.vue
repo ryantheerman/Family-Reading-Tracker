@@ -71,6 +71,60 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
+  label{
+    margin:7px;
+  }
 
+  input{
+    margin-bottom:15px;
+    width:100%;
+    color: hsl(14, 38%, 46% , 1);
+    display:block;
+    border:none;
+    padding:15px 20px;
+    border-radius:25px;
+    background-color: rgba(162, 94, 73, 0.2);
+    font-size: 16px;
+  }
+
+
+  #searchTitle,
+  #searchAuthor{
+  
+    margin:10px 0 10px 13px;
+    text-align: center;
+    height: 40px;
+    width:140px;
+    border-radius: 10px;
+    background-color: rgba(162, 94, 73, 0.8);
+    border:none;
+    transition-duration: 0.4s;
+    font-size: 18px;
+
+  }
+  #searchTitle:hover,
+  #searchAuthor:hover{
+    background-color: rgba(162, 94, 73, 0.6);
+  }
+  .searchBar {
+      height: 90vh;
+      width: auto;
+      position: relative;
+      text-align: center;
+      color: black;
+      margin-bottom: 10vh;
+      overflow-y: scroll;
+  }
+  .searchedTitle{
+    color: rgba(162, 94, 73);
+    font-size: 22px;
+    margin-bottom:7px;
+
+  }
+
+  img{
+      height:25vh;
+      margin-bottom:15px;
+  }
 </style>

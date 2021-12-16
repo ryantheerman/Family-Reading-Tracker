@@ -69,10 +69,10 @@
 </template>
 <script>
 import backendService from "@/services/BackendService";
-import AddPrizeStyle from '../styles/AddPrizeStyle.css';
+// import AddPrizeStyle from '../styles/AddPrizeStyle.css';
 export default {
     name: "add-prize",
-    component: {AddPrizeStyle, backendService},
+    component: { backendService},
     data() {
         return {
             showForm : false,
@@ -111,5 +111,141 @@ export default {
 }
 </script>
 <style>
+#show-form-button{
+    margin:15px 0 15px 15px;
+    text-align: center;
+    height: 40px;
+    width:140px;
+    border-radius: 10px;
+    background-color: rgb(140, 95, 102, 0.7);
+    border:none;
+    transition-duration: 0.3s;
+    font-size: 18px;
+    align-self:center;
+    color: black
+}
+#show-form-button:hover{
+    background-color: rgb(140, 95, 102, 0.9);
+    color:white
+}
+.prize-name {
+    grid-area: prize-name;
+}
+#prize-name {
+    background-color: rgb(140, 95, 102, 0.4);
+    height: 20px;
+    border: solid 3px #819C92;
+}
 
+#prize-name:hover {
+    background-color: rgb(140, 95, 102, 0.2);
+}
+
+.prize-description {
+    grid-area: prize-description;
+}
+
+#prize-description {
+    background-color: #BAC9C4;
+    height: 20px;
+    border: solid 3px #819C92;
+}
+
+#prize-description:hover {
+    opacity: 75%;
+}
+
+.milestone {
+    grid-area: milestone;
+}
+
+#milestone {
+    background-color: #BAC9C4;
+    height: 20px;
+    border: solid 3px #819C92;
+}
+
+#milestone:hover {
+    opacity: 75%;
+}
+
+.maxPrizes {
+    grid-area: maxPrizes;
+}
+
+#maxPrizes {
+    background-color: #BAC9C4;
+    height: 20px;
+    border: solid 3px #819C92;
+}
+
+#maxPrizes:hover {
+    opacity: 75%;
+}
+
+.startDate {
+    grid-area: startDate;
+}
+
+#startDate {
+    background-color: #BAC9C4;
+    height: 20px;
+    border: solid 3px #819C92;
+    color: #637E75;
+}
+
+#startDate:hover {
+    opacity: 75%;
+}
+
+.endDate {
+    grid-area: endDate;
+}
+
+#endDate {
+    background-color: #BAC9C4;
+    height: 20px;
+    border: solid 3px #819C92;
+    color: #637E75;
+}
+
+#endDate:hover {
+    opacity: 75%;
+}
+
+#submit-button {
+    grid-area: submit-button;
+    width: auto;
+    background-color: #BAC9C4;
+    border: solid 3px #819C92;
+    color: #637E75;
+}
+
+#submit-button:hover {
+    opacity: 75%;
+}
+
+.prize-form {
+    display: grid;
+    grid-area: prize-form;
+    border: solid 4px #819C92;
+    border-radius: 40px;
+    background-color: #98AEA6;
+    justify-content: center;
+    width: 35%;
+    margin-top: 20px;
+    margin-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    row-gap: 15px;
+    color: #FFF8E8;
+    grid-template-rows: 40px 40px 40px 40px 40px 40px 40px;
+    grid-template-areas: "prize-name"
+                         "prize-description"
+                         "milestone"
+                         "maxPrizes"
+                         "startDate"
+                         "endDate"
+                         "submit-button";
+}
 </style>

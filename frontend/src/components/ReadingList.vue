@@ -38,4 +38,25 @@ export default {
 
 <style>
 
+img{
+    height:25vh;
+    margin-bottom:15px;
+} 
+
+#reading-list {
+    grid-area: reading-list;
+}
+
+.book-container {
+  display: flex;
+  /* display: inline-block; */
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow-y: scroll;
+  position: relative;
+  height: 82vh;
+  border-top: 2px solid rgba(162, 94, 73, 0.5)
+
+}
 </style>
