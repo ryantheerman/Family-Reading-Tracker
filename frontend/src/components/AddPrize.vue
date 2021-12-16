@@ -4,29 +4,30 @@
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"> Add a Prize</button>
       <form v-on:submit.prevent="addNewPrize" v-if="showForm === true" class="prize-form">
-          <label class="prize-name">Prize Name:
+         <div>
+          <label class="add-prize-name">Prize Name:
           <input
             type="text"
-            id="prize-name"
+            id="add-prize-name"
             class="form-control"
             placeholder="Name your prize"
             v-model="newPrize.prizeName"
             required
             autofocus
         /> </label>
-        <label class="prize-description">Prize Description: 
+        <label class="add-prize-description">Prize Description: 
         <input
             type="text"
-            id="prize-description"
+            id="add-prize-description"
             class="form-control"
             placeholder="Description of prize"
             v-model="newPrize.prizeDescription"
             required
         /> </label>
-        <label class="milestone">Minute Milestone: 
+        <label class="add-milestone">Minute Milestone: 
         <input
             type="number"
-            id="milestone"
+            id="add-milestone"
             class="form-control"
             step="10"
             min="0"
@@ -34,36 +35,39 @@
             v-model="newPrize.milestone"
             required
         /> </label>
-        <label class="maxPrizes">Number of Winners: 
+         </div>
+         <div>
+        <label class="add-maxPrizes">Number of Winners: 
         <input
             type="number"
-            id="maxPrizes"
+            id="add-maxPrizes"
             class="form-control"
             placeholder="Number of winners"
             min="1"
             v-model="newPrize.maxPrizes"
             required
         /> </label>
-        <label class="startDate">Start Date: 
+        <label class="add-startDate">Start Date: 
         <input
             type="date"
-            id="startDate"
+            id="add-startDate"
             class="form-control"
             placeholder=""
             v-model="newPrize.startDate"
             required
         /> </label>
-        <label class="endDate">End Date: 
+        <label class="add-endDate">End Date: 
         <input
             type="date"
-            id="endDate"
+            id="add-endDate"
             class="form-control"
             placeholder=""
             v-model="newPrize.endDate"
             required
         />
         </label>
-        <button id="submit-button" v-on:click.prevent="saveNewPrize">Save Prize</button>
+        <button id="save-prize" v-on:click.prevent="saveNewPrize">Save Prize</button>
+        </div>    
       </form>
   </div>
 </template>
@@ -127,29 +131,34 @@ export default {
     background-color: rgb(140, 95, 102, 0.9);
     color:white
 }
-#prize-name,
-#prize-description,
-#milestone,
-#maxPrizes,
-#startDate,
-#endDate {
+#add-prize-name,
+#add-prize-description,
+#add-milestone,
+#add-maxPrizes,
+#add-startDate,
+#add-endDate {
     background-color: rgb(140, 95, 102, 0.5);
     color:white;
-    width: 300px;
+    width: 200px;
     border-radius:10px ;
     margin-bottom:10px;
     transition-duration: .3s;
-    margin-left: 15px;
-    font-size: 1.15rem;
+    /* margin-left: 15px; */
+    font-size: 17px;
+    border:1px solid white;
+    height:40px;
+    padding-left:10px ;
+
 }
-.prize-name,
-.prize-description,
-.milestone,
-.maxPrizes,
-.startDate,
-.endDate{
-    font-size: 20px;   
+.add-prize-name,
+.add-prize-description,
+.add-milestone,
+.add-maxPrizes,
+.add-startDate,
+.add-endDate{
     margin-left: 15px;
+    font-size: 19px;
+    color: white;
 }
 
 #prize-name:hover,
@@ -161,7 +170,7 @@ export default {
     background-color: rgb(140, 95, 102, 0.3);
 }
 
-#submit-button {
+#save-prize {
     margin:15px 0 15px 15px;
     text-align: center;
     height: 40px;

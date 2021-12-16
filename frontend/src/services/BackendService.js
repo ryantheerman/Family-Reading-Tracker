@@ -30,6 +30,9 @@ export default {
 
     return axios.put("/editPrize", prize, { headers: {'Content-Type': 'application/JSON'}});
   },
+  deleteSelectedPrize(prize){
+    return axios.delete('/deletePrize', {headers: {'Content-Type': 'application/JSON'}, data: prize});
+  },
 
   // Activity
   postActivity(activity, id) {

@@ -2,7 +2,7 @@
   <div id="family-members-comp">
     <h2 id="your-family">Your Family:</h2>
     <div v-for="user in $store.state.familyMembers" v-bind:key="user.id" id="fam-links">
-      <router-link :to="{ name: 'activity-list' }">
+      <router-link class="username-link" :to="{ name: 'activity-list' }">
         <h3 @click="storeUser(user)">{{ user.username }}</h3>
       </router-link>
     </div>
@@ -30,10 +30,33 @@ export default {
 
 #your-family {
   text-align: center;
-}
+  margin-left: 20px;
+  text-align: left;
+  color: rgb(24, 49, 78);
+  }
 
 #fam-links {
   text-align: center;
+   border: 1px solid  rgb(24, 49, 78, .6);
+   width:300px;
+   border-radius:25px;
+   margin:10px 30px;
+    background-color: rgb(24, 49, 78, .3)
+
+   /* color:white; */
+}
+#fam-links:hover{
+  background-color: rgb(24, 49, 78, .6)
+
+}
+.username-link{
+   /* border: 1px solid  rgb(24, 49, 78, .6); */
+   width:auto;
+   /* border-radius:25px; */
+   color:white;
+}
+.username-link:hover{
+  color: white;
 }
 
 </style>

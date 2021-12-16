@@ -62,7 +62,7 @@
             required
         />
         </label>
-        <button id="submit-button" v-on:click.prevent="editPrize">Submit Prize!</button>
+        <button id="update-button" v-on:click.prevent="editPrize">Submit Prize!</button>
       </form>
     </div>
 </template>
@@ -153,7 +153,7 @@ export default {
     background-color: rgb(140, 95, 102, 0.3);
 }
 
-#submit-button {
+#update-button {
     margin:15px 0 15px 15px;
     text-align: center;
     height: 40px;

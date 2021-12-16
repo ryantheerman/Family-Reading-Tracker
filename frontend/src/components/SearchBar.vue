@@ -1,12 +1,12 @@
 <template>
   <div>
-    <label for="Search bar"
+    <label for="search-bar" id="serch-bar-label"
       >
     </label>
     <input
       @keydown.enter="getBooks"
       type="text"
-      id="Search bar"
+      id="search-bar"
       name="Search bar"
       placeholder="Search Books:"
       v-model="searchTerm"
@@ -72,15 +72,15 @@ export default {
 </script>
 
 <style >
-  label{
+  #search-bar-label{
     margin:7px;
   }
 
-  input{
+  #search-bar{
     margin-bottom:15px;
     width:100%;
-    color: hsl(14, 38%, 46% , 1);
-    display:block;
+    color: rgb(162, 94, 73, 1);
+    /* display:block; */
     border:none;
     padding:15px 20px;
     border-radius:25px;

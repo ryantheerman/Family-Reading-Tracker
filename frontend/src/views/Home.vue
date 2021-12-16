@@ -29,7 +29,7 @@ export default {
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-areas: "reading-list search-bar";
-   background-color: rgba(162, 94, 73, 0.2);
+    background-color: rgba(162, 94, 73, 0.2);
 
 }
 

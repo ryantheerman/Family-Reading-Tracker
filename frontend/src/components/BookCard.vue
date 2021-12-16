@@ -32,7 +32,7 @@ export default {
 }
 img{
     height:30vh;
-    margin-bottom:15px;
+    margin-bottom:5px;
 } 
 .book-title {
     font-size: 1.5rem;

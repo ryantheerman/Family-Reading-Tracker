@@ -2,16 +2,17 @@
   <div id="prizeProgress" class="prizeProgress">
     <div id="prize-details">
       <h1>Prize Details</h1>
-      <h3 class="prize-name">{{ prize.prizeName }}</h3>
-      <p class="prize-description">{{ prize.prizeDescription }}</p>
-      <h3 class="milestone">{{ prize.milestone }}</h3>
-      <h3 class="maxPrizes">{{ prize.maxPrizes }}</h3>
-      <h3 class="startDate">{{ prize.startDate }}</h3>
-      <h3 class="endDate">{{ prize.endDate }}</h3>
+      <h3 class="prize-name">Prize Name: {{ prize.prizeName }}</h3>
+      <p class="prize-description">Prize Description: {{ prize.prizeDescription }}</p>
+      <h3 class="milestone">Required Minutes Read to Win: {{ prize.milestone }}</h3>
+      <h3 class="maxPrizes">Max Number of Winners: {{ prize.maxPrizes }}</h3>
+      <h3 class="startDate">Start Date: {{ prize.startDate | formatDate }}</h3>
+      <h3 class="endDate">End Date: {{ prize.endDate | formatDate }}</h3>
     
     </div>
+    <div class="prize-progress">
       <div v-if="prize.isActive">
-        <h1>Family Member Progress Toward Prize</h1>
+        <h1 id="progress-title">Family Member Progress Toward Prize</h1>
 
 
         <div
@@ -26,7 +27,7 @@
           </h3>
         </div>
       </div>
-    
+    </div>
   </div>
 </template>
 
@@ -86,12 +87,18 @@ export default {
 
 <style>
 .prizeProgress{
-  background-color: rgb(140, 95, 102, 0.4);
-  color:black
+    background-color: rgb(140, 95, 102, 0.4);
+    color:black;
+    height:100vh;
+    border-top: 1px solid  rgb(140, 95, 102, .5);
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "details progress";
+
 }
 #prize-details{
+    grid-area: details;
     border-radius: 10px;
-    width: 750px;
+    width: 550px;
     height: auto;
     padding: 10px;
     margin: 20px;
@@ -101,5 +108,11 @@ export default {
     transition-duration: 0.4s;
     font-size: 19px;
 }
-
+.prize-progress{
+  grid-area: progress;
+}
+#progress-title,
+#family-details{
+    margin-left:10px;
+}
 </style>
