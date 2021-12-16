@@ -12,6 +12,7 @@ import Activity from '../views/Activity'
 import ActivityList from '../components/ActivityList'
 import EditPrize from '../components/EditPrize.vue'
 import ReadingList from '../views/ReadingList.vue'
+import PrizeDetails from '../components/PrizeDetails.vue'
 
 Vue.use(Router)
 
@@ -94,6 +95,11 @@ const router = new Router({
       path: '/readingList',
       name: 'reading-list',
       component: ReadingList
+    },
+    {
+      path: '/prizeDetails',
+      name: 'prize-details',
+      component: PrizeDetails
     }
   ]
 })

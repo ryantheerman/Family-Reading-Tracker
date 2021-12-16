@@ -31,7 +31,7 @@ export default {
         addMember() {
             AuthService.addFamilyMember(this.familyMember.username).then(response => {
                 if(response.status === 200) {
-                    console.log('made it to backend');
+                  this.$router.push('/');
                 }
             });
         }

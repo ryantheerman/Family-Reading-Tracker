@@ -1,29 +1,89 @@
 * {
-    font-family: "Sans-Serif";
+    font-family: "Comic Sans MS";
 }
 
 .header {
-    text-align: center;
-    color: #18314E;
+    text-align: left;
+    grid-area: header;
+    margin-left: 20px;
 }
 
-#nav {
-    text-align: center;
-    color: #18314E;
+#router-view {
+    grid-area: router-view;
 }
 
 #logo {
-    height: 200px;
-    
+    grid-area: logo;
+    height: 150px;
+    width: 200px;
+}
+
+.logout {
+    grid-area: logout;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+.prize {
+    grid-area: prize;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.family {
+    grid-area: family;
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 20px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.activity {
+    grid-area: activity;
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 20px;
+    color: white;
+    text-decoration: none;
+
+}
+
+#nav{
+    grid-area: nav-bar;
+    background-color: #8DA59C;
+    display: grid;
+    grid-template-rows: 150px 40px 40px 40px 40px;
+    row-gap: 20px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    grid-template-areas: "logo"
+                         "logout"
+                         "activity"
+                         "family"
+                         "prize";
 }
 
 #app {
-    background-color: #FFF;
-    background-size: cover;
-    position: fixed; 
-    top: 0; 
-    left: 0; 
+    background-color: white;
     min-width: 100%;
     min-height: 100%;
-    background-repeat: no-repeat; 
+    top: 0;
+    left: 0;
+    /* position: fixed; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: 100px auto;
+    grid-template-areas: "nav-bar header"
+                         "nav-bar router-view";
 }

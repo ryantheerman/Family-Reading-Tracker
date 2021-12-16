@@ -107,15 +107,7 @@ export default {
   #searchAuthor:hover{
     background-color: rgba(162, 94, 73, 0.6);
   }
-  .searchBar {
-      height: 90vh;
-      width: auto;
-      position: relative;
-      text-align: center;
-      color: black;
-      margin-bottom: 10vh;
-      overflow-y: scroll;
-  }
+ 
   .searchedTitle{
     color: rgba(162, 94, 73);
     font-size: 22px;
@@ -127,4 +119,17 @@ export default {
       height:25vh;
       margin-bottom:15px;
   }
+
+  .searchBar {
+    height: 110vh;
+    width: auto;
+    position: relative;
+    text-align: center;
+    color: black;
+    margin-bottom: 10vh;
+    overflow-y: scroll;
+  }
+.searchBar::-webkit-scrollbar {
+  display: none;
+}
 </style>

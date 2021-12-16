@@ -11,9 +11,11 @@
 <script>
 import SearchBar from "../components/SearchBar.vue";
 import ReadingList from "../components/ReadingList.vue";
+import HomeStyles from "@/styles/HomeStyle.css";
 // import ActivityList from '../components/ActivityList.vue';
 export default {
-  components: { SearchBar, ReadingList  }, //ActivityList
+  component: HomeStyles,
+  components: { SearchBar, ReadingList}, //ActivityList
   name: "home",
   created(){
       this.$store.state.storedUser = this.$store.state['user']
