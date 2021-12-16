@@ -135,7 +135,7 @@ export default {
 };
 </script>
 <style>
-#activity-container {
+/* #activity-container {
   width: 100%;
   overflow-y: scroll;
   position: relative;
@@ -147,5 +147,5 @@ table {
 td,
 th {
   padding: 10px;
-}
+} */
 </style>

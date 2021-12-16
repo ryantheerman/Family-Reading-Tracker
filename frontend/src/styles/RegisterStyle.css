@@ -44,7 +44,7 @@
 
 #register-description {
     grid-area: register-description;
-    text-align: center;
+    text-align: left;
     color: #8D513F;
     padding-top: 20px;
     padding-right: 10px;

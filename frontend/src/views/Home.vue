@@ -10,9 +10,11 @@
 <script>
 import SearchBar from "../components/SearchBar.vue";
 import ReadingList from "../components/ReadingList.vue";
+import HomeStyles from "@/styles/HomeStyle.css";
 // import ActivityList from '../components/ActivityList.vue';
 export default {
-  components: { SearchBar, ReadingList  }, //ActivityList
+  component: HomeStyles,
+  components: { SearchBar, ReadingList}, //ActivityList
   name: "home",
   created(){
       this.$store.state.storedUser = this.$store.state['user']
@@ -20,17 +22,3 @@ export default {
   }
 };
 </script>
-<style>
-.home {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-areas: "reading-list search-bar";
-    column-gap: 20px;
-}
-#search-bar {
-    grid-area: search-bar;
-}
-#reading-list {
-    grid-area: reading-list;
-}
-</style>

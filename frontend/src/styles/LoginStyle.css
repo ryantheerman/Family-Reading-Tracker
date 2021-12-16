@@ -67,26 +67,11 @@
                          "button";
 }
 
-#description {
-    grid-area: description;
-    padding-top: 20px;
-    padding-right: 10px;
-    padding-left: 10px;
-    text-align: center;
-    margin-right: 25px;
-    font-size: 23px;
-    /* border: solid 5px #9B5936;
-    border-radius: 25px;
-    background-color: #A15E49;
-    color: #F1E8E4; */
-    color: #8D513F;
-}
-
 #login {
     display: grid;
     margin-top: 40px;
     grid-template-columns: 40% 30% 30%;
-    grid-template-areas: "sign-in description description";
+    grid-template-areas: "sign-in";
     align-items: right;
     column-gap: none;
 }
