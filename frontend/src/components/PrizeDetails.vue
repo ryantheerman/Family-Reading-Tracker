@@ -85,3 +85,10 @@ export default {
 
 <style>
 </style>
+
+BackendService.getActivitiesById(user.id).then((response) => {
+              if (response.status == 200) {
+                this.$store.commit("ADD_ACTIVITIES_TO_ARRAY", response.data);
+                console.log(this.$store.state.activities);
+              }
+            });
