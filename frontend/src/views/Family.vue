@@ -30,20 +30,13 @@ export default {
 }
 </script>
 <style>
-.familyLayout{
-  display: grid;
-  grid-template-rows: 200px 1fr;
-  grid-template-columns:1fr 1fr ;
-  grid-template-areas: "family form"
-                        "family  picture";
-  row-gap: 10px;
-}
+
 
 #family{
   grid-area:picture;
   height: 50vh;
   border-radius: 15px;
-  margin: 0px auto;
+  margin: 34px auto;
 }
 .addToRead{
   grid-area: family;
@@ -57,5 +50,14 @@ export default {
 .addFamily{
   margin:auto
 }
-
+.familyLayout{
+  display: grid;
+  grid-template-rows: 200px 1fr;
+  grid-template-columns:1fr 1fr ;
+  grid-template-areas: "family form"
+                        "family  picture";
+  row-gap: 10px;
+    height: 100vh;
+background-color:white ;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="readingList">
        <reading-list />
     </div>
 </template>
@@ -14,4 +14,7 @@ export default {
 </script>
 
 <style>
+.readingList{
+    height: inherit;
+}
 </style>

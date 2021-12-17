@@ -1,4 +1,4 @@
-.prize-name {
+/* .prize-name {
     grid-area: prize-name;
 }
 
@@ -103,7 +103,7 @@
     border-radius: 40px;
     background-color: #98AEA6;
     justify-content: center;
-    width: 35%;
+    width: 100%;
     margin-top: 20px;
     margin-left: 30px;
     padding-top: 20px;
@@ -117,5 +117,5 @@
                          "maxPrizes"
                          "startDate"
                          "endDate"
-                         "submit-button";
+                         "submit-button"; */
 }

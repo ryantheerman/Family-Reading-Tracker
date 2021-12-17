@@ -44,9 +44,11 @@ export default {
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
+  height: inherit;
   position: relative;
   flex-direction: row;
   border-top: 2px solid rgba(162, 94, 73, 0.5);
+    background-color: rgba(162, 94, 73, 0.2);
 
 }
 #bookInfo{

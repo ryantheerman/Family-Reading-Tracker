@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="addPrize">
       <button id="show-form-button" 
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"> Add a Prize</button>
@@ -118,6 +118,10 @@ export default {
 }
 </script>
 <style>
+.addPrize{
+    /* height: 100%; */
+    
+}   
 #prizeInfo{
         margin:15px 0 15px 15px;
     text-align: center;

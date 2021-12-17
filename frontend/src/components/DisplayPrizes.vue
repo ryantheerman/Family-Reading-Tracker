@@ -29,7 +29,11 @@ export default {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  width: 100%;
+  width: 175vh;
+  height: 77vh;
   position: relative;
+  flex-direction: row;
+  /* background-color: rgb(140, 95, 102, 0.4); */
+
 }
 </style>
