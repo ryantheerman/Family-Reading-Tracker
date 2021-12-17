@@ -1,5 +1,6 @@
-<template>
-  <div class="activity-container" id="activity-container">
+<!--<template>
+
+ <div class="activity-container" id="activity-container">
     <div class="progress-section" v-if="prizesArray.length > 0">
       <h1>Progress Toward Prizes</h1>
       <table>
@@ -142,8 +143,9 @@ export default {
     this.$store.commit("WIPE_ACTIVITIES");
   },
 };
-</script>
-<style>
+</script>-->
+<!--
+<style scoped>
 .activity-container {
   border-top:1px solid rgb(24, 49, 78, .5) ;
   width: 100%;

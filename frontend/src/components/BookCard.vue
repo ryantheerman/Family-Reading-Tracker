@@ -17,7 +17,7 @@ export default {
 .card {
     /* border: 2px solid rgba(162, 94, 73, 0.5); */
     border-radius: 10px;
-    width: 250px;
+    width: 300px;
     height: 350px;
     margin: 20px;
     text-align: center;
@@ -39,6 +39,7 @@ img{
     color: rgba(162, 94, 73, 1);
     /* margin-top: 93px; */
     padding-top:7px;
+    padding-left: 6px;
     width:auto;
     white-space: nowrap;
     overflow: hidden;

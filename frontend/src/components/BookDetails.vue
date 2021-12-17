@@ -120,7 +120,7 @@ export default {
     margin-right: 40px;
     font-size:16px;
     grid-template-columns:1fr 2fr;
-    grid-template-rows: 40px 40px auto auto;
+    grid-template-rows: auto auto auto auto;
     grid-template-areas:"cover title"
                         "cover author"
                         "cover desc"
@@ -142,6 +142,7 @@ img.book-cover {
     /* align-self: center; */
 }
 #book-author{
+    margin-top:50px;
     grid-area: author;
 }
 #book-description{
@@ -151,11 +152,17 @@ img.book-cover {
 /* #submit-button, */
 #collection-button{
     grid-area: button;
-}
-
-#collection-button{
+    margin:10px ;
+    text-align: center;
+    height: 40px;
+    width:140px;
+    border-radius: 10px;
+    background-color: rgba(162, 94, 73, 0.8);
+    border:none;
+    transition-duration: 0.4s;
+    font-size: 18px;
     width :150px;
-    height:40px;
+    height:50px;
 }
 /* l{
     display: flex;

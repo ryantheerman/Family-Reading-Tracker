@@ -9,6 +9,7 @@
       </div></router-link>
    
     </div>
+    <p id="bookInfo" v-if="$store.state.books == 0">This is where you will see the books you’ve added to your reading list! Fill this page up with any books that you want to read.</p>
     </div>
 </template>
 
@@ -47,5 +48,11 @@ export default {
   flex-direction: row;
   border-top: 2px solid rgba(162, 94, 73, 0.5);
 
+}
+#bookInfo{
+  color: rgba(162, 94, 73);
+  font-size: 24px;
+  margin: 200px;
+  text-align: center;
 }
 </style>

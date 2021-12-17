@@ -13,6 +13,7 @@ import ActivityList from '../components/ActivityList'
 import EditPrize from '../components/EditPrize.vue'
 import ReadingList from '../views/ReadingList.vue'
 import PrizeDetails from '../components/PrizeDetails.vue'
+import TestActivity from '../views/TestActivity.vue'
 
 Vue.use(Router)
 
@@ -26,95 +27,99 @@ Vue.use(Router)
  */
 
 const router = new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/login",
-      name: "login",
-      component: Login,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/logout",
-      name: "logout",
-      component: Logout,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/register",
-      name: "register",
-      component: Register,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/bookDetails",
-      name: "bookDetails",
-      component: BookDetails
-    },
-    {
-      path: "/family",
-      name: "family",
-      component: Family
-    },
-    {
-      path: "/addPrize",
-      name: "add-prize",
-      component: AddPrize
-    },
-    {
-      path: "/activity",
-      name: "activity",
-      component: Activity
-    },
-    {
-      path: '/activities',
-      name: 'activity-list',
-      component: ActivityList
-    },
-    {
-      path: "/editPrize",
-      name: "edit-prize",
-      component: EditPrize
-    },
-    {
-      path: '/readingList',
-      name: 'reading-list',
-      component: ReadingList
-    },
-    {
-      path: '/prizeDetails',
-      name: 'prize-details',
-      component: PrizeDetails
-    }
-  ]
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes: [{
+            path: '/',
+            name: 'home',
+            component: Home,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: "/login",
+            name: "login",
+            component: Login,
+            meta: {
+                requiresAuth: false
+            }
+        },
+        {
+            path: "/logout",
+            name: "logout",
+            component: Logout,
+            meta: {
+                requiresAuth: false
+            }
+        },
+        {
+            path: "/register",
+            name: "register",
+            component: Register,
+            meta: {
+                requiresAuth: false
+            }
+        },
+        {
+            path: "/bookDetails",
+            name: "bookDetails",
+            component: BookDetails
+        },
+        {
+            path: "/family",
+            name: "family",
+            component: Family
+        },
+        {
+            path: "/addPrize",
+            name: "add-prize",
+            component: AddPrize
+        },
+        {
+            path: "/activity",
+            name: "activity",
+            component: Activity
+        },
+        {
+            path: '/activities',
+            name: 'activity-list',
+            component: ActivityList
+        },
+        {
+            path: "/editPrize",
+            name: "edit-prize",
+            component: EditPrize
+        },
+        {
+            path: '/readingList',
+            name: 'reading-list',
+            component: ReadingList
+        },
+        {
+            path: '/prizeDetails',
+            name: 'prize-details',
+            component: PrizeDetails
+        },
+        {
+            path: 'testActivity',
+            name: 'test-activity',
+            component: TestActivity
+        }
+    ]
 })
 
 router.beforeEach((to, from, next) => {
-  // Determine if the route requires Authentication
-  const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+    // Determine if the route requires Authentication
+    const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
 
-  // If it does and they are not logged in, send the user to "/login"
-  if (requiresAuth && store.state.token === '') {
-    next("/login");
-  } else {
-    // Else let them go to their next destination
-    next();
-  }
+    // If it does and they are not logged in, send the user to "/login"
+    if (requiresAuth && store.state.token === '') {
+        next("/login");
+    } else {
+        // Else let them go to their next destination
+        next();
+    }
 });
 
 export default router;

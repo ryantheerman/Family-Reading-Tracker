@@ -92,15 +92,15 @@ export default {
   #searchTitle,
   #searchAuthor{
   
-    margin:10px 0 10px 13px;
+    margin:10px;
     text-align: center;
     height: 40px;
-    width:140px;
+    width:120px;
     border-radius: 10px;
     background-color: rgba(162, 94, 73, 0.8);
     border:none;
     transition-duration: 0.4s;
-    font-size: 18px;
+    font-size: 12px;
 
   }
   #searchTitle:hover,
@@ -111,7 +111,7 @@ export default {
   .searchedTitle{
     color: rgba(162, 94, 73);
     font-size: 22px;
-    margin-bottom:7px;
+    margin-bottom:5px;
 
   }
 
@@ -130,6 +130,8 @@ export default {
     overflow-y: scroll;
   }
 .searchBar::-webkit-scrollbar {
+
   display: none;
+
 }
 </style>

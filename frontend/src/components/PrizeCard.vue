@@ -66,7 +66,7 @@ export default {
 .selectEdit{
     text-align: center;
     height: 30px;
-    width: 120px;
+    width: 150px;
     border-radius: 10px;
     background-color: rgb(140, 95, 102);
     border:1px solid white;
@@ -74,13 +74,13 @@ export default {
     font-size: 18px;
     align-self:center;
     color: white;
-    padding:5px;
+    padding:3px;
     margin:auto;
 }
 .delete-prize{
     text-align: center;
     height: 30px;
-    width: 120px;
+    width: 150px;
     border-radius: 10px;
     background-color: rgb(140, 95, 102);
     border:1px solid black;

@@ -36,6 +36,32 @@ body{
 	perspective:1000px;
 	transform-style:preserve-3d;
 }
+
+
+
+
+.login-container{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "form desc";
+
+  }
+
+
+  
+  .readMe{
+	grid-area: desc;
+	margin: 30px;
+	margin-top: 200px;
+	text-align: center;
+	font-size: 27px;
+    color:rgb(24, 49, 78);
+  }
+
+
+
+
+
  #username:hover,
  #password:hover{
 	background:rgba(255,255,255,.2);

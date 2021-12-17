@@ -69,6 +69,10 @@
         <button id="save-prize" v-on:click.prevent="saveNewPrize">Save Prize</button>
         </div>    
       </form>
+      <div id="prizeInfo" v-if="$store.state.prizes.length == 0">
+            <p>Create prizes for your family to compete for here. Prizes should describe what the winner is competing for, the minutes needed to win the prize and the dates your child's minutes read count for. Then its up to them to see whos the winner!</p>
+            <p>Once you have your families prizes created you have the ability to view, edit, and delete inactive ones.</p>
+      </div>
   </div>
 </template>
 <script>
@@ -114,6 +118,15 @@ export default {
 }
 </script>
 <style>
+#prizeInfo{
+        margin:15px 0 15px 15px;
+    text-align: center;
+    border:none;
+    font-size: 28px;
+    align-self:center;
+    color: rgb(140, 95, 102);
+}
+
 #show-form-button{
     margin:15px 0 15px 15px;
     text-align: center;

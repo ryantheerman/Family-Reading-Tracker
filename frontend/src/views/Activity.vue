@@ -20,7 +20,7 @@ export default {
 .activity-page{
     background-color:rgb(24, 49, 78, 0.2);
     border-top: 1px solid rgb(24, 49, 78, 0.5);
-    height:100vh;
+    height:auto;
 }
 
 </style>
