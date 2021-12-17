@@ -15,20 +15,43 @@ export default {
 
 <style>
 .card {
-    border: 2px solid black;
+    /* border: 2px solid rgba(162, 94, 73, 0.5); */
     border-radius: 10px;
-    width: 250px;
+    width: 300px;
     height: 350px;
     margin: 20px;
     text-align: center;
-    
-}
+    background-color: rgba(162, 94, 73, 1);
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+    transition-duration: 0.4s;
 
-.card .book-title {
+}
+.card:hover{
+    background-color: rgba(162, 94, 73, 0.5);
+
+}
+img{
+    height:30vh;
+    margin-bottom:5px;
+} 
+.book-title {
     font-size: 1.5rem;
+    color: rgba(162, 94, 73, 1);
+    /* margin-top: 93px; */
+    padding-top:7px;
+    padding-left: 6px;
+    width:auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.card .book-author {
+.book-author {
     font-size: 1rem;
+    color: rgba(162, 94, 73, 1);
+    width:auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 </style>

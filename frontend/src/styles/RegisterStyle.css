@@ -1,84 +1,76 @@
-#create {
-    grid-area: create-title;
+
+body{
+	margin:0;
+    color:#dfe0e9;
+	background:#c8c8c8;
+    overflow-y:scroll;
+    /* font:600 16px/18px 'Open Sans',sans-serif; */
+    
+}
+*,:after,:before {
+  box-sizing:border-box
+  }
+
+.text-center{
+	width:100%;
+	margin:auto;
+	max-width:525px;
+	min-height:670px;
+	position:relative;
+	background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.form-register{
+	width:100%;
+	height:100%;
+	position:absolute;
+	padding:90px 70px 50px 70px;
+	background:rgb(141, 165, 156, .9);
+}
+
+.register-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
+}
+ #username:hover,
+ #password:hover,
+ #confirmPassword:hover,
+ #button:hover{
+	background:rgba(255,255,255,.2);
+ }
+
+
+.register-form .form-control {
+  margin-bottom:15px;
+	width:100%;
+	color:#fff;
+	display:block;
+  	border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(255,255,255,.1);
+}
+
+#button{
+    transition-duration: 0.3s;
+    margin-top: 30px;
+}
+
+.separation{
+    height: 2px;
+    margin: 30px 0;
+    background: #fff;
+}
+#have-account{
+    color:#dfe0e9;
     text-align: center;
-    background-color: #8DA59C;
 }
 
-#confirmPassword {
-    grid-area: confirmPassword;
-    background-color: #D1DBD8;
-    border: solid 3px #819C92;
-    text-align: center;
+#have-account:hover,
+.parent-checkbox:hover{
+  color:#fff
 }
 
-#confirmPassword:hover {
-    opacity: 75%;
-}
 
-#have-account {
-    grid-area: haveAccount;
-    text-align: center;
-    color: #F1E8E4;
-    background-color: #8DA59C;
-}
-
-#button {
-    grid-area: button;
-    color: #485B56;
-    background-color: #D1DBD8;
-    border: solid 3px #819C92;
-    width: 50%;
-    height: 40px;
-    margin: auto;
-}
-
-#button:hover {
-    opacity: 75%;
-}
-
-.parent-checkbox {
-    grid-area: checkbox;
-    text-align: center;
-    background-color: #8DA59C;
-}
-
-#register-description {
-    grid-area: register-description;
-    text-align: left;
-    color: #8D513F;
-    padding-top: 20px;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-right: 25px;
-    font-size: 23px;
-}
-
-.form-register {
-    grid-area: registration-form;
-    background-color: #8DA59C;
-    color: #FFF8E8;
-    margin-top: 20px;
-    margin-left: 30px;
-    border: solid 4px #819C92;
-    border-radius: 40px;
-    display: grid;
-    width: 70%;
-    row-gap: 20px;
-    grid-template-rows: 1fr 35px 35px 35px 15px 25px 1fr;
-    justify-content: center;
-    grid-template-areas: "create-title"
-                         "username"
-                         "password"
-                         "confirmPassword"
-                         "checkbox"
-                         "haveAccount"
-                         "button";
-}
-
-#register {
-    display: grid;
-    margin-top: 40px;
-    grid-template-columns: 40% 30% 30%;
-    grid-template-areas: "registration-form register-description register-description";
-    column-gap: none;
-}

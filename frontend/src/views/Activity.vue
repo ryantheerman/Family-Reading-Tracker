@@ -1,6 +1,8 @@
 <template>
-  <family-members v-if="$store.state.user.isParent != false && $store.state['user'].familyId != 0" />
-  <activity-list v-else />
+  <div class="activity-page">
+    <family-members v-if="$store.state.user.isParent != false && $store.state['user'].familyId != 0" />
+    <activity-list v-else />
+  </div>
 </template>
 
 <script>
@@ -15,5 +17,10 @@ export default {
 </script>
 
 <style>
+.activity-page{
+    background-color:rgb(24, 49, 78, 0.2);
+    border-top: 1px solid rgb(24, 49, 78, 0.5);
+    height:auto;
+}
 
 </style>

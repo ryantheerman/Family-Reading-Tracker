@@ -1,81 +1,100 @@
-#h1 {
-    grid-area: sign-in-title;
-    text-align: center;
-    background-color: #8DA59C;
+
+
+body{
+	margin:0;
+	color:#595d77;
+	background:#c8c8c8;
+    overflow-y:scroll;
+    /* font:600 16px/18px 'Open Sans',sans-serif; */
+    position: absolute;
+    
+}
+*,:after,:before {
+  box-sizing:border-box
+  }
+
+.text-center{
+	width:100%;
+	margin:auto;
+	max-width:525px;
+	min-height:670px;
+	position:relative;
+	background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.form-signin{
+	width:100%;
+	height:100%;
+	position:absolute;
+	padding:90px 70px 50px 70px;
+	background:rgb(141, 165, 156, .9);
 }
 
-#username {
-    grid-area: username;
-    background-color: #D1DBD8;
-    border: solid 3px #819C92;
-    text-align: center;
-}
-
-#username:hover {
-    opacity: 75%;
-}
-
-#password {
-    grid-area: password;
-    background-color: #D1DBD8;
-    border: solid 3px #819C92;
-    text-align: center;
-}
-
-#password:hover {
-    opacity: 75%;
-}
-
-#need-account {
-    grid-area: needAccount;
-    text-align: center;
-    color: #F1E8E4;
-    background-color: #8DA59C;
-}
-
-#sign-in-button {
-    grid-area: button;
-    background-color: #D1DBD8;
-    color: #485B56;
-    border: solid 3px #819C92;
-    width: 40%;
-    height: 40px;
-    margin: auto;
-}
-
-#sign-in-button:hover {
-    opacity: 75%;
-}
-
-.form-signin {
-    grid-area: sign-in;
-    background-color: #8DA59C;
-    color: #F1E8E4;
-    margin-top: 20px;
-    margin-left: 30px;
-    border: solid 4px #819C92;
-    border-radius: 40px;
-    display: grid;
-    width: 70%;
-    grid-template-rows: 1fr 35px 35px 25px 1fr;
-    row-gap: 20px;
-    justify-content: center;
-    grid-template-areas: "sign-in-title"
-                         "username"
-                         "password"
-                         "needAccount"
-                         "button";
-}
-
-#login {
-    display: grid;
-    margin-top: 40px;
-    grid-template-columns: 40% 30% 30%;
-    grid-template-areas: "sign-in";
-    align-items: right;
-    column-gap: none;
+.login-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
 }
 
 
 
 
+.login-container{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "form desc";
+
+  }
+
+
+  
+  .readMe{
+	grid-area: desc;
+	margin: 30px;
+	margin-top: 200px;
+	text-align: center;
+	font-size: 27px;
+    color:rgb(24, 49, 78);
+  }
+
+
+
+
+
+ #username:hover,
+ #password:hover{
+	background:rgba(255,255,255,.2);
+ }
+
+
+.login-form .form-control {
+  margin-bottom:15px;
+	width:100%;
+	color:#fff;
+	display:block;
+    border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(255,255,255,.1);
+}
+
+#sign-in-button{
+	background:#c8d6d1;
+    margin-top: 70px;
+}
+
+#need-account{
+  margin:10px;
+	content:'';
+	width: 200px;
+	height:9px;
+	/* background:#fff; */
+  color:#dfe0e9;
+	position:absolute;
+	/* transition:all .2s ease-in-out 0s; */
+}
+
+#need-account:hover{
+  color:#fff
+}

@@ -2,7 +2,7 @@
   <div id="family-members-comp">
     <h2 id="your-family">Your Family:</h2>
     <div v-for="user in $store.state.familyMembers" v-bind:key="user.id" id="fam-links">
-      <router-link :to="{ name: 'activity-list' }">
+      <router-link class="username-link" :to="{ name: 'activity-list' }">
         <h3 @click="storeUser(user)">{{ user.username }}</h3>
       </router-link>
     </div>
@@ -27,13 +27,5 @@ export default {
 </script>
 
 <style>
-
-#your-family {
-  text-align: center;
-}
-
-#fam-links {
-  text-align: center;
-}
 
 </style>

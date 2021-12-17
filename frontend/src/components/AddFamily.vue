@@ -1,8 +1,9 @@
 <template>
     <div class="actions">
-        <button  v-bind:to="familyId" @click.prevent="createFamilyId()">Create Family</button>
+        <button class="createFam"  v-bind:to="familyId" @click.prevent="createFamilyId()">Create Family</button>
     </div>
 </template>
+
 <script>
 import AuthService from '../services/AuthService';
 export default {
@@ -27,5 +28,23 @@ export default {
     }
 }
 </script>
+
 <style>
+.createFam{
+    text-align: center;
+    height: 140px;
+    width:300px;
+    border-radius: 10px;
+    background-color:  rgb(24, 49, 78, .7);
+    border:none;
+    transition-duration: 0.3s;
+    font-size: 18px;
+    align-self:center;
+    color: black
+}
+.createFam:hover{
+    background-color:  rgb(24, 49, 78, .6);
+
+}
+
 </style>

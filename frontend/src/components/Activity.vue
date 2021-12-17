@@ -1,16 +1,8 @@
 <template>
-  <div>
-    <!-- <div v-for="user in userArray" v-bind:key="user.id">
-
-      <a :href="'#user.id'">{{user.username}}</a>
-
-    </div> -->
-
-
-
+  <div class="activity-container">
     <div v-for="user in userArray" v-bind:key="user.id">
-      <h1 :id="user.id">{{ user.username }}'s Reading Activity</h1>
-      <table>
+      <h1  class="user-title">{{ user.username }}'s Reading Activity</h1>
+      <table v-if="user.activities.length > 0">
         <tr>
           <th>Book</th>
           <th>Minutes Read</th>
@@ -28,7 +20,7 @@
         </tr>
       </table>
 
-      <div v-if="user.prizesArray.length > 0">
+      <div class="progress-section" v-if="user.prizesArray.length > 0">
         <h1>Progress Toward Prizes</h1>
         <table>
           <tr>
@@ -55,22 +47,29 @@
           </tr>
         </table>
       </div>
-
-      <h1>Total Minutes Read:</h1>
-      <h2>{{ user.totalMintuesSpentReading }}</h2>
-
-      <h1>Completed Books:</h1>
-      <h2>You have read {{ user.completedBooks.length }} books</h2>
-      <div v-for="book in user.completedBooks" :key="book.isbn">
-        <h2>{{ book.title }}</h2>
+    <div class="progress-card">
+      <div class="total">
+          <h1>Total Minutes Read:</h1>
+          <h2>{{ user.totalMintuesSpentReading }}</h2>
       </div>
-
-      <h1>Currently Reading:</h1>
-      <h2>You are currently reading {{ user.inProgressBooks.length }} books</h2>
-      <div v-for="book in user.inProgressBooks" :key="book.isbn">
-        <h2>{{ book.title }}</h2>
+      <div class="completed"> 
+          <h1>Completed Books:</h1>
+          <h2>You have read {{ user.completedBooks.length }} books</h2>
+          <div v-for="book in user.completedBooks" :key="book.isbn">
+            <h2>{{ book.title }}</h2>
+          </div>
+      </div>
+      <div class="current">
+          <h1>Currently Reading:</h1>
+          <h2>You are currently reading {{ user.inProgressBooks.length }} books</h2>
+          <div v-for="book in user.inProgressBooks" :key="book.isbn">
+            <h2>{{ book.title }}</h2>
+          </div>     
       </div>
     </div>
+          <div class="little-shit"></div>
+
+  </div>
   </div>
 </template>
 
@@ -263,5 +262,66 @@ export default {
 };
 </script>
 
-<style>
+<style >
+.activity-container {
+  border-top:1px solid rgb(24, 49, 78, .5) ;
+  width: 100%;
+  /* overflow-y: scroll; */
+  position: relative;
+  height: auto;
+  background-color:white;
+  color: rgb(24, 49, 78);
+}
+
+table {
+  margin: auto;
+}
+td,
+th {
+  padding: 10px;
+}
+.user-title,
+.progress-section{
+  text-align: center;
+}
+tr:nth-child(even) {
+  background-color: rgb(24, 49, 78, .2);
+  }
+tr:nth-child(odd) {background: rgb(255, 255, 255 , .4)}
+
+
+.total,
+.completed,
+.current{
+  border: 1px solid black;
+  border-radius: 10px;
+  margin:10px;
+  text-align: center;
+}
+
+.total,
+.completed,
+.current{
+
+}
+
+.progress-card{
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-auto-flow: row;
+  grid-template-areas: "total completed current" ;
+}
+.total{
+  grid-area: total;
+  margin-left:10px;
+}
+.completed{
+  grid-area:completed;
+}
+.current{
+  grid-area: current;
+}
+.little-shit {
+  margin: 100px;
+}
 </style>
