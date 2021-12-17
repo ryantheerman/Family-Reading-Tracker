@@ -17,7 +17,7 @@ export default {
 .card {
     /* border: 2px solid rgba(162, 94, 73, 0.5); */
     border-radius: 10px;
-    width: 300px;
+    width: 250px;
     height: 350px;
     margin: 20px;
     text-align: center;

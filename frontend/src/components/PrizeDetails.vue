@@ -102,6 +102,8 @@ export default {
     height: auto;
     padding: 10px;
     margin: 20px;
+    margin-right: 749px;
+    margin-bottom: 198px;
     text-align:left;
     background-color:rgb(140, 95, 102, 1);
     box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);

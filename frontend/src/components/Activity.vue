@@ -271,7 +271,7 @@ export default {
   height: auto;
   background-color:white;
   color: rgb(24, 49, 78);
-  /* margin-bottom: ; */
+  margin-bottom:500px ;
 }
 
 table {

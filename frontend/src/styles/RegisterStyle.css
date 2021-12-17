@@ -1,11 +1,11 @@
 
 body{
-	margin:0;
+	/* padding:100px; */
     color:#dfe0e9;
 	background:#c8c8c8;
-    overflow-y:scroll;
+    /* overflow-y:scroll; */
     /* font:600 16px/18px 'Open Sans',sans-serif; */
-    
+    width: 202vh;
 }
 *,:after,:before {
   box-sizing:border-box
@@ -26,6 +26,7 @@ body{
 	position:absolute;
 	padding:90px 70px 50px 70px;
 	background:rgb(141, 165, 156, .9);
+
 }
 
 .register-form{
@@ -33,6 +34,7 @@ body{
 	position:relative;
 	perspective:1000px;
 	transform-style:preserve-3d;
+	margin-right: 100px;
 }
  #username:hover,
  #password:hover,
@@ -51,6 +53,7 @@ body{
 	padding:15px 20px;
 	border-radius:25px;
 	background:rgba(255,255,255,.1);
+
 }
 
 #button{
