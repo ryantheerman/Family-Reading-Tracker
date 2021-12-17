@@ -139,7 +139,7 @@ export default {
               });
 
               // if user is a child, get their prizes
-              if (!user.isParent) {
+              // if (!user.isParent) {
                 BackendService.getPrizes().then((response) => {
                   if (response.status == 200) {
                     this.$store.commit('ADD_PRIZES_TO_ARRAY', response.data);
@@ -159,9 +159,10 @@ export default {
                       user.prizesArray.push(newPrize);
                     });
                   }
+                  this.userArray.push(user);
                 });
-              }
-              this.userArray.push(user);
+              
+              // this.userArray.push(user);
             }
           });
         }
@@ -244,9 +245,10 @@ export default {
                           newPrize.minutesRead = minTowardPrize;
                           user.prizesArray.push(newPrize);
 
-                          this.userArray.push(user);
+                          
                         });
-                      }
+                      this.userArray.push(user);
+}
                     });
                   }
                 });
@@ -271,6 +273,7 @@ export default {
   height: auto;
   background-color:white;
   color: rgb(24, 49, 78);
+  width: 170vh;
 }
 
 table {

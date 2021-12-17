@@ -1,5 +1,6 @@
 * {
     font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
 }
 
 .header {
@@ -11,7 +12,7 @@
 
 #router-view {
     grid-area: router-view;
-    height: 100vh;
+    height: auto;
 }
 
 #logo {

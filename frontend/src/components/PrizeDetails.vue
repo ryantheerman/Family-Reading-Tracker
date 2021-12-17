@@ -10,7 +10,7 @@
       <h3 class="endDate">End Date: {{ prize.endDate | formatDate }}</h3>
     
     </div>
-    <div class="prize-progress">
+    <!-- <div class="prize-progress">
       <div v-if="prize.isActive">
         <h1 id="progress-title">Family Member Progress Toward Prize</h1>
 
@@ -25,9 +25,9 @@
             {{ member.progress }}% of required
             reading to win {{ prize.prizeName }}
           </h3>
-        </div>
-      </div>
-    </div>
+        </div> -->
+      <!-- </div> -->
+    <!-- </div> -->
   </div>
 </template>
 
@@ -93,6 +93,7 @@ export default {
     border-top: 1px solid  rgb(140, 95, 102, .5);
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "details progress";
+    padding-bottom: 30px;
 
 }
 #prize-details{

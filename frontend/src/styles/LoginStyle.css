@@ -52,7 +52,7 @@ body{
   .readMe{
 	grid-area: desc;
 	margin: 30px;
-	margin-top: 200px;
+	margin-top: 60px;
 	text-align: center;
 	font-size: 27px;
     color:rgb(24, 49, 78);

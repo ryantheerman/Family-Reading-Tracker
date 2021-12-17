@@ -30,7 +30,6 @@ export default {
     grid-template-columns: 3fr 1fr;
     grid-template-areas: "reading-list search-bar";
     background-color: rgba(162, 94, 73, 0.2);
-
 }
 
 #search-bar {
@@ -38,5 +37,9 @@ export default {
     color: black;
     border-top: 2px solid rgba(162, 94, 73, 0.5);
 
+}
+
+#reading-list {
+  width: 135vh;
 }
 </style>

@@ -111,7 +111,7 @@ export default {
     border-top: 2px solid rgba(162, 94, 73, 0.5);
     background-color: rgba(162, 94, 73, 0.3);
     background-size: cover;
-
+    padding-bottom: 105px;
 }
 
 .book-detail{
@@ -126,7 +126,7 @@ export default {
                         "cover desc"
                         "cover button";
     column-gap: 10px;
-    height: 87vh;
+    height: 100%;
                         
 }
 
