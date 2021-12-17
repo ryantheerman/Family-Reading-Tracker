@@ -43,12 +43,14 @@ export default {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  width: 100%;
+  width: 175vh;
+  height: auto;
   position: relative;
   flex-direction: row;
   border-top: 2px solid rgba(162, 94, 73, 0.5);
-
+  padding-bottom: 105px;
 }
+
 #bookInfo{
   color: rgba(162, 94, 73);
   font-size: 24px;

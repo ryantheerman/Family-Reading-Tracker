@@ -5,6 +5,7 @@ body{
 	background:#c8c8c8;
     overflow-y:scroll;
     /* font:600 16px/18px 'Open Sans',sans-serif; */
+    width: 210vh;
     
 }
 *,:after,:before {

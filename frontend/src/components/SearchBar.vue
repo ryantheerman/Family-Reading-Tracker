@@ -83,7 +83,7 @@ export default {
     /* display:block; */
     border:none;
     padding:15px 20px;
-    border-radius:25px;
+    /* border-radius:25px; */
     background-color: rgba(162, 94, 73, 0.2);
     font-size: 16px;
   }
